@@ -1,0 +1,12 @@
+{
+    "name": "laravelroles/rolespermissions",
+    "description": "Roles and Permissions for Laravel Project",
+    "authors": [
+        {
+            "name": "Maria Penelova",
+            "email": "penelova.maria@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
