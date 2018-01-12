@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Routes</div>
+                <div class="panel-heading">{{trans('blah::translation.UpdateRoute')}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -20,10 +20,10 @@
                     
                     You are logged in!
                     {{ Form::open(['url' => 'route_update/'.$routeId, 'method' => 'get']) }}
-					<label>Name:</label>
+					<label>{{trans('blah::translation.Name')}}:</label>
 					{{ Form::text("name",$routeObj->name) }}
 					<br/>
-					<label>Route:</label>
+					<label>{{trans('blah::translation.Route')}}:</label>
 					{{ Form::text("route",$routeObj->route) }}
 					<br>
 					<label>Is active:</label>

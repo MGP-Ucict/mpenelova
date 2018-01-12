@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Routes</div>
+                <div class="panel-heading">{{trans('blah::translation.UpdateRole')}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -20,7 +20,7 @@
                     
                     You are logged in!
                     {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'get']) }}
-					<label>Name:</label>
+					<label>{{trans('blah::translation.Name')}}:</label>
 					{{ Form::text("name", $roleObj->name) }}
 					<br/>
 					
