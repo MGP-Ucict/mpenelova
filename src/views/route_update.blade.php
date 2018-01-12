@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{trans('blah::translation.UpdateRoute')}}</div>
+                <div class="panel-heading"><h1>{{trans('blah::translation.UpdateRoute')}}</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -26,8 +26,13 @@
 					<label>{{trans('blah::translation.Route')}}:</label>
 					{{ Form::text("route",$routeObj->route) }}
 					<br>
-					<label>Is active:</label>
-					{{ Form::checkbox("is_active", 1, $routeObj->is_active) }}
-					<br>
-				 {{ Form::submit('click me', ['name' => 'submit']) }}
+					
+				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
                     {{ Form::close() }}
+
+		</div>
+	    </div>
+         </div>
+    </div>
+</div>
+@endsection

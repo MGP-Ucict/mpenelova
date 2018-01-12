@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{trans('blah::translation.UpdateRole')}}</div>
+                <div class="panel-heading"><h1>{{trans('blah::translation.UpdateRole')}}</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -18,15 +18,13 @@
                     @endif
                     
                     
-                    You are logged in!
+                   
                     {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'get']) }}
 					<label>{{trans('blah::translation.Name')}}:</label>
 					{{ Form::text("name", $roleObj->name) }}
 					<br/>
 					
-					<label>Is active:</label>
-					{{ Form::checkbox("is_active", 1, $roleObj->is_active) }}
-					<br>
+					
 					@foreach($routes as $routeObj)
 					<?php
 					$flag=0;
@@ -56,5 +54,15 @@
 						
 					@endif							
 					@endforeach	
-				 {{ Form::submit('click me', ['name' => 'submit']) }}
+				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
                     {{ Form::close() }}
+
+		</div>
+	    </div>
+         </div>
+    </div>
+</div>
+@endsection
+
+
+
