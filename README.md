@@ -30,7 +30,8 @@ class User extends BaseUser
         Collective\Html\HtmlServiceProvider::class,
         //....
         
- 10. register HTML aliases in config/app.php
+        
+ 10. Register HTML aliases in config/app.php
  
   'aliases' => [
 
@@ -38,10 +39,12 @@ class User extends BaseUser
         //....
         'Form'=> Collective\Html\FormFacade::class,
         'Html'=> Collective\Html\HtmlFacade::class,
-
+        //...
     ],
     
-    11. register package middleware in app/Http/Kernel.php
+    
+    
+    11. Register package middleware in app/Http/Kernel.php
     
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
