@@ -56,7 +56,7 @@
 
 8. php artisan vendor:publish
 9. php artisan make:auth
-10. php artiisan migrate
+10. php artisan migrate
 11. php artisan db:seed
 
 12. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User
