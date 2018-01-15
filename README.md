@@ -13,12 +13,10 @@
         ]
         
         
- 3. Register HTML aliases in config/app.php
+3.  Register HTML aliases in config/app.php 
  
-  'aliases' => [
-
-        'App' => Illuminate\Support\Facades\App::class,
-        //....
+ 
+'aliases' => [
         'Form'=> Collective\Html\FormFacade::class,
         'Html'=> Collective\Html\HtmlFacade::class,
         //...
@@ -34,17 +32,25 @@
         'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
         //...
     ];
-5.composer.json:
+5.composer.json
+
     "require": {
         "laravelroles/rolespermissions": "dev-master",
 	    "laravelcollective/html": "~5.0"
     },
-6. composer.json: 
+    
+    
+6.composer.json
+
+
      "psr-4": {
             "App\\": "app/",
             "Laravelroles\\Rolespermissions\\": "vendor/laravelroles/rolespermissions/src",
             "Tests\\": "tests/"
-        } 
+        }
+	
+	
+	
 7. composer update
 
 
