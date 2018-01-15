@@ -1,22 +1,5 @@
 1. Install laravel project
-2. composer up
-3. php artisan make:auth
-
-4. composer require laravelroles/rolespermissions
-5. php artisan vendor:publish
-6. php artiisan migrate
-7. php artisan db:seed
-
-8. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User:
-
-use Laravelroles\Rolespermissions\Models\User as BaseUser;
-
-class User extends BaseUser
-{
-//...
-}
-
-9. Register package Service Provider and HtmlServiceProvider in config/app.php
+2. Register package Service Provider and HtmlServiceProvider in config/app.php
 
 
     'providers' => [
@@ -24,14 +7,13 @@ class User extends BaseUser
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Auth\AuthServiceProvider::class,
-        //..
+     
         Laravelroles\Rolespermissions\RolespermissionsServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        //....
+        ]
         
         
- 10. Register HTML aliases in config/app.php
+ 3. Register HTML aliases in config/app.php
  
   'aliases' => [
 
@@ -44,7 +26,7 @@ class User extends BaseUser
     
     
     
-    11. Register package middleware in app/Http/Kernel.php
+   4. Register package middleware in app/Http/Kernel.php
     
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
@@ -52,9 +34,35 @@ class User extends BaseUser
         'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
         //...
     ];
+5.composer.json:
+    5.1 
+    "require": {
+        "laravelroles/rolespermissions": "dev-master",
+	    "laravelcollective/html": "~5.0"
+    },
+    5.2 
+     "psr-4": {
+            "App\\": "app/",
+            "Laravelroles\\Rolespermissions\\": "vendor/laravelroles/rolespermissions/src",
+            "Tests\\": "tests/"
+        }
+     5.3 
+     composer update
+
+
+6. php artisan vendor:publish
+7. php artisan make:auth
+8. php artiisan migrate
+9. php artisan db:seed
+
+10. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User:
+
+use Laravelroles\Rolespermissions\Models\User as BaseUser;
+
+class User extends BaseUser
+{
+//...
+}
+11. Set localization in config/app.php - bg or en
     
-    12. composer require laravelcollective/html
-    
-    13. Set localization in config/app.php - bg or en
-    
-    14. Log in main program with example user test and password test
+12. Log in main program with example user test and password test
