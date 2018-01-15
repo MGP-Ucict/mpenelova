@@ -35,27 +35,25 @@
         //...
     ];
 5.composer.json:
-    5.1 
     "require": {
         "laravelroles/rolespermissions": "dev-master",
 	    "laravelcollective/html": "~5.0"
     },
-    5.2 
+6. composer.json: 
      "psr-4": {
             "App\\": "app/",
             "Laravelroles\\Rolespermissions\\": "vendor/laravelroles/rolespermissions/src",
             "Tests\\": "tests/"
-        }
-     5.3 
-     composer update
+        } 
+7. composer update
 
 
-6. php artisan vendor:publish
-7. php artisan make:auth
-8. php artiisan migrate
-9. php artisan db:seed
+8. php artisan vendor:publish
+9. php artisan make:auth
+10. php artiisan migrate
+11. php artisan db:seed
 
-10. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User:
+12. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User:
 
 use Laravelroles\Rolespermissions\Models\User as BaseUser;
 
@@ -63,6 +61,6 @@ class User extends BaseUser
 {
 //...
 }
-11. Set localization in config/app.php - bg or en
+13. Set localization in config/app.php - bg or en
     
-12. Log in main program with example user test and password test
+14. Log in main program with example user test and password test
