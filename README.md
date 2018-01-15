@@ -12,14 +12,15 @@
         Collective\Html\HtmlServiceProvider::class,
         ]
         
-        
-3.  Register HTML aliases in config/app.php 
- 
- 
-'aliases' => [
+3. config/app.php
+
+
+ 'aliases' => [
+        /*
+
+	 */
         'Form'=> Collective\Html\FormFacade::class,
-        'Html'=> Collective\Html\HtmlFacade::class,
-        //...
+    	'Html'=> Collective\Html\HtmlFacade::class,
     ],
     
     
