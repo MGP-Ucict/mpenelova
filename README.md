@@ -32,6 +32,11 @@
 			'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
 			//...
 		    ];
+		    
+composer dump-autoload
+php artisan clear-compiled
+php artisan optimize		    
+		    
 5.composer.json
 
     "require": {
