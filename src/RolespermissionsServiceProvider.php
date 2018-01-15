@@ -28,6 +28,8 @@ class RolespermissionsServiceProvider extends ServiceProvider
 		);
 		$this->publishes([
 		__DIR__. '/migrations'=>$this->app->databasePath().'/migrations'], 'migrations');
+		$this->publishes([
+		__DIR__. '/seeds'=>$this->app->databasePath().'/seeds'], 'seeds');
     }
 
     /**
