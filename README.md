@@ -12,27 +12,26 @@
         Collective\Html\HtmlServiceProvider::class,
         ]
         
-3. config/app.php
+3. config/app.php:
+
+		'aliases' => [
+			/*
+
+			 */
+			'Form'=> Collective\Html\FormFacade::class,
+			'Html'=> Collective\Html\HtmlFacade::class,
 
 
- 'aliases' => [
-        /*
-
-	 */
-        'Form'=> Collective\Html\FormFacade::class,
-    	'Html'=> Collective\Html\HtmlFacade::class,
-    ],
-    
     
     
    4. Register package middleware in app/Http/Kernel.php
     
-    protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        //...
-        'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
-        //...
-    ];
+		    protected $routeMiddleware = [
+			'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+			//...
+			'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
+			//...
+		    ];
 5.composer.json
 
     "require": {
@@ -60,14 +59,19 @@
 10. php artiisan migrate
 11. php artisan db:seed
 
-12. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User:
+12. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User
 
-use Laravelroles\Rolespermissions\Models\User as BaseUser;
+class User.php
 
-class User extends BaseUser
-{
-//...
-}
+
+
+
+	use Laravelroles\Rolespermissions\Models\User as BaseUser;
+
+	class User extends BaseUser
+	{
+	//...
+	}
 13. Set localization in config/app.php - bg or en
     
 14. Log in main program with example user test and password test
