@@ -16,17 +16,47 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Username</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
                     
                     
-                    You are logged in!
-                    @foreach($userObjs as $userObj) 
-						{{$userObj->name}}
+                    @foreach($userObjs as $userObj)
+                        <tr>
+                        <th scope="row">{{$userObj->id}}</th> 
+						<td>{{$userObj->username}}</td>
+                        <td>{{$userObj->name}}</td>
+                        <td>{{$userObj->email}}</td>
+                        <td>
+                        @if(Auth::user()->hasAccess(['user_update']))
 						{{ Html::linkRoute('user_update', 
-						 'Edit' , ['userId' => $userObj['id']]) }}
+						 "Edit" , ['userId' => $userObj['id']]) }}
+                         @endif
+
+                         @if(Auth::user()->hasAccess(['user_delete']))
 						{{ Html::linkRoute('user_delete', 
-						 'Delete', ['userId' => $userObj['id']]) }}
-						 <br>
-						
+						 "Delete", ['userId' => $userObj['id']]) }}
+                         @endif
+						 </td>
+						</tr>
 					 @endforeach
+                    </tbody>
+                </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
 					
 					
