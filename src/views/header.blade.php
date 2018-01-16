@@ -3,13 +3,13 @@
     <div class="navbar-inner">
 
         <ul class="nav nav-tabs">
-		@can('view', App\Models\Role::class )
+		@if(Auth::user()->hasAccess(['role_list']))
             <li><a href="/role_list">Roles list</a></li>
-		@endcan
-		@can('view', App\Models\Route::class )
+		@endif
+		@if(Auth::user()->hasAccess(['route_list']))
             <li><a href="/route_list">Routes list</a></li>
-		@endcan
-		@can('view', App\Models\User::class )
+		@endif
+		@if(Auth::user()->hasAccess(['user_list']))
             <li><a href="/user_list">Users list</a></li>
 		@endcan
 </div>
