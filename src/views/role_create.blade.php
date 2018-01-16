@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-
+@include('laravelroles.rolespermissions.header')
 
     <div class="row">
 

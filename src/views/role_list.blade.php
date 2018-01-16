@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-
+@include('laravelroles.rolespermissions.header')
 
     <div class="row">
 
@@ -18,7 +18,7 @@
                     @endif
                     
                     
-                    You are logged in!
+                    
                     @foreach($roleObjs as $roleObj) 
 						{{$roleObj->name}}
 						{{ Html::linkRoute('role_update', 
