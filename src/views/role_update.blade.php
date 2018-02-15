@@ -20,10 +20,19 @@
                     
                    
                     {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'get']) }}
+                    <div class ="row  col-md-offset-1">
+                    <div class = "col-md-4">
 					<label>{{trans('blah::translation.Name')}}:</label>
+					</div>
+                    <div class = "col-md-4">
 					{{ Form::text("name", $roleObj->name) }}
-					<br/>
-					
+					</div>
+					</div>
+					<div class ="row  col-md-offset-1">
+                    <div class = "col-md-4">
+                       <label> Routes</label>
+                    </div>
+                    </div> 
 					
 					@foreach($routes as $routeObj)
 					<?php
@@ -42,20 +51,26 @@
 					@endforeach
 					
 					@if($flag == 1)
+						<div class ="row  col-md-offset-2">
 						<label>{{ Form::checkbox("routes[]", $routeObj->id, true) }}	</label>				
 						{{$routeObj->name}}
-						<br>
+						</div>
 						
 					@endif
 					@if($flag == 0)
+						<div class ="row  col-md-offset-2">
 						<label>{{ Form::checkbox("routes[]", $routeObj->id, false) }}	</label>				
 						{{$routeObj->name}}
-						<br>
+						</div>
 						
 					@endif							
 					@endforeach	
+					<div class ="row  col-md-offset-1">
+                    <div class = "col-md-4 col-md-offset-4">
 				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
                     {{ Form::close() }}
+                </div>
+            </div>
 
 		</div>
 	    </div>

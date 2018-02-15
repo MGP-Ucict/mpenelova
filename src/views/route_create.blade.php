@@ -20,17 +20,30 @@
                     
                     
                     {{ Form::open(['action'=>'\Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate' , 'method' => 'get']) }}
+                    <div class ="row  col-md-offset-1">
+                    <div class = "col-md-4">
 					<label>{{trans('blah::translation.Name')}}:
 					</label>
+                    </div>
+                    <div class = "col-md-4">
 					{{ Form::text("name") }}
-					<br/>
+				    </div>
+                    </div>
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class ="row  col-md-offset-1">
+                    <div class = "col-md-4">
 					<label>{{trans('blah::translation.Route')}}:</label>
+                    </div>
+                    <div class = "col-md-4">
 					{{ Form::text("route") }}
-					<br>
-					
+					</div>
+                    </div>
+					<div class ="row  col-md-offset-1">
+                    <div class = "col-md-4 col-md-offset-4">
 				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
                     {{ Form::close() }}
+                </div>
+            </div>
 		</div>
 	    </div>
          </div>
