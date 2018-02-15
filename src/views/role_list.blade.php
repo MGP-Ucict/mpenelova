@@ -17,16 +17,36 @@
                         </div>
                     @endif
                     
-                    
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
                     
                     @foreach($roleObjs as $roleObj) 
+                    <tr>
+                        <td>
 						{{$roleObj->name}}
+                        </td>
+                        <td>
 						{{ Html::linkRoute('role_update', 
 						 'Edit' , ['roleId' => $roleObj['id']]) }}
 						{{ Html::linkRoute('role_delete', 
 						 'Delete', ['roleId' => $roleObj['id']]) }}
-						 <br>
-						
+						 </td>
+						</tr>
 					 @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@endsection
 					
 					

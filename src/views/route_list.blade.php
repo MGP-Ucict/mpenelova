@@ -18,15 +18,35 @@
                     @endif
                     
                     
-                    You are logged in!
-                    @foreach($routeObjs as $routeObj) 
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                    @foreach($routeObjs as $routeObj)
+                    <tr> 
+                        <td>
 						{{$routeObj->name}}
+                        </td>
+                        <td>
 						{{ Html::linkRoute('route_update', 
 						 'Edit' , ['routeId' => $routeObj['id']]) }}
 						{{ Html::linkRoute('route_delete', 
 						 'Delete', ['routeId' => $routeObj['id']]) }}
-						 <br>
-						
+						 </td>
+					</tr>	
 					 @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@endsection
 					
 					
