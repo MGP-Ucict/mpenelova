@@ -22,7 +22,7 @@ public function roleCreate(Request $request){
 		$roleObj = new Role;
 		$roleObj->name = $input['name'];
 		$routes = $input['routes'];
-		$roleObj->is_active = (isset($input['is_active']))?$input['is_active']:0;
+		//$roleObj->is_active = (isset($input['is_active']))?$input['is_active']:0;
 		$roleObj->save();
 		foreach($routes as $key=>$value){
 			$rr = Permission::find($value);
@@ -51,7 +51,7 @@ public function roleUpdate(Request $request, $roleId){
 		
 		$roleObj->name = $input['name'];
 		$roles = $input['routes'];
-		$roleObj->is_active = (isset($input['is_active']))?true:false;
+		//$roleObj->is_active = (isset($input['is_active']))?true:false;
 		$roleObj->save();
 		foreach($routes0 as $key=>$value){
 			$rr = Permission::find($value);
