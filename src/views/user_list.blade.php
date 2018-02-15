@@ -32,8 +32,8 @@
                     
                     @foreach($userObjs as $userObj)
                         <tr>
-                        <th scope="row">{{$userObj->id}}</th> 
-						<td>{{$userObj->username}}</td>
+                        <td scope="row">{{$userObj->id}}</td> 
+		        <td>{{$userObj->username}}</td>
                         <td>{{$userObj->name}}</td>
                         <td>{{$userObj->email}}</td>
                         <td>

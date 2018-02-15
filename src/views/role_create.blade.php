@@ -32,9 +32,9 @@
 					@endforeach	
 				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
                     {{ Form::close() }}
-		</div>
-	    </div>
-         </div>
+		      </div>
+	       </div>
+        </div>
     </div>
 </div>
 @endsection

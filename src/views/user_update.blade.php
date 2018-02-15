@@ -4,11 +4,11 @@
 <div class="container">
 
 @include('laravelroles.rolespermissions.header')
-    <div class="row">
+    
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{trans('blah::translation.EditUser')}}</div>
+                <div class="panel-heading"><h1>{{trans('blah::translation.EditUser')}}</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -24,22 +24,53 @@
 				    @endforeach
 				</ul>
 			    </div>
+			   
+
 		    @endif
                     
                     
-                    You are logged in!
+                    
                     {{ Form::open(['url' => 'user_update/'.$userId, 'method' => 'get']) }}
+                    <div class ="row  col-md-offset-1">
+                   	<div class = "col-sm">	
 					<label>{{trans('blah::translation.Name')}}:</label>
+					</div>
+				    <div class = "col-sm">	 
 					{{ Form::text("name", $userObj->name) }}
-					<br/>
+				    </div>
+					</div>
+					
+					<div class ="row  col-md-offset-1">
+                   	<div class = "col-sm">	
 					<label>{{trans('blah::translation.Email')}}:</label>
+				    </div>
+                   	<div class = "col-sm">	
 					{{ Form::text("email", $userObj->email) }}
+				    </div>
+				    </div>
 					<br/>
+					<div class ="row  col-md-offset-1">
+                   	<div class = "col-sm">	
 					<label>{{trans('blah::translation.Password')}}:</label>
+				    </div>
+                   	<div class = "col-sm">	
 					{{ Form::password("password") }}
+				    </div>
+				    </div>
 					<br/>
+					<div class ="row  col-md-offset-1">
+                   	<div class = "col-sm">	
 					<label>Is active:</label>
+				    </div>
+				    <div class = "col-sm">	
 					{{ Form::checkbox("is_active", 1, $userObj->is_active) }}
+				    </div>
+				    </div>
+				    <div class ="row  col-md-offset-1">
+                   	<div class = "col-sm">	
+					<label>{{trans('blah::translation.Roles')}}:</label>
+				    </div>
+					</div>
 					<br>
 					@foreach($roles as $roleObj)
 					<?php
@@ -58,17 +89,30 @@
 					@endforeach
 					
 					@if($flag == 1)
+					<div class ="row  col-md-offset-2">
 						<label>{{ Form::checkbox("roles[]", $roleObj->id, true) }}	</label>				
 						{{$roleObj->name}}
+					</div>
 						<br>
 						
 					@endif
 					@if($flag == 0)
+					<div class ="row  col-md-offset-2">
 						<label>{{ Form::checkbox("roles[]", $roleObj->id, false) }}	</label>				
 						{{$roleObj->name}}
+					</div>
 						<br>
 						
 					@endif							
 					@endforeach	
-				 {{ Form::submit('click me', ['name' => 'submit']) }}
+
+					<div class ="row  col-md-offset-1">
+				 {{ Form::submit('Save', ['name' => 'submit']) }}
+				</div>
                     {{ Form::close() }}
+ 				</div>
+	       </div>
+        </div>
+    </div>
+
+@endsection
