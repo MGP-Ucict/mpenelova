@@ -32,46 +32,46 @@
                     
                     {{ Form::open(['url' => 'user_update/'.$userId, 'method' => 'get']) }}
                     <div class ="row  col-md-offset-1">
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Name')}}:</label>
 					</div>
-				    <div class = "col-sm">	 
+				    <div class = "col-md-4">	 
 					{{ Form::text("name", $userObj->name) }}
 				    </div>
 					</div>
 					
 					<div class ="row  col-md-offset-1">
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Email')}}:</label>
 				    </div>
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					{{ Form::text("email", $userObj->email) }}
 				    </div>
 				    </div>
-					<br/>
+					
 					<div class ="row  col-md-offset-1">
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Password')}}:</label>
 				    </div>
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					{{ Form::password("password") }}
 				    </div>
 				    </div>
 					<br/>
 					<div class ="row  col-md-offset-1">
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					<label>Is active:</label>
 				    </div>
-				    <div class = "col-sm">	
+				    <div class = "col-md-4">	
 					{{ Form::checkbox("is_active", 1, $userObj->is_active) }}
 				    </div>
 				    </div>
 				    <div class ="row  col-md-offset-1">
-                   	<div class = "col-sm">	
+                   	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Roles')}}:</label>
 				    </div>
 					</div>
-					<br>
+					
 					@foreach($roles as $roleObj)
 					<?php
 					$flag=0;
@@ -107,8 +107,10 @@
 					@endforeach	
 
 					<div class ="row  col-md-offset-1">
+					<div class = "col-md-4 col-md-offset-4">
 				 {{ Form::submit('Save', ['name' => 'submit']) }}
 				</div>
+			</div>
                     {{ Form::close() }}
  				</div>
 	       </div>
