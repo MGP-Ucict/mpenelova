@@ -20,18 +20,36 @@
                     
                     
                     {{ Form::open(['url' => 'role_create', 'method' => 'get']) }}
+                    <div class ="row  col-md-offset-1">
+                    <div class = "col-md-4">
 					<label>{{trans('blah::translation.Name')}}:</label>
+                    </div>
+                    <div class = "col-md-4">
 					{{ Form::text("name") }}
-					<br/>
+					</div>
+                    </div>
+                    
+                    <div class ="row  col-md-offset-1">
+                    <div class = "col-md-4">
+                       <label> Routes</label>
+                    </div>
+                    </div> 
 					
 					
 					@foreach($permissions as $routeObj)
-						<label>{{ Form::checkbox("routes[]", $routeObj->id) }}	</label>				
+                        <div class ="row  col-md-offset-2">
+						<label>{{ Form::checkbox("routes[]", $routeObj->id) }}	</label>	
+
 						{{$routeObj->name}}
-						<br>
+                    </div>
+				    
 					@endforeach	
+                    <div class ="row  col-md-offset-1">
+                    <div class = "col-md-4 col-md-offset-4">
 				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
                     {{ Form::close() }}
+                </div>
+            </div>
 		      </div>
 	       </div>
         </div>

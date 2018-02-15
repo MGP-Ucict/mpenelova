@@ -18,7 +18,7 @@
                     @endif
                     
                     
-                    You are logged in!
+                    
                     {{ Form::open(['url' => 'role_update/'.{{$roleId}}, 'method' => 'get']) }}
 					<label>Name:</label>
 					{{ Form::text("name", $roleObj->name) }}
