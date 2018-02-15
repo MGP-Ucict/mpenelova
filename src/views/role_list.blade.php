@@ -45,6 +45,10 @@
 					 @endforeach
                     </tbody>
                 </table>
+                 @if(Auth::user()->hasAccess(['role_create']))
+                        {{ Html::linkRoute('role_create', 
+                         "Create role") }}
+                         @endif
             </div>
         </div>
     </div>
