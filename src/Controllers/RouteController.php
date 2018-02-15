@@ -18,26 +18,26 @@ public function routeCreate(Request $request){
 	//dd($request->isMethod('post'));
 	if($request->isMethod('get') && $request->input('submit') ){
 	
-		$validator = Validator::make($request->all(), [
-            'route' => 
-			  array(
-            'required',
-             'regex:[a-z]'
-        ),
-            'name' => 'required',
-        ]);
-//dd("xxzz");
-        if ($validator->fails()) {
-		//dd("bzxzc");
-            return redirect()->route('route_create')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+// 		$validator = Validator::make($request->all(), [
+//             'route' => 
+// 			  array(
+//             'required',
+//              'regex:[a-z]'
+//         ),
+//             'name' => 'required',
+//         ]);
+// //dd("xxzz");
+//         if ($validator->fails()) {
+// 		//dd("bzxzc");
+//             return redirect()->route('route_create')
+//                         ->withErrors($validator)
+//                         ->withInput();
+//         }
 		$input = Input::get();
 		$routeObj = new Permission;
 		$routeObj->name = $input['name'];
 		$routeObj->route = $input['route'];
-		$routeObj->is_active = (isset($input['is_active']))?$input['is_active']:0;
+		///$routeObj->is_active = (isset($input['is_active']))?true:false;
 		
 		$routeObj->save();
 		
@@ -58,7 +58,7 @@ public function routeUpdate(Request $request, $routeId){
 		//$routeObj->id = $routeId;
 		$routeObj->name = $input['name'];
 		$routeObj->route = $input['route'];
-		$routeObj->is_active = (isset($input['is_active']))?true:false;
+		//$routeObj->is_active = (isset($input['is_active']))?true:false;
 		
 		$routeObj->save();
 		

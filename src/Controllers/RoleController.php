@@ -92,7 +92,7 @@ public function roleDelete(Request $request, $roleId){
 	
 	}
 	$roleObjs = Role::all();
-	 return View::make('role_list')->with(array('roleObjs'=>$roleObjs));
+	 return View::make('laravelroles/rolespermissions/role_delete')->with(array('roleObjs'=>$roleObjs));
 
 }
 public function roleList(Request $request){

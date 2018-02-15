@@ -41,7 +41,7 @@ Route::any('/route_list', [
 	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleUpdate',
  ]);
  Route::any('/role_delete/{roleId}', [
-	'as'        => 'route_delete',
+	'as'        => 'role_delete',
 	'middleware' => ['web','permissions.required'],
 	'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleDelete',
  ]);
