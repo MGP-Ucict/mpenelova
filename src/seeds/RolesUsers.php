@@ -1,5 +1,5 @@
 <?php
-namespace Laravelroles\Rolespermissions;
+use Illuminate\Support\Facades\DB; 
 
 use Illuminate\Database\Seeder;
 

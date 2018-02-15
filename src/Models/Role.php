@@ -43,7 +43,7 @@ class Role extends Model
         return false;
     }
 
-    private function hasPermission(string $permission)
+    private function hasPermission( $permission)
     {
 		$ps= $this->routes()->get();
 		foreach($ps as $p){
