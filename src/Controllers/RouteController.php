@@ -16,7 +16,7 @@ class RouteController extends Controller{
 
 public function routeCreate(Request $request){
 	//dd($request->isMethod('post'));
-	if($request->isMethod('get') && $request->input('submit') ){
+	if($request->isMethod('post') && $request->input('submit') ){
 	
 // 		$validator = Validator::make($request->all(), [
 //             'route' => 
@@ -52,7 +52,7 @@ public function routeCreate(Request $request){
 public function routeUpdate(Request $request, $routeId){
 	$routeObj = Permission::find($routeId);
 	//dd($routeObj);
-	if($request->isMethod('get') && $request->input('submit')){
+	if($request->isMethod('post') && $request->input('submit')){
 	//dd('vvcd');
 		$input = Input::get();
 		//$routeObj->id = $routeId;

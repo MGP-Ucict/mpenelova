@@ -19,7 +19,7 @@
                     
                     
                     
-                    {{ Form::open(['action'=>'\Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate' , 'method' => 'get']) }}
+                    {{ Form::open(['action'=>'\Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate' , 'method' => 'post']) }}
                     <div class ="row  col-md-offset-1">
                     <div class = "col-md-4">
 					<label>{{trans('blah::translation.Name')}}:

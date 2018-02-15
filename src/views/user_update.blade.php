@@ -30,7 +30,7 @@
                     
                     
                     
-                    {{ Form::open(['url' => 'user_update/'.$userId, 'method' => 'get']) }}
+                    {{ Form::open(['url' => 'user_update/'.$userId, 'method' => 'post']) }}
                     <div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Name')}}:</label>

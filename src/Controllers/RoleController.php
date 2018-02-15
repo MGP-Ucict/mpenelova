@@ -16,7 +16,7 @@ class RoleController extends Controller{
 public function roleCreate(Request $request){
 	$permissions = Permission::all();
 	//dd($permissions);
-	if($request->isMethod('get') && $request->input('submit')){
+	if($request->isMethod('post') && $request->input('submit')){
 	
 		$input = Input::get();
 		$roleObj = new Role;
@@ -45,7 +45,7 @@ public function roleUpdate(Request $request, $roleId){
 	$routes0 = Role::find($roleId)->routes()->get();
 	
 	$routes = Permission::all();
-	if($request->isMethod('get') && $request->input('submit')){
+	if($request->isMethod('post') && $request->input('submit')){
 	
 		$input = Input::get();
 		

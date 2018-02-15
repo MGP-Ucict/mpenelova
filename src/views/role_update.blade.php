@@ -19,7 +19,7 @@
                     
                     
                    
-                    {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'get']) }}
+                    {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'post']) }}
                     <div class ="row  col-md-offset-1">
                     <div class = "col-md-4">
 					<label>{{trans('blah::translation.Name')}}:</label>
