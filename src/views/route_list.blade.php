@@ -30,6 +30,9 @@
                     @foreach($routeObjs as $routeObj)
                     <tr> 
                         <td>
+                        {{$routeObj->id}}
+                        </td>
+                        <td>
 						{{$routeObj->name}}
                         </td>
                         <td>

@@ -30,6 +30,9 @@
                     @foreach($roleObjs as $roleObj) 
                     <tr>
                         <td>
+                        {{$roleObj->id}}
+                        </td>
+                        <td>
 						{{$roleObj->name}}
                         </td>
                         <td>
