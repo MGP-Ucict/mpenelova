@@ -81,7 +81,7 @@ public function routeDelete(Request $request, $routeId){
 	
 	}
 	$routeObjs = Permission::all();
-	 return View::make('route_list')->with(array('routeObjs'=>$routeObjs));
+	 return View::make('laravelroles/rolespermissions/route_list')->with(array('routeObjs'=>$routeObjs));
 
 }
 public function routeList(Request $request){
