@@ -17,6 +17,7 @@ return [
 	'CreateRoute' => 'Create Route',
 	'UpdateRoute' => 'Edit Route',
 	'Route' => 'Route',
+	'Routes' => 'Routes',
 	'Save' => 'Save',
 	'Edit' => 'Edit',
 	'Delete' => 'Delete',
