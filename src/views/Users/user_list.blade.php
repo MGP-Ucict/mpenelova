@@ -39,12 +39,12 @@
                         <td>
                         @if(Auth::user()->hasAccess(['user_update']))
 						{{ Html::linkRoute('user_update', 
-						 trans('blah::translation.Edit') , ['userId' => $userObj['id']]) }}
+						 trans('blah::translation.Edit') , ['userId' => $userObj['id']], ['class' => 'btn btn-warning']) }}
                          @endif
 
                          @if(Auth::user()->hasAccess(['user_delete']))
 						{{ Html::linkRoute('user_delete', 
-						 trans('blah::translation.Delete'), ['userId' => $userObj['id']], ['onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
+						 trans('blah::translation.Delete'), ['userId' => $userObj['id']], ['class' => 'btn btn-danger'],['onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
                          @endif
 						 </td>
 						</tr>
@@ -53,7 +53,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['user_create']))
                         {{ Html::linkRoute('user_create', 
-                         trans('blah::translation.CreateUser')) }}
+                         trans('blah::translation.CreateUser'), [], ['class' => 'btn btn-info']) }}
                          @endif
                     </div>
                 </div>
