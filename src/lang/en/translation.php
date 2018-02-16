@@ -22,6 +22,7 @@ return [
 	'Delete' => 'Delete',
 	'Username' => 'Username',
 	'Actions' => 'Actions',
+	'Users' => 'Users',
 
 
 	
