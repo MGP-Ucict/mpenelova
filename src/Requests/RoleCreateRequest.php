@@ -4,7 +4,7 @@ namespace Laravelroles\Rolespermissions\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class RoleCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|unique:users|max:255',
+           
 	    'name' => 'required',
-	    'password' => 'required',
+	    
 	
 	    
         ];
@@ -36,11 +36,9 @@ class UserRequest extends FormRequest
 	public function messages()
 	{
 	    return [
-		'email.required' => trans('blah::translation.email.required'),
-		'email.unique'  => trans('blah::translation.email.unique'),
-		'email.max'     => trans('blah::translation.email.max'),
+		
 		'name.required' => trans('blah::translation.name.required'),
-		'password.required' => trans('blah::translation.password.required'),
+		
 	    ];
 	}
 }

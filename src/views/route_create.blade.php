@@ -17,9 +17,17 @@
                         </div>
                     @endif
                     
+                    @if ($errors->any())
+			    <div class="alert alert-danger">
+				<ul>
+				    @foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				    @endforeach
+				</ul>
+			    </div>
+		    @endif
                     
-                    
-                    {{ Form::open(['action'=>'\Laravelroles\Rolespermissions\Controllers\RouteController@routeCreate' , 'method' => 'post']) }}
+                    {{ Form::open(['url'=>'route_create' , 'method' => 'post']) }}
                     <div class ="row  col-md-offset-1">
                     <div class = "col-md-4">
 					<label>{{trans('blah::translation.Name')}}:

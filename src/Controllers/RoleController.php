@@ -10,12 +10,22 @@ use DB;
 use View;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Laravelroles\Rolespermissions\Requests\RoleCreateRequest;
+use Laravelroles\Rolespermissions\Requests\RoleUpdateRequest;
 
 class RoleController extends Controller{
 
-public function roleCreate(Request $request){
+public function create(Request $request)
+    {	
 	$permissions = Permission::all();
-	//dd($permissions);
+
+    return View::make('laravelroles/rolespermissions/role_create')->with(array('permissions'=>$permissions));	
+	
+    }
+
+public function store(RoleCreateRequest $request){
+
+	$permissions = Permission::all();
 	if($request->isMethod('post') && $request->input('submit')){
 	
 		$input = Input::get();
@@ -37,10 +47,32 @@ public function roleCreate(Request $request){
 	
 	 return View::make('laravelroles/rolespermissions/role_create')->with(array('permissions'=>$permissions));
 
-}
+
+}    
 
 
-public function roleUpdate(Request $request, $roleId){
+public function edit(Request $request, $roleId)
+    {	
+	
+	$roleObj = Role::find($roleId);
+	$routes0 = Role::find($roleId)->routes()->get();
+	
+	$routes = Permission::all();
+	
+	
+	$countPermissions = count($routes0);
+	$data = array(
+	'roleId'=>$roleId,
+	 'roleObj'=>$roleObj,
+	 'routes'=>$routes,
+	 'permissions'=>$routes0,
+	'cnt'=>$countPermissions,
+	
+	);
+	 return View::make('laravelroles/rolespermissions/role_update')->with($data);
+    }
+
+    public function update(RoleUpdateRequest $request, $roleId){
 	$roleObj = Role::find($roleId);
 	$routes0 = Role::find($roleId)->routes()->get();
 	
@@ -80,6 +112,9 @@ public function roleUpdate(Request $request, $roleId){
 	 return View::make('laravelroles/rolespermissions/role_update')->with($data);
 
 }
+
+	
+
 public function roleDelete(Request $request, $roleId){
 	$roleObj = Role::find($roleId);
 	
