@@ -20,10 +20,10 @@
                       <thead class="thead-dark">
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Username</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Actions</th>
+                          <th scope="col">{{trans('blah::translation.Username') }}</th>
+                          <th scope="col">{{trans('blah::translation.Name') }}</th>
+                          <th scope="col">{{trans('blah::translation.Email') }}</th>
+                          <th scope="col">{{trans('blah::translation.Actions') }}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -39,12 +39,12 @@
                         <td>
                         @if(Auth::user()->hasAccess(['user_update']))
 						{{ Html::linkRoute('user_update', 
-						 "Edit" , ['userId' => $userObj['id']]) }}
+						 trans('blah::translation.Edit') , ['userId' => $userObj['id']]) }}
                          @endif
 
                          @if(Auth::user()->hasAccess(['user_delete']))
 						{{ Html::linkRoute('user_delete', 
-						 "Delete", ['userId' => $userObj['id']]) }}
+						 trans('blah::translation.Delete'), ['userId' => $userObj['id']]) }}
                          @endif
 						 </td>
 						</tr>
@@ -53,7 +53,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['user_create']))
                         {{ Html::linkRoute('user_create', 
-                         "Create user") }}
+                         trans('blah::translation.CreateUser')) }}
                          @endif
                     </div>
                 </div>

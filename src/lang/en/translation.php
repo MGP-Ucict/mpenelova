@@ -17,6 +17,12 @@ return [
 	'CreateRoute' => 'Create Route',
 	'UpdateRoute' => 'Edit Route',
 	'Route' => 'Route',
+	'Save' => 'Save',
+	'Edit' => 'Edit',
+	'Delete' => 'Delete',
+	'Username' => 'Username',
+	'Actions' => 'Actions',
+
 
 	
 ];

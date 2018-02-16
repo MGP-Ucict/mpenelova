@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Roles</div>
+                <div class="panel-heading">{{trans('blah::translation.Roles') }}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -21,8 +21,8 @@
                       <thead class="thead-dark">
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Actions</th>
+                          <th scope="col">{{trans('blah::translation.Name') }}</th>
+                          <th scope="col">{{trans('blah::translation.Actions') }}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -37,9 +37,9 @@
                         </td>
                         <td>
 						{{ Html::linkRoute('role_update', 
-						 'Edit' , ['roleId' => $roleObj['id']]) }}
+						 trans('blah::translation.Edit')  , ['roleId' => $roleObj['id']]) }}
 						{{ Html::linkRoute('role_delete', 
-						 'Delete', ['roleId' => $roleObj['id']]) }}
+						 trans('blah::translation.Delete') , ['roleId' => $roleObj['id']]) }}
 						 </td>
 						</tr>
 					 @endforeach
@@ -47,7 +47,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['role_create']))
                         {{ Html::linkRoute('role_create', 
-                         "Create role") }}
+                         trans('blah::translation.CreateRole') ) }}
                          @endif
             </div>
         </div>

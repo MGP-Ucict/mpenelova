@@ -57,15 +57,8 @@
 					{{ Form::password("password") }}
 				    </div>
 				    </div>
-					<br/>
-					<div class ="row  col-md-offset-1">
-                   	<div class = "col-md-4">	
-					<label>Is active:</label>
-				    </div>
-				    <div class = "col-md-4">	
-					{{ Form::checkbox("is_active", 1, $userObj->is_active) }}
-				    </div>
-				    </div>
+					
+					
 				    <div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Roles')}}:</label>
@@ -108,7 +101,7 @@
 
 					<div class ="row  col-md-offset-1">
 					<div class = "col-md-4 col-md-offset-4">
-				 {{ Form::submit('Save', ['name' => 'submit']) }}
+				 {{ Form::submit(trans('blah::translation.Roles'), ['name' => 'submit']) }}
 				</div>
 			</div>
                     {{ Form::close() }}

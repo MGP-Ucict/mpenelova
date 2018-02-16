@@ -31,7 +31,7 @@
                     
                     <div class ="row  col-md-offset-1">
                     <div class = "col-md-4">
-                       <label> Routes</label>
+                       <label> {{trans('blah::translation.Routes')}}:</label>
                     </div>
                     </div> 
 					
