@@ -19,7 +19,7 @@ public function create(Request $request)
 	$role = Role::all();
 	
 	//return view('user_create');
-        return View::make('laravelroles/rolespermissions/user_create')->with(array('roles'=>$role));	
+        return View::make('laravelroles/rolespermissions/Users/user_create')->with(array('roles'=>$role));	
 	
     }
 
@@ -46,7 +46,7 @@ public function store(UserRequest $request){
 	
 	}
 	//return redirect()->route('user_create');
-	 return View::make('laravelroles/rolespermissions/user_create')->with(array('roles'=>$role));
+	 return View::make('laravelroles/rolespermissions/Users/user_create')->with(array('roles'=>$role));
 
 }
 public function edit(Request $request, $userId)
@@ -67,7 +67,7 @@ public function edit(Request $request, $userId)
 	
 	
 	);
-	 return View::make('laravelroles/rolespermissions/user_update')->with($data);
+	 return View::make('laravelroles/rolespermissions/Users/user_update')->with($data);
 	
     }
 
@@ -112,7 +112,7 @@ public function update(UserUpdateRequest $request, $userId){
 	
 	
 	);
-	 return View::make('laravelroles/rolespermissions/user_update')->with($data);
+	 return View::make('laravelroles/rolespermissions/Users/user_update')->with($data);
 
 }
 public function userDelete(Request $request, $userId){
@@ -127,14 +127,14 @@ public function userDelete(Request $request, $userId){
 	
 	}
 	$userObjs = User::all();
-	 return View::make('laravelroles/rolespermissions/user_list')->with(array('userObjs'=>$userObjs));
+	 return View::make('laravelroles/rolespermissions/Users/user_list')->with(array('userObjs'=>$userObjs));
 
 }
 public function userList(Request $request){
 	$userObjs = User::all();
 	
 	
-	 return View::make('laravelroles/rolespermissions/user_list')->with(array('userObjs'=>$userObjs));
+	 return View::make('laravelroles/rolespermissions/Users/user_list')->with(array('userObjs'=>$userObjs));
 
 }
 
