@@ -39,7 +39,7 @@
 						{{ Html::linkRoute('role_update', 
 						 trans('blah::translation.Edit')  , ['roleId' => $roleObj['id']]) }}
 						{{ Html::linkRoute('role_delete', 
-						 trans('blah::translation.Delete') , ['roleId' => $roleObj['id']]) }}
+						 trans('blah::translation.Delete') , ['roleId' => $roleObj['id']], ['onclick' => 'return confirm("Delete?")']) }}
 						 </td>
 						</tr>
 					 @endforeach

@@ -39,7 +39,7 @@
 						{{ Html::linkRoute('route_update', 
 						 trans('blah::translation.Edit') , ['routeId' => $routeObj['id']]) }}
 						{{ Html::linkRoute('route_delete', 
-						 trans('blah::translation.Delete'), ['routeId' => $routeObj['id']]) }}
+						 trans('blah::translation.Delete'), ['routeId' => $routeObj['id']], ['onclick' => 'return confirm("Delete?")']) }}
 						 </td>
 					</tr>	
 					 @endforeach
