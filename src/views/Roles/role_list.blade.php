@@ -47,7 +47,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['role_create']))
                         {{ Html::linkRoute('role_create', 
-                         trans('blah::translation.CreateRole', [],['class' => 'btn btn-info']) ) }}
+                         trans('blah::translation.CreateRole'), [],['class' => 'btn btn-info'])) }}
                          @endif
             </div>
         </div>
