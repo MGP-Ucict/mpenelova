@@ -58,7 +58,14 @@
 				    </div>
 				    </div>
 					
-					
+			<div class ="row  col-md-offset-1">
+                   	<div class = "col-md-4">	
+					<label>{{trans('blah::translation.PasswordConfirm')}}:</label>
+					</div>
+                   	<div class = "col-md-4">
+					{{ Form::password("password_confirmation") }}
+					</div>
+					</div>		
 				    <div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">	
 					<label>{{trans('blah::translation.Roles')}}:</label>

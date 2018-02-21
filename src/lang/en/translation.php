@@ -8,6 +8,7 @@ return [
 	'password.required' => 'Password is required.',
 	'routes.required' => 'Routes is required.',
 	'roles.required' => 'Roles is required.',
+	'password.confirmed' => 'The password confirmation does not match.',
 	'EditUser' => 'Edit User',
 	'Name' => 'Name',
 	'Email' => 'Email',
@@ -26,6 +27,7 @@ return [
 	'Username' => 'Username',
 	'Actions' => 'Actions',
 	'Users' => 'Users',
+	'PasswordConfirm'=>'Password confirmed',
 
 
 	
