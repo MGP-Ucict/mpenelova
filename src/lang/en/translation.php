@@ -6,6 +6,8 @@ return [
 	'email.max' => 'Email is max 255 symbols long.',
 	'name.required' => 'Name is required.',
 	'password.required' => 'Password is required.',
+	'routes.required' => 'Routes is required.',
+	'roles.required' => 'Roles is required.',
 	'EditUser' => 'Edit User',
 	'Name' => 'Name',
 	'Email' => 'Email',

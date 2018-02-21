@@ -26,6 +26,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'email' => 'required|max:255',
 	    'name' => 'required',
+            'roles' => 'required',
 	    
         ];
     }
@@ -37,6 +38,7 @@ class UserUpdateRequest extends FormRequest
 		'email.required' => trans('blah::translation.email.required'),
 		'email.max'     => trans('blah::translation.email.max'),
 		'name.required' => trans('blah::translation.name.required'),
+		'roles.required' => trans('blah::translation.roles.required'),
 	    ];
 	}
 }

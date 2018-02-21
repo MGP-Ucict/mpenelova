@@ -27,6 +27,7 @@ class UserRequest extends FormRequest
             'email' => 'required|unique:users|max:255',
 	    'name' => 'required',
 	    'password' => 'required',
+	    'roles' => 'required',
 	
 	    
         ];
@@ -41,6 +42,7 @@ class UserRequest extends FormRequest
 		'email.max'     => trans('blah::translation.email.max'),
 		'name.required' => trans('blah::translation.name.required'),
 		'password.required' => trans('blah::translation.password.required'),
+		'roles.required' => trans('blah::translation.roles.required'),
 	    ];
 	}
 }

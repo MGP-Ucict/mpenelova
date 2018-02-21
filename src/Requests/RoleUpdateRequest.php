@@ -26,7 +26,7 @@ class RoleUpdateRequest extends FormRequest
         return [
            
 	    'name' => 'required',
-	    
+	    'routes' => 'required',
 	
 	    
         ];
@@ -38,6 +38,7 @@ class RoleUpdateRequest extends FormRequest
 	    return [
 		
 		'name.required' => trans('blah::translation.name.required'),
+		'routes.required' => trans('blah::translation.routes.required'),
 		
 	    ];
 	}
