@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|unique:users|max:255',
+            'email' => 'required|unique:users|max:255|email',
 	    'name' => 'required',
 	    'password' => 'required|confirmed',
 	    'roles' => 'required',
@@ -39,9 +39,11 @@ class UserRequest extends FormRequest
 	    return [
 		'email.required' => trans('blah::translation.email.required'),
 		'email.unique'  => trans('blah::translation.email.unique'),
+		'email.email'     => trans('blah::translation.email.email'),
 		'email.max'     => trans('blah::translation.email.max'),
 		'name.required' => trans('blah::translation.name.required'),
 		'password.required' => trans('blah::translation.password.required'),
+		'password.confirmed' => trans('blah::translation.password.confirmed'),
 		'roles.required' => trans('blah::translation.roles.required'),
 	    ];
 	}

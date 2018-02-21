@@ -4,6 +4,7 @@ return [
 	'email.required' => 'Email is required.',
 	'email.unique'  => 'Email is already taken.',
 	'email.max' => 'Email is max 255 symbols long.',
+	'email.email' => 'Invalid email.',
 	'name.required' => 'Name is required.',
 	'password.required' => 'Password is required.',
 	'routes.required' => 'Routes is required.',
