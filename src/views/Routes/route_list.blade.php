@@ -39,7 +39,7 @@
 						{{ Html::linkRoute('route_update', 
 						 trans('blah::translation.Edit') , ['routeId' => $routeObj['id']], ['class' => 'btn btn-warning']) }}
 						{{ Html::linkRoute('route_delete', 
-						 trans('blah::translation.Delete'),  ['routeId' => $routeObj['id']],  ['class' => 'btn btn-danger'], ['onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$routeObj['name'].'?")']) }}
+						 trans('blah::translation.Delete'),  ['routeId' => $routeObj['id']],  ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$routeObj['name'].'?")']) }}
 						 </td>
 					</tr>	
 					 @endforeach

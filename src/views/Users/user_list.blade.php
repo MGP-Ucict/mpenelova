@@ -44,7 +44,7 @@
 
                          @if(Auth::user()->hasAccess(['user_delete']))
 						{{ Html::linkRoute('user_delete', 
-						 trans('blah::translation.Delete'), ['userId' => $userObj['id']], ['class' => 'btn btn-danger'],['onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
+						 trans('blah::translation.Delete'), ['userId' => $userObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
                          @endif
 						 </td>
 						</tr>

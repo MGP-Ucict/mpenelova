@@ -39,7 +39,7 @@
 						{{ Html::linkRoute('role_update',
 						 trans('blah::translation.Edit')  , ['roleId' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
 						{{ Html::linkRoute('role_delete', 
-						 trans('blah::translation.Delete') , ['roleId' => $roleObj['id']], ['class' => 'btn btn-danger'],['onclick' => 'return confirm("'.trans('blah::translation.Delete').' '. $roleObj['name'].'?")']) }}
+						 trans('blah::translation.Delete') , ['roleId' => $roleObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '. $roleObj['name'].'?")']) }}
 						 </td>
 						</tr>
 					 @endforeach
@@ -47,7 +47,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['role_create']))
                         {{ Html::linkRoute('role_create', 
-                         trans('blah::translation.CreateRole'), [],['class' => 'btn btn-info'])) }}
+                         trans('blah::translation.CreateRole'), [],['class' => 'btn btn-info']) }}
                          @endif
             </div>
         </div>
