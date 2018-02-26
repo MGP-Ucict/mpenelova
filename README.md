@@ -84,10 +84,12 @@
 	php artisan optimize	   
 
 15. In console:
+
 	php artisan laravelroles:seeder
 
 
 16. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User
+
 User.php:
 
 	use Laravelroles\Rolespermissions\Models\User as BaseUser;
