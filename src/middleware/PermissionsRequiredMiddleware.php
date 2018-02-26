@@ -19,7 +19,7 @@ class PermissionsRequiredMiddleware
 		// Get the current route.
 			$user = Auth::user();//$request->user();
 			//$user = $request->user();
-			//var_dump($user);
+			//var_dump($user->name);
 			//die();	
 			$route =  $request->path();
 			$route_array = array();
@@ -38,7 +38,7 @@ class PermissionsRequiredMiddleware
 			
 			}
 		}
-		return abort(401);
+		return abort(403);
     
     }
 }

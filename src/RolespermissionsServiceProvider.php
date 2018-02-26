@@ -5,9 +5,15 @@ namespace Laravelroles\Rolespermissions;
 use Laravelroles\Rolespermissions\Models\Permission;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Laravelroles\Rolespermissions\Commands\LaravelrolesCommand;
 
 class RolespermissionsServiceProvider extends ServiceProvider
 {
+    
+protected $commands = [
+    'Laravelroles\Rolespermissions\Commands\LaravelrolesCommand'
+];
+    
     /**
      * Bootstrap the application services.
      *
@@ -15,9 +21,7 @@ class RolespermissionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-		//$this->registerPolicies();
-		$this->registerRolePolicies();
+       		$this->commands($this->commands);
 		$this->loadTranslationsFrom(__DIR__.'/lang', 'blah'
 		);
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
@@ -38,64 +42,18 @@ class RolespermissionsServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {
-        //
+    {		
+	       
 		include __DIR__."/routes.php";
 		
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\RoleController');
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\RouteController');
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\UserController');
 		
+		
     }
-	 public function map()
-    {
-        //$this->mapWebRoutes();
-
-        //$this->mapApiRoutes();
-
-        //
-    }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::group([
-            'middleware' => 'web',
-            'namespace' => $this->namespace,
-        ], function ($router) {
-            require base_path('routes/web.php');
-        });
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::group([
-            'middleware' => 'api',
-            'namespace' => $this->namespace,
-            'prefix' => 'api',
-        ], function ($router) {
-            require base_path('routes/api.php');
-        });
-    }
-	public function registerRolePolicies()
-{
-    Gate::define('access-permission', function () {
-        return true;//$user->hasAccess([$p]);
-   });
-    
 	
-	}
+
+	
+
 }
