@@ -49,7 +49,7 @@
 
 		    "App\\": "app/",
 
-		    "Laravelroles\\Rolespermissions\\": "laravelroles/rolespermissions/src"
+		    "Laravelroles\\Rolespermissions\\": "vendor/laravelroles/rolespermissions/src"
 
 	}
 	
