@@ -12,8 +12,8 @@
 		"laravelcollective/html": "^6.0"
 	},
 	"autoload": {
-        "psr-0": {
-            "RolesPermissions": "src/"
+        "psr-4": {
+            "Laravelroles\\Rolespermissions": "src/"
         }
     }
 }

@@ -61,7 +61,7 @@
 
 9. In console:
 
-	php artisan vendor:publish
+	php artisan vendor:publish --provider=RolespermissionsServiceProvider
 
 10. In console: 
 
