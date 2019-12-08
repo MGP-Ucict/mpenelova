@@ -37,10 +37,9 @@ class LaravelrolesCommand extends Command
      */
     public function handle()
     {
-       $this->call('db:seed', ['--class'=>'RolesUsersSeeder']);
-	$this->call('db:seed', ['--class'=>'UsersSeeder']);
-	$this->call('db:seed', ['--class'=>'RoleSeeder']);
-	$this->call('db:seed', ['--class'=>'PermissionsSeeder']);
-	$this->call('db:seed', ['--class'=>'PermissionsRolesSeeder']);
+		$this->call('db:seed', ['--class'=>'RolesUsersSeeder']);
+		$this->call('db:seed', ['--class'=>'UsersSeeder']);
+		$this->call('db:seed', ['--class'=>'RoleSeeder']);
+		$this->call('db:seed', ['--class'=>'PermissionsSeeder']);
     }
 }
