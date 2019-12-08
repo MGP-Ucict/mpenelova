@@ -31,6 +31,7 @@ class PermissionsRequiredMiddleware
 					if($role->is_active){
 						$perms = $role->routes()->get();
 						foreach($perms as $p){
+							
 							if($routeName == $p->name  && $method == $p->method)
 								return $next($request);
 						}
