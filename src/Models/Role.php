@@ -6,7 +6,6 @@ namespace Laravelroles\Rolespermissions\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-//use Permission;
 
 
 class Role extends Model
@@ -27,12 +26,10 @@ class Role extends Model
 	public $timestamps=true;
 	
 	public function routes(){
-	//return $this->hasMany('Permission');
-	return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Permission', 'permissions_roles', 'role_id', 'permission_id');
+		return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Permission', 'permissions_roles', 'role_id', 'permission_id');
 	}
 	public function users(){
-	
-	return $this->belongsToMany('Laravelroles\rolespermissions\Models\User');
+		return $this->belongsToMany('Laravelroles\rolespermissions\Models\User');
 	}
 	public function hasAccess(array $permissions)
     {

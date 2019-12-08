@@ -12,6 +12,7 @@ class UsersSeeder extends Seeder{
 				'name' => 'test',
 				'email'=> 'test@test.bg',
 				'password' => bcrypt('test'),
+				'is_active' => true,
 				'created_at' => \Carbon\Carbon::now(),
 				'updated_at' => \Carbon\Carbon::now()
 

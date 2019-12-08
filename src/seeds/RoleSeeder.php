@@ -9,6 +9,7 @@ class RoleSeeder extends Seeder{
 		DB::table('roles')->insert(
 			[
 				'name' => 'admin',
+				'is_active' => true,
 				'created_at' => \Carbon\Carbon::now(),
 				'updated_at' => \Carbon\Carbon::now()
 
