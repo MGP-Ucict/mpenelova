@@ -18,21 +18,25 @@ class PermissionsRequiredMiddleware
         
 			// Get the current route.
 			$user = $request->user();
-			if(!$user)
+			if (!$user)
 				return redirect('/');
 			$route =  $request->path();
-			$route_array = array();
-			$route_array = explode( "/", $route);
-			$route = $route_array[0];
-			$roles = $user->roles()->get();
-			foreach($roles as $role){
-				$perms = $role->routes()->get();
-				foreach($perms as $p){
-					if($route == $p->name)
-						return $next($request);
+			$method = $request->method();
+			$routeArray = array();
+			$routeArray = explode( "/", $route);
+			$routeName = $routeArray[0];
+			if ($user->is_active){
+				$roles = $user->roles()->get();
+				foreach($roles as $role){
+					if($role->is_active){
+						$perms = $role->routes()->get();
+						foreach($perms as $p){
+							if($routeName == $p->name  && $method == $p->method)
+								return $next($request);
+						}
+					}
 				}
 			}
 		return abort(403);
-    
     }
 }
