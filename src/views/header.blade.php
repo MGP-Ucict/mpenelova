@@ -4,13 +4,13 @@
 
         <ul class="nav nav-tabs">
 		@if(Auth::user()->hasAccess(['role_list']))
-            <li><a href="/role_list">{{trans('blah::translation.Roles') }}</a></li>
+            <li><a href="/role_list">{{trans('lang::translation.Roles') }}</a></li>&nbsp;
 		@endif
 		@if(Auth::user()->hasAccess(['route_list']))
-            <li><a href="/route_list">{{trans('blah::translation.Routes') }}</a></li>
+            <li><a href="/route_list">{{trans('lang::translation.Routes') }}</a></li>&nbsp;
 		@endif
 		@if(Auth::user()->hasAccess(['user_list']))
-            <li><a href="/user_list">{{trans('blah::translation.Users') }}</a></li>
+            <li><a href="/user_list">{{trans('lang::translation.Users') }}</a></li>&nbsp;
 		@endcan
 </div>
 

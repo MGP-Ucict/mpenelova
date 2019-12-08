@@ -39,9 +39,9 @@
                         </td>
                         <td>
 						{{ Html::linkRoute('route_update', 
-						 trans('blah::translation.Edit') , ['routeId' => $routeObj['id']], ['class' => 'btn btn-warning']) }}
+						 trans('lang::translation.Edit') , ['routeId' => $routeObj['id']], ['class' => 'btn btn-warning']) }}
 						{{ Html::linkRoute('route_delete', 
-						 trans('blah::translation.Delete'),  ['routeId' => $routeObj['id']],  ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$routeObj['name'].'?")']) }}
+						 trans('lang::translation.Delete'),  ['routeId' => $routeObj['id']],  ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$routeObj['name'].'?")']) }}
 						 </td>
 					</tr>	
 					 @endforeach
@@ -49,7 +49,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['route_create']))
                         {{ Html::linkRoute('route_create',
-                         trans('blah::translation.CreateRoute'), [],['class' => 'btn btn-info']) }}
+                         trans('lang::translation.CreateRoute'), [],['class' => 'btn btn-info']) }}
                          @endif
             </div>
         </div>
