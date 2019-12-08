@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{trans('blah::translation.Routes')}} </div>
+                <div class="panel-heading">{{trans('lang::translation.Routes')}} </div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -22,8 +22,10 @@
                       <thead class="thead-dark">
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">{{trans('blah::translation.Name')}}</th>
-                          <th scope="col">{{trans('blah::translation.Actions')}}</th>
+						  <th scope="col">{{trans('lang::translation.Method')}}</th>
+                          <th scope="col">{{trans('lang::translation.Name')}}</th>
+                          <th scope="col">{{trans('lang::translation.Path')}}</th>
+						  <th scope="col">{{trans('lang::translation.IsActive')}}</th>
                         </tr>
                       </thead>
                       <tbody>

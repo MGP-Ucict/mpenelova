@@ -21,15 +21,12 @@ protected $commands = [
      */
     public function boot()
     {
-       		$this->commands($this->commands);
-		$this->loadTranslationsFrom(__DIR__.'/lang', 'blah'
-		);
+       	$this->commands($this->commands);
+		$this->loadTranslationsFrom(__DIR__.'/lang', 'lang');
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
 		);
-		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]
-		);
-		$this->publishes([__DIR__.'/views/errors'=> base_path('resources/views/errors')]
-		);
+		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
+		$this->publishes([__DIR__.'/views/errors'=> base_path('resources/views/errors')]);
 		$this->publishes([
 		__DIR__. '/migrations'=>$this->app->databasePath().'/migrations'], 'migrations');
 		$this->publishes([

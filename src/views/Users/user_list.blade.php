@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{trans('blah::translation.ListUsers')}}</div>
+                <div class="panel-heading">{{trans('lang::translation.ListUsers')}}</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -20,10 +20,10 @@
                       <thead class="thead-dark">
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">{{trans('blah::translation.Username') }}</th>
-                          <th scope="col">{{trans('blah::translation.Name') }}</th>
-                          <th scope="col">{{trans('blah::translation.Email') }}</th>
-                          <th scope="col">{{trans('blah::translation.Actions') }}</th>
+                          <th scope="col">{{trans('lang::translation.Username') }}</th>
+                          <th scope="col">{{trans('lang::translation.Name') }}</th>
+                          <th scope="col">{{trans('lang::translation.Email') }}</th>
+                          <th scope="col">{{trans('lang::translation.Actions') }}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -39,12 +39,12 @@
                         <td>
                         @if(Auth::user()->hasAccess(['user_update']))
 						{{ Html::linkRoute('user_update', 
-						 trans('blah::translation.Edit') , ['userId' => $userObj['id']], ['class' => 'btn btn-warning']) }}
+						 trans('lang::translation.Edit') , ['userId' => $userObj['id']], ['class' => 'btn btn-warning']) }}
                          @endif
 
                          @if(Auth::user()->hasAccess(['user_delete']))
 						{{ Html::linkRoute('user_delete', 
-						 trans('blah::translation.Delete'), ['userId' => $userObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
+						 trans('lang::translation.Delete'), ['userId' => $userObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
                          @endif
 						 </td>
 						</tr>
@@ -53,7 +53,7 @@
                 </table>
                  @if(Auth::user()->hasAccess(['user_create']))
                         {{ Html::linkRoute('user_create', 
-                         trans('blah::translation.CreateUser'), [], ['class' => 'btn btn-info']) }}
+                         trans('lang::translation.CreateUser'), [], ['class' => 'btn btn-info']) }}
                          @endif
                     </div>
                 </div>

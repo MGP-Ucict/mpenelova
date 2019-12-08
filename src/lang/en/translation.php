@@ -28,8 +28,8 @@ return [
 	'Username' => 'Username',
 	'Actions' => 'Actions',
 	'Users' => 'Users',
+	'Path' => 'Адрес',
 	'PasswordConfirm'=>'Password confirmed',
-
-
-	
+	'Method' => 'Method',
+	'IsActive' => 'Active',
 ];

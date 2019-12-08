@@ -8,7 +8,7 @@
 
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1>{{trans('blah::translation.CreateUser')}}</h1></div>
+                <div class="panel-heading"><h1>{{trans('lang::translation.CreateUser')}}</h1></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -30,7 +30,7 @@
                     {{ Form::open(['url' => 'user_create', 'method' => 'post']) }}
                     <div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">	
-					<label>{{trans('blah::translation.Name')}}:</label>
+					<label>{{trans('lang::translation.Name')}}:</label>
 				    </div>
 				    <div class = "col-md-4">
 					{{ Form::text("name") }}
@@ -38,7 +38,7 @@
 					</div>
 					<div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">
-					<label>{{trans('blah::translation.Email')}}:</label>
+					<label>{{trans('lang::translation.Email')}}:</label>
 				    </div>
 				    <div class = "col-md-4">
 					{{ Form::text("email") }}
@@ -47,7 +47,7 @@
 					
 					<div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">	
-					<label>{{trans('blah::translation.Password')}}:</label>
+					<label>{{trans('lang::translation.Password')}}:</label>
 					</div>
                    	<div class = "col-md-4">
 					{{ Form::password("password") }}
@@ -63,7 +63,7 @@
 					</div>
 				    <div class ="row  col-md-offset-1">
                    	<div class = "col-md-4">	
-					<label>{{trans('blah::translation.Roles')}}:</label>
+					<label>{{trans('lang::translation.Roles')}}:</label>
 				    </div>
 					</div>
 					@foreach($roles as $roleObj)
@@ -74,7 +74,7 @@
 					@endforeach	
 					<div class ="row  col-md-offset-1">
 					<div class = "col-md-4 col-md-offset-4">
-				 {{ Form::submit(trans('blah::translation.Save'), ['name' => 'submit']) }}
+				 {{ Form::submit(trans('lang::translation.Save'), ['name' => 'submit']) }}
 				 </div>
 			</div>
                     {{ Form::close() }}
