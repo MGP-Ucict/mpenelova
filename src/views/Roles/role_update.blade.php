@@ -20,62 +20,47 @@
                     
                    
                     {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'post']) }}
-                    <div class ="row  col-md-offset-1">
-                    <div class = "col-md-4">
-					<label>{{trans('lang::translation.Name')}}:</label>
+					<div class="form-group">
+						<label for="name">{{trans('lang::translation.Name')}}:</label>
+						{{ Form::text("name", $roleObj->name, ['class' => 'form-control']) }}
 					</div>
-                    <div class = "col-md-4">
-					{{ Form::text("name", $roleObj->name) }}
-					</div>
-					</div>
-					<div class ="row  col-md-offset-1">
-                    <div class = "col-md-4">
-                       <label> {{trans('lang::translation.Routes')}} </label>
+					<div class="form-group">
+                       <label for="routes"> {{trans('lang::translation.Routes')}} </label>
                     </div>
-                    </div> 
 					
 					@foreach($routes as $routeObj)
-					<?php
-					$flag=0;
-					$i=-1;
-					
-					?>
-					@foreach($permissions as $perm)
-					
-					
-					@if($perm->id=== $routeObj->id)
-					<?php
-					$flag=1;
-					?>
-					@endif
-					@endforeach
-					
-					@if($flag == 1)
-						<div class ="row  col-md-offset-2">
-						<label>{{ Form::checkbox("routes[]", $routeObj->id, true) }}	</label>				
-						{{$routeObj->name}}
-						</div>
+						<?php
+							$flag = 0;
+							$i = -1;
+						?>
+						@foreach($permissions as $perm)
+							@if($perm->id === $routeObj->id)
+							<?php
+								$flag=1;
+							?>
+							@endif
+						@endforeach
 						
-					@endif
-					@if($flag == 0)
-						<div class ="row  col-md-offset-2">
-						<label>{{ Form::checkbox("routes[]", $routeObj->id, false) }}	</label>				
-						{{$routeObj->name}}
-						</div>
-						
-					@endif							
+						@if($flag == 1)
+							<div class="checkbox checkbox-info">
+								<label>{{ Form::checkbox("routes[]", $routeObj->id, true) }}	</label>				
+								{{$routeObj->method}} {{$routeObj->route}}
+							</div>	
+						@endif
+						@if($flag == 0)
+							<div class="checkbox checkbox-info">
+								<label>{{ Form::checkbox("routes[]", $routeObj->id, false) }}	</label>				
+								{{$routeObj->method}} {{$routeObj->route}}
+							</div>	
+						@endif							
 					@endforeach	
-					<div class ="row  col-md-offset-1">
-                    <div class = "col-md-4 col-md-offset-4">
-				 {{ Form::submit(trans('lang::translation.Save'), ['name' => 'submit']) }}
+					<div class="form-group">
+					{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit', 'class' => 'btn btn-primary']) !!}
                     {{ Form::close() }}
-                </div>
-            </div>
-
+					</div>
+				</div>
+			</div>
 		</div>
-	    </div>
-         </div>
-    </div>
 </div>
 @endsection
 

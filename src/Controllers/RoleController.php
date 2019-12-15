@@ -42,7 +42,7 @@ class RoleController extends Controller{
 		$roleObj = Role::find($roleId);
 		$routesOld = Role::find($roleId)->routes()->get();
 		$routes = Permission::all();
-		$countPermissions = count($routes0);
+		$countPermissions = count($routesOld);
 		$data = array(
 			'roleId'=>$roleId,
 			'roleObj'=>$roleObj,
@@ -73,7 +73,7 @@ class RoleController extends Controller{
 				$roleObj->routes()->attach($rr);	
 			}
 		}
-		$countPermissions = count($routes0);
+		$countPermissions = count($routesOld);
 			$data = array(
 				'roleId'=>$roleId,
 				'roleObj'=>$roleObj,
