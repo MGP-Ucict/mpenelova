@@ -8,7 +8,11 @@ class PermissionsSeeder extends Seeder{
 		$routeCollection = Route::getRoutes();
 		$i = 1;
 		foreach ($routeCollection as $value) {
-			
+			$arrayRoute = explode('/', $value->uri());
+			$prefix = $arrayRoute[0];
+			if($prefix != "admin"){
+				continue;
+			}
 			$permission = DB::table('permissions')->insert(
 				[
 					'id' => $i,

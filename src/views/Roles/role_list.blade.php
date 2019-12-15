@@ -37,9 +37,9 @@
                         </td>
                         <td>
 						{{ Html::linkRoute('role_update',
-						 trans('lang::translation.Edit')  , ['roleId' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
+						 trans('lang::translation.Edit')  , ['id' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
 						{{ Html::linkRoute('role_delete', 
-						 trans('lang::translation.Delete') , ['roleId' => $roleObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '. $roleObj['name'].'?")']) }}
+						 trans('lang::translation.Delete') , ['id' => $roleObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '. $roleObj['name'].'?")']) }}
 						 </td>
 						</tr>
 					 @endforeach

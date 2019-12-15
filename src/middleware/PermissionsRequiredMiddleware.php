@@ -24,7 +24,7 @@ class PermissionsRequiredMiddleware
 			$method = $request->method();
 			$routeArray = array();
 			$routeArray = explode( "/", $route);
-			$routeName = $routeArray[0];
+			$routeName = $routeArray[1];
 			if ($user->is_active){
 				$roles = $user->roles()->get();
 				foreach($roles as $role){

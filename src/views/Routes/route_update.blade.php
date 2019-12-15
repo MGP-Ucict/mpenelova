@@ -11,7 +11,7 @@
 					{{ session('status') }}
 				</div>
 			@endif 
-			{{ Form::open(['url' => 'route_update/'.$routeId, 'method' => 'post']) }}
+			{{ Form::open(['url' => 'route_update/'.$routeId, 'method' => 'put']) }}
 			<div class="form-group">
 				<label for="name">{{trans('lang::translation.Name')}}:</label>
 				{{ Form::text("name",$routeObj->name, ['class' => 'form-control']) }}
@@ -24,7 +24,7 @@
 				<label for="route">{{trans('lang::translation.Method')}}:</label>
 					{!! Form::select('method', array(
 						'GET','POST','PUT', 'DELETE'
-					), "GET", ['class' => 'form-control'] )!!}
+					), $routeObj->method, ['class' => 'form-control'] )!!}
 			</div>
 			<div class="form-group">
 				{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit','class' => 'btn btn-primary']) !!}
