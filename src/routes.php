@@ -10,17 +10,17 @@ Route::prefix('admin')->group(function () {
 		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@store',
 	 ]);
-	 Route::get('/route_update/{id}', [
+	 Route::put('/route_update/{id}', [
 		'as'        => 'route_update',
-		'middleware' => ['web','permissions.required'],
+		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@update',
 	 ]);
-	Route::put('/route_update/{id}', [
+	Route::get('/route_update/{id}', [
 		'as'        => 'route_update',
-		'middleware' => ['permissions.required'],
+		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@edit',
 	 ]);
-	Route::delete('/route_delete/{id}', [
+	Route::any('/route_delete/{id}', [
 		'as'        => 'route_delete',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeDelete',
@@ -56,7 +56,7 @@ Route::prefix('admin')->group(function () {
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@edit',
 	 ]);
-	 Route::delete('/role_delete/{id}', [
+	 Route::any('/role_delete/{id}', [
 		'as'        => 'role_delete',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleDelete',
@@ -81,7 +81,7 @@ Route::prefix('admin')->group(function () {
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@edit',
 	 ]);
-	 Route::delete('/user_delete/{id}', [
+	 Route::any('/user_delete/{id}', [
 		'as'        => 'user_delete',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@userDelete',
