@@ -26,34 +26,33 @@
 					</div>
 					<div class="form-group">
                        <label for="routes"> {{trans('lang::translation.Routes')}} </label>
-                    </div>
-					
-					@foreach($routes as $routeObj)
-						<?php
-							$flag = 0;
-							$i = -1;
-						?>
-						@foreach($permissions as $perm)
-							@if($perm->id === $routeObj->id)
+						@foreach($routes as $routeObj)
 							<?php
-								$flag=1;
+								$flag = 0;
+								$i = -1;
 							?>
+							@foreach($permissions as $perm)
+								@if($perm->id === $routeObj->id)
+								<?php
+									$flag=1;
+								?>
+								@endif
+							@endforeach
+							
+							@if($flag == 1)
+								<div class="checkbox checkbox-info">
+									<label>{{ Form::checkbox("routes[]", $routeObj->id, true) }}	</label>				
+									{{$routeObj->method}} {{$routeObj->route}}
+								</div>	
 							@endif
-						@endforeach
-						
-						@if($flag == 1)
-							<div class="checkbox checkbox-info">
-								<label>{{ Form::checkbox("routes[]", $routeObj->id, true) }}	</label>				
-								{{$routeObj->method}} {{$routeObj->route}}
-							</div>	
-						@endif
-						@if($flag == 0)
-							<div class="checkbox checkbox-info">
-								<label>{{ Form::checkbox("routes[]", $routeObj->id, false) }}	</label>				
-								{{$routeObj->method}} {{$routeObj->route}}
-							</div>	
-						@endif							
-					@endforeach	
+							@if($flag == 0)
+								<div class="checkbox checkbox-info">
+									<label>{{ Form::checkbox("routes[]", $routeObj->id, false) }}	</label>				
+									{{$routeObj->method}} {{$routeObj->route}}
+								</div>	
+							@endif							
+						@endforeach	
+					</div>
 					<div class="form-group">
 					{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit', 'class' => 'btn btn-primary']) !!}
                     {{ Form::close() }}
