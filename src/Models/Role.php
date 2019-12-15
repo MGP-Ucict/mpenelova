@@ -31,22 +31,19 @@ class Role extends Model
 	public function users(){
 		return $this->belongsToMany('Laravelroles\rolespermissions\Models\User');
 	}
-	public function hasAccess(array $permissions)
+	public function hasAccess($permission)
     {
-        foreach ($permissions as $permission) {
-            if ($this->hasPermission($permission))
-                return true;
-        }
+        if ($this->hasPermission($permission))
+            return true;
         return false;
     }
 
-    private function hasPermission( $permission)
+    private function hasPermission($permission)
     {
 		$ps= $this->routes()->get();
 		foreach($ps as $p){
 		if($p->name == $permission)
 			return true;
-		
 		}
         return  false;
     }
