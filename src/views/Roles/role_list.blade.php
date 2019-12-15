@@ -27,10 +27,10 @@
                         <td>{{$roleObj->id}}</td>
                         <td>{{$roleObj->name}}</td>
                         <td>
-						{{ Html::linkRoute('role_update',
-						 trans('lang::translation.Edit')  , ['id' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
-						{{ Html::linkRoute('role_delete', 
-						 trans('lang::translation.Delete') , ['id' => $roleObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('lang::translation.Delete').' '. $roleObj['name'].'?")']) }}
+							{{ Html::linkRoute('role_update',
+							 trans('lang::translation.Edit')  , ['id' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
+							{{ Html::linkRoute('role_delete', 
+							 trans('lang::translation.Delete') , ['id' => $roleObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('lang::translation.Delete').' '. $roleObj['name'].'?")']) }}
 						 </td>
 						</tr>
 					 @endforeach

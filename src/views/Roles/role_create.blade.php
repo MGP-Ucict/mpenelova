@@ -37,7 +37,7 @@
 					@endforeach	
 				</div>
 				<div class="form-group">
-				{{ Form::submit(trans('lang::translation.Save'), ['name' => 'submit']) }}
+				{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit']) !!}
                     {{ Form::close() }}
                 </div>
 	       </div>
