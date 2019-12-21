@@ -58,17 +58,17 @@ class RoleController extends Controller{
 		$roleObj = Role::find($roleId);
 		$routesOld = Role::find($roleId)->routes()->get();
 		$routes = Permission::all();
-		if($request->isMethod('post') && $request->input('submit')){
+		if($request->isMethod('put') && $request->input('submit')){
 			$roleObj->name = $request->get('name');
-			$routes = $request->get('routes');
-			$roleObj->is_active = ($request->has('is_active'))? $request->get('is_active'): 0;
+			$routesNew = $request->get('routes');
+			//$roleObj->is_active = ($request->has('is_active'))? $request->get('is_active'): 0;
 			$roleObj->save();
 			foreach($routesOld as $key=>$value){
 				$rr = Permission::find($value);
 				$roleObj->routes()->detach($rr);
 			
 			}
-			foreach($routes as $key=>$value){
+			foreach($routesNew as $key=>$value){
 				$rr = Permission::find($value);
 				$roleObj->routes()->attach($rr);	
 			}

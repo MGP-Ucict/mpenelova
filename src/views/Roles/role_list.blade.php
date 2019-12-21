@@ -27,23 +27,23 @@
                         <td>{{$roleObj->id}}</td>
                         <td>{{$roleObj->name}}</td>
                         <td>
-						@if(Auth::user()->hasAccess('role_update'))
+						@path('role_update')
 							{{ Html::linkRoute('role_update',
 							 trans('lang::translation.Edit')  , ['id' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
-						@endif
-						@if(Auth::user()->hasAccess('role_delete'))						
+						@endpath
+						@path('role_delete')				
 							{{ Html::linkRoute('role_delete', 
 							 trans('lang::translation.Delete') , ['id' => $roleObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('lang::translation.Delete').' '. $roleObj['name'].'?")']) }}
-						@endif 
+						@endpath
 						</td>
 						</tr>
 					 @endforeach
                     </tbody>
                 </table>
-                @if(Auth::user()->hasAccess('role_create'))
+                @path('role_create')
                         {{ Html::linkRoute('role_create', 
                          trans('lang::translation.CreateRole'), [],['class' => 'btn btn-info']) }}
-                @endif
+                @endpath
             </div>
         </div>
     </div>

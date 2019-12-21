@@ -29,23 +29,23 @@
 				<td>{{$userObj->name}}</td>
 				<td>{{$userObj->email}}</td>
 				<td>
-				@if(Auth::user()->hasAccess('user_update'))
+				@path('user_update')
 					{{ Html::linkRoute('user_update', 
 					 trans('lang::translation.Edit') , ['id' => $userObj['id']], ['class' => 'btn btn-warning']) }}
-				 @endif
-				 @if(Auth::user()->hasAccess('user_delete'))
+				 @endpath
+				 @path('user_delete')
 					{{ Html::linkRoute('user_delete', 
 					 trans('lang::translation.Delete'), ['id' => $userObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
-				 @endif
+				 @endpath
 				 </td>
 				</tr>
 				 @endforeach
 			</tbody>
 			</table>
-			@if(Auth::user()->hasAccess('user_create'))
+			@path('user_create')
 				{{ Html::linkRoute('user_create', 
 				trans('lang::translation.CreateUser'), [], ['class' => 'btn btn-info']) }}
-			@endif       
+			@endpath       
             </div>
         </div>
     </div>

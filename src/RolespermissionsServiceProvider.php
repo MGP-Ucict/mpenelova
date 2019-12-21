@@ -22,13 +22,23 @@ protected $commands = [
     public function boot()
     {
        	$this->commands($this->commands);
+		//custom blade directive
+		\Blade::if('path', function($expression){
+				return auth()->user()->hasAccess($expression);
+		});
+		//load and publish translations
 		$this->loadTranslationsFrom(__DIR__.'/lang', 'lang');
+		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
+		
+		//publish views
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
 		);
-		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
+		//publish error views
 		$this->publishes([__DIR__.'/views/errors'=> base_path('resources/views/errors')]);
+		//publish migrations
 		$this->publishes([
 		__DIR__. '/migrations'=>$this->app->databasePath().'/migrations'], 'migrations');
+		//publish seeds
 		$this->publishes([
 		__DIR__. '/seeds'=>$this->app->databasePath().'/seeds'], 'seeds');
     }

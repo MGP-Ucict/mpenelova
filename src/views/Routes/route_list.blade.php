@@ -28,20 +28,20 @@
 						<td>{{$routeObj->name}}</td>
 						<td>{{$routeObj->route}}</td>
 						<td>
-						@if(Auth::user()->hasAccess('role_update'))
+						@path('role_update')
 							{{ Html::linkRoute('route_update', trans('lang::translation.Edit') , ['id' => $routeObj['id']], ['class' => 'btn btn-warning']) }}
-						@endif
-						@if(Auth::user()->hasAccess('role_delete'))
+						@endpath
+						@path('role_delete')
 							{{ Html::linkRoute('route_delete', trans('lang::translation.Delete'),  ['id' => $routeObj['id']],  ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('lang::translation.Delete').' '.$routeObj['name'].'?")']) }}
-						@endif 
+						@endpath
 						 </td>
 					</tr>	
 					@endforeach
 				</tbody>
 			</table>
-			 @if(Auth::user()->hasAccess('route_create'))
+			 @path('route_create')
 				{{ Html::linkRoute('route_create', trans('lang::translation.CreateRoute'), [],['class' => 'btn btn-info']) }}
-			@endif
+			@endpath
             </div>
         </div>
     </div>

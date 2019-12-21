@@ -19,7 +19,7 @@
                     
                     
                    
-                    {{ Form::open(['url' => 'role_update/'.$roleId, 'method' => 'post']) }}
+                    {{ Form::open(['url' => 'admin/role_update/'.$roleId, 'method' => 'put']) }}
 					<div class="form-group">
 						<label for="name">{{trans('lang::translation.Name')}}:</label>
 						{{ Form::text("name", $roleObj->name, ['class' => 'form-control']) }}
@@ -50,7 +50,7 @@
 									<label>{{ Form::checkbox("routes[]", $routeObj->id, false) }}	</label>				
 									{{$routeObj->method}} {{$routeObj->route}}
 								</div>	
-							@endif							
+							@endif
 						@endforeach	
 					</div>
 					<div class="form-group">
