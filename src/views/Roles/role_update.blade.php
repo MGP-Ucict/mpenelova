@@ -23,11 +23,11 @@
 						{{ Form::text("name", $roleObj->name, ['class' => 'form-control']) }}
 					</div>
 					<div class="form-group">
-					<div class="checkbox checkbox-info">
-						<label>{{ Form::checkbox("is_active",true,$roleObj->is_active) }}	</label>	
-						Is active
+						<div class="checkbox checkbox-info">
+							<label>{{ Form::checkbox("is_active",true,$roleObj->is_active) }}	</label>	
+							Is active
+						</div>
 					</div>
-				</div>
 					<div class="form-group">
                        <label for="routes"> {{trans('lang::translation.Routes')}} </label>
 						@foreach($routes as $routeObj)

@@ -42,8 +42,10 @@
 						{{ Form::password("password_confirmation", ['class' => 'form-control']) }}
 					</div>
 					<div class="form-group">
-						<label>{{trans('lang::translation.isActive')}}:</label>					
-						{{ Form::checkbox("is_active", $userObj->is_active, $userObj->is_active) }}
+						<div class="checkbox checkbox-info">
+							<label>{{trans('lang::translation.isActive')}}:</label>					
+							{{ Form::checkbox("is_active", $userObj->is_active, $userObj->is_active) }}
+						</div>
 					</div>
 					<div class="form-group">
 						<label>{{trans('lang::translation.Roles')}}:</label>
@@ -78,7 +80,7 @@
 					@endforeach	
 					</div>
 					<div class="form-group">
-						{!! Form::submit(trans('lang::translation.Roles'), ['name' => 'submit', 'class' => 'btn btn-primary']) !!}
+						{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit', 'class' => 'btn btn-primary']) !!}
 					</div>
                     {{ Form::close() }}
  				</div>
