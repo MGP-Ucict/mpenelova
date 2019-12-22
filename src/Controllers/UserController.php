@@ -65,13 +65,13 @@ class UserController extends Controller{
 			if ($request->has('password')){
 				$userObj->password = bcrypt($request->get('password'));
 			}
-			$roles = $request->get('roles');
+			$rolesNew = $request->get('roles');
 			$userObj->is_active = $request->get('is_active');
 			foreach($rolesOld as $key=>$value){
 				$rr = Role::find($value);
 				$userObj->roles()->detach($rr);
 			}
-			foreach($roles1 as $key=>$value){
+			foreach($rolesNew as $key=>$value){
 				$rr = Role::find($value);	
 				$userObj->roles()->attach($rr);
 			}
@@ -80,7 +80,7 @@ class UserController extends Controller{
 		}
 		
 		$data = array(
-			'userId'=>$userId,
+			'userId'=>$id,
 			'userObj'=>$userObj,
 			'roles'=>$roles,
 			'rolesOld'=>$rolesOld,

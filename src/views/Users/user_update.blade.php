@@ -43,7 +43,7 @@
 					</div>
 					<div class="form-group">
 						<label>{{trans('lang::translation.isActive')}}:</label>					
-						{{ Form::checkbox("is_active", $userObj->is_active, $userObj->is_active)
+						{{ Form::checkbox("is_active", $userObj->is_active, $userObj->is_active) }}
 					</div>
 					<div class="form-group">
 						<label>{{trans('lang::translation.Roles')}}:</label>

@@ -22,10 +22,16 @@
 				@endif
 				
                     
-               {{ Form::open(['url' => 'role_create', 'method' => 'post']) }}
+               {{ Form::open(['url' => 'admin/role_create', 'method' => 'post']) }}
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>
 					{{ Form::text("name") }}
+				</div>
+				<div class="form-group">
+					<div class="checkbox checkbox-info">
+						<label>{{ Form::checkbox("is_active", true) }}	</label>	
+						Is active
+					</div>
 				</div>
 				<div class="form-group">
 				   <label for="routes"> {{trans('lang::translation.Routes')}}:</label>

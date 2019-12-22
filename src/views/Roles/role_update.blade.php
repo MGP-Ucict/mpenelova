@@ -16,14 +16,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    
                    
                     {{ Form::open(['url' => 'admin/role_update/'.$roleId, 'method' => 'put']) }}
 					<div class="form-group">
 						<label for="name">{{trans('lang::translation.Name')}}:</label>
 						{{ Form::text("name", $roleObj->name, ['class' => 'form-control']) }}
 					</div>
+					<div class="form-group">
+					<div class="checkbox checkbox-info">
+						<label>{{ Form::checkbox("is_active",true,$roleObj->is_active) }}	</label>	
+						Is active
+					</div>
+				</div>
 					<div class="form-group">
                        <label for="routes"> {{trans('lang::translation.Routes')}} </label>
 						@foreach($routes as $routeObj)

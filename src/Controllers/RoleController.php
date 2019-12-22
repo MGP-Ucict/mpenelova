@@ -25,7 +25,7 @@ class RoleController extends Controller{
 			$roleObj = new Role;
 			$roleObj->name = $request->get('name');
 			$routes = $request->get('routes');
-			$roleObj->is_active = ($request->has('is_active'))? $request->get('is_active'): 0;
+			$roleObj->is_active = $request->get('is_active');
 			$roleObj->save();
 			foreach($routes as $key=>$value){
 				$rr = Permission::find($value);
@@ -61,7 +61,7 @@ class RoleController extends Controller{
 		if($request->isMethod('put') && $request->input('submit')){
 			$roleObj->name = $request->get('name');
 			$routesNew = $request->get('routes');
-			//$roleObj->is_active = ($request->has('is_active'))? $request->get('is_active'): 0;
+			$roleObj->is_active = $request->get('is_active');
 			$roleObj->save();
 			foreach($routesOld as $key=>$value){
 				$rr = Permission::find($value);
@@ -86,9 +86,7 @@ class RoleController extends Controller{
 	public function roleDelete(Request $request, $roleId)
 	{
 		$roleObj = Role::find($roleId);
-		if($request->isMethod('delete')){
-			$roleObj->delete();
-		}
+		$roleObj->delete();
 		$roleObjs = Role::all();
 		return View::make('laravelroles/rolespermissions/Roles/role_list')->with(array('roleObjs'=>$roleObjs));
 	}
