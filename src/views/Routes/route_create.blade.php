@@ -20,7 +20,7 @@
 						</ul>
 					</div>
 				@endif	
-				{{ Form::open(['url'=>'route_create' , 'method' => 'post']) }}
+				{{ Form::open(['url'=>'admin/route_create' , 'method' => 'post']) }}
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>
@@ -33,7 +33,10 @@
 				<div class="form-group">
 					<label for="route">{{trans('lang::translation.Method')}}:</label>
 						{!! Form::select('method', array(
-							'GET','POST','PUT', 'DELETE'
+							'GET'=>'GET',
+							'POST'=>'POST',
+							'PUT' => 'PUT',
+							'DELETE'=> 'DELETE'
 						), null, ['class' => 'form-control'] )!!}
 				</div>
 				<div class="form-group">

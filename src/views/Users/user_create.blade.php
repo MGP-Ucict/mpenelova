@@ -25,10 +25,13 @@
 					</ul>
 					</div>
 					@endif
-                    
-                    
+          
                     {{ Form::open(['url' => 'admin/user_create', 'method' => 'post']) }}
                     <div class="form-group">
+						<label>{{trans('lang::translation.Username')}}:</label>
+						{{ Form::text("username",null, ['class' => 'form-control']) }}
+					</div>
+					<div class="form-group">
 						<label>{{trans('lang::translation.Name')}}:</label>
 						{{ Form::text("name",null, ['class' => 'form-control']) }}
 					</div>
@@ -41,8 +44,12 @@
 						{{ Form::password("password", ['class' => 'form-control']) }}
 					</div>
 					<div class="form-group">	
-						<label>{{trans('blah::translation.PasswordConfirm')}}:</label>
+						<label>{{trans('lang::translation.PasswordConfirm')}}:</label>
 						{{ Form::password("password_confirmation", ['class' => 'form-control']) }}
+					</div>
+					<div class="form-group">
+						<label>{{trans('lang::translation.isActive')}}:</label>					
+						{{ Form::checkbox("is_active")}}
 					</div>
 					<div class="form-group">
 					<label>{{trans('lang::translation.Roles')}}:</label>

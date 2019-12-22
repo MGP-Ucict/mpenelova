@@ -25,11 +25,8 @@ class UserRequest extends FormRequest
     {
         return [
             'email' => 'required|unique:users|max:255|email',
-	    'name' => 'required',
-	    'password' => 'required|confirmed',
-	    'roles' => 'required',
-	
-	    
+			'name' => 'required',
+			'roles' => 'required',
         ];
     }
 
@@ -37,14 +34,13 @@ class UserRequest extends FormRequest
 	public function messages()
 	{
 	    return [
-		'email.required' => trans('blah::translation.email.required'),
-		'email.unique'  => trans('blah::translation.email.unique'),
-		'email.email'     => trans('blah::translation.email.email'),
-		'email.max'     => trans('blah::translation.email.max'),
-		'name.required' => trans('blah::translation.name.required'),
-		'password.required' => trans('blah::translation.password.required'),
-		'password.confirmed' => trans('blah::translation.password.confirmed'),
-		'roles.required' => trans('blah::translation.roles.required'),
+			'email.required' => trans('lang::translation.email.required'),
+			'email.unique'  => trans('lang::translation.email.unique'),
+			'email.email'     => trans('lang::translation.email.email'),
+			'email.max'     => trans('lang::translation.email.max'),
+			'name.required' => trans('lang::translation.name.required'),
+			'password.confirmed' => trans('lang::translation.password.confirmed'),
+			'roles.required' => trans('lang::translation.roles.required'),
 	    ];
 	}
 }

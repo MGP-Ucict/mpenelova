@@ -23,13 +23,9 @@ class RoleCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-           
-	    'name' => 'required',
-	    'routes' => 'required',
-	    
-	
-	    
+        return [   
+			'name' => 'required',
+			'routes' => 'required',
         ];
     }
 
@@ -37,10 +33,8 @@ class RoleCreateRequest extends FormRequest
 	public function messages()
 	{
 	    return [
-		
-		'name.required' => trans('blah::translation.name.required'),
-		'routes.required' => trans('blah::translation.routes.required'),
-		
+			'name.required' => trans('lang::translation.name.required'),
+			'routes.required' => trans('lang::translation.routes.required'),
 	    ];
 	}
 }

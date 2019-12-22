@@ -21,11 +21,14 @@ class UserController extends Controller{
 		$role = Role::all();
 		if($request->isMethod('post') && $request->get('submit')){
 			$userObj = new User;
+			$userObj->username = $request->get('username');
 			$userObj->name = $request->get('name');
 			$userObj->email = $request->get('email');
-			$userObj->password = bcrypt($request->get('password'));
+			if ($request->has('password')){
+				$userObj->password = bcrypt($request->get('password'));
+			}
 			$roles = $request->get('roles');
-			$userObj->is_active = ($request->has('is_active'))? $request->get('is_active'): 0;
+			$userObj->is_active = $request->get('is_active');
 			$userObj->save();
 			foreach($roles as $key=>$value){
 				$rr = Role::find($value);
@@ -56,11 +59,14 @@ class UserController extends Controller{
 		
 		$roles = Role::all();
 		if($request->isMethod('put') && $request->get('submit')){
+			$userObj->username = $request->get('username');
 			$userObj->name = $request->get('name');
 			$userObj->email = $request->get('email');
-			$userObj->password = bcrypt($request->get('password'));
+			if ($request->has('password')){
+				$userObj->password = bcrypt($request->get('password'));
+			}
 			$roles = $request->get('roles');
-			$userObj->is_active = ($request->has('is_active'))? $request->get('is_active'): 0;
+			$userObj->is_active = $request->get('is_active');
 			foreach($rolesOld as $key=>$value){
 				$rr = Role::find($value);
 				$userObj->roles()->detach($rr);

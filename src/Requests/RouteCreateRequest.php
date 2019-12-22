@@ -23,12 +23,8 @@ class RouteCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-           
-	    'name' => 'required',
-	    
-	
-	    
+        return [ 
+			'name' => 'required',
         ];
     }
 
@@ -36,9 +32,7 @@ class RouteCreateRequest extends FormRequest
 	public function messages()
 	{
 	    return [
-		
-		'name.required' => trans('blah::translation.name.required'),
-		
+			'name.required' => trans('lang::translation.name.required'),
 	    ];
 	}
 }

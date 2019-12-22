@@ -22,6 +22,10 @@
 					@endif
                     {{ Form::open(['url' => 'admin/user_update/'.$userId, 'method' => 'put']) }}
 					<div class="form-group">
+						<label>{{trans('lang::translation.Username')}}:</label>
+						{{ Form::text("username", $userObj->username, ['class' => 'form-control']) }}
+					</div>
+					<div class="form-group">
 						<label>{{trans('lang::translation.Name')}}:</label>	 
 						{{ Form::text("name", $userObj->name, ['class' => 'form-control']) }}
 					</div>
@@ -36,6 +40,10 @@
 					<div class="form-group">
 						<label>{{trans('lang::translation.PasswordConfirm')}}:</label>
 						{{ Form::password("password_confirmation", ['class' => 'form-control']) }}
+					</div>
+					<div class="form-group">
+						<label>{{trans('lang::translation.isActive')}}:</label>					
+						{{ Form::checkbox("is_active", $userObj->is_active, $userObj->is_active)
 					</div>
 					<div class="form-group">
 						<label>{{trans('lang::translation.Roles')}}:</label>
