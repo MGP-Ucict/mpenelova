@@ -56,7 +56,7 @@ Route::prefix('admin')->group(function () {
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@edit',
 	 ]);
-	 Route::any('/role_delete/{id}', [
+	 Route::delete('/role_delete/{id}', [
 		'as'        => 'role_delete',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleDelete',
@@ -81,7 +81,7 @@ Route::prefix('admin')->group(function () {
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@edit',
 	 ]);
-	 Route::any('/user_delete/{id}', [
+	 Route::delete('/user_delete/{id}', [
 		'as'        => 'user_delete',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@userDelete',

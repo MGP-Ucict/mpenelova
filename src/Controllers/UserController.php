@@ -93,7 +93,7 @@ class UserController extends Controller{
 		$userObj = User::find($id);
 		$userObj->delete();
 		$userObjs = User::all();
-		return View::make('laravelroles/rolespermissions/Users/user_list')->with(array('userObjs'=>$userObjs));
+		return redirect('admin/user_list')->with(array('userObjs'=>$userObjs));
 	}
 	public function userList(Request $request){
 		$userObjs = User::all();

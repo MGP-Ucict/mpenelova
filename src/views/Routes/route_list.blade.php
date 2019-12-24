@@ -49,7 +49,7 @@
 							  </div>
 							  <div class="modal-body">
 								  {{ Form::open(['url' => 'admin/route_delete/'.$routeObj->id, 'method' => 'delete']) }}
-									Do you really want to delete <b>{{$routeObj->method}} {{$routeObj->route}}</b>?
+									{{trans('lang::translation.Do you really want to delete')}}<b>{{$routeObj->method}} {{$routeObj->route}}</b>?
 									<br>
 									{!! Form::submit(trans('lang::translation.Delete'), ['name' => 'submit','class' => 'btn btn-danger']) !!}
 								   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

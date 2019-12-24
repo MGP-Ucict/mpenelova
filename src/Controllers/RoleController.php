@@ -88,7 +88,7 @@ class RoleController extends Controller{
 		$roleObj = Role::find($roleId);
 		$roleObj->delete();
 		$roleObjs = Role::all();
-		return View::make('laravelroles/rolespermissions/Roles/role_list')->with(array('roleObjs'=>$roleObjs));
+		return redirect('admin/role_list')->with(array('roleObjs'=>$roleObjs));
 	}
 	public function roleList(Request $request){
 		$roleObjs = Role::all();

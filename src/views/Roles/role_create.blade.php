@@ -25,7 +25,7 @@
                {{ Form::open(['url' => 'admin/role_create', 'method' => 'post']) }}
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>
-					{{ Form::text("name") }}
+					{{ Form::text("name", null, ['class' => 'form-control']) }}
 				</div>
 				<div class="form-group">
 					<div class="checkbox checkbox-info">
@@ -43,7 +43,7 @@
 					@endforeach	
 				</div>
 				<div class="form-group">
-				{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit']) !!}
+				{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit', 'class' => 'btn btn-primary']) !!}
                     {{ Form::close() }}
                 </div>
 	       </div>

@@ -56,8 +56,7 @@ class RouteController extends Controller{
 		$routeObj->delete();
 	
 		$routeObjs = Permission::all();
-		return View::make('laravelroles/rolespermissions/Routes/route_list')->with(array('routeObjs'=>$routeObjs));
-
+		return redirect('admin/route_list')->with(array('routeObjs'=>$routeObjs));
 	}
 	public function routeList(Request $request){
 		$routeObjs = Permission::all();

@@ -32,14 +32,36 @@
 				@path('user_update')
 					{{ Html::linkRoute('user_update', 
 					 trans('lang::translation.Edit') , ['id' => $userObj['id']], ['class' => 'btn btn-warning']) }}
-				 @endpath
-				 @path('user_delete')
-					{{ Html::linkRoute('user_delete', 
-					 trans('lang::translation.Delete'), ['id' => $userObj['id']], ['class' => 'btn btn-danger','onclick' => 'return confirm("'.trans('blah::translation.Delete').' '.$userObj['name'].'?")']) }}
-				 @endpath
-				 </td>
+				@endpath
+				@path('user_delete')
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$userObj->id}}">
+						{{trans('lang::translation.Delete')}}
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="deleteModal-{{$userObj->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+						  <div class="modal-dialog" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">{{trans('lang::translation.ConfirmDelete')}}</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							  </div>
+							  <div class="modal-body">
+								  {{ Form::open(['url' => 'admin/user_delete/'.$userObj->id, 'method' => 'delete']) }}
+									  {{trans('lang::translation.Do you really want to delete')}} <b>{{$userObj->name}}</b>?
+									<br>
+									{!! Form::submit(trans('lang::translation.Delete'), ['name' => 'submit','class' => 'btn btn-danger']) !!}
+								   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+								  {{ Form::close() }}
+							</div>
+						  </div>
+						</div>
+				@endpath
+				</td>
 				</tr>
-				 @endforeach
+				@endforeach
 			</tbody>
 			</table>
 			@path('user_create')
