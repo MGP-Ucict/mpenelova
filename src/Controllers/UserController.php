@@ -24,7 +24,7 @@ class UserController extends Controller{
 			$userObj->username = $request->get('username');
 			$userObj->name = $request->get('name');
 			$userObj->email = $request->get('email');
-			if ($request->has('password')){
+			if ($request->get('password')){
 				$userObj->password = bcrypt($request->get('password'));
 			}
 			$roles = $request->get('roles');
@@ -62,7 +62,7 @@ class UserController extends Controller{
 			$userObj->username = $request->get('username');
 			$userObj->name = $request->get('name');
 			$userObj->email = $request->get('email');
-			if ($request->has('password')){
+			if ($request->get('password')){
 				$userObj->password = bcrypt($request->get('password'));
 			}
 			$rolesNew = $request->get('roles');
