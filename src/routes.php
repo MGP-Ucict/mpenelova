@@ -20,7 +20,7 @@ Route::prefix('admin')->group(function () {
 		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@edit',
 	 ]);
-	Route::any('/route_delete/{id}', [
+	Route::delete('/route_delete/{id}', [
 		'as'        => 'route_delete',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeDelete',
