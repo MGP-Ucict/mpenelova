@@ -32,5 +32,6 @@ return [
 	'Path' => 'Адрес',
 	'PasswordConfirm'=>'Password confirmed',
 	'Method' => 'Method',
-	'IsActive' => 'Active',
+	'isActive' => 'Active',
+	'Do you really want to delete' => 'Do you really want to delete',
 ];

@@ -30,7 +30,7 @@
 				<div class="form-group">
 					<div class="checkbox checkbox-info">
 						<label>{{ Form::checkbox("is_active", true) }}	</label>	
-						Is active
+						{{trans('lang::translation.isActive')}}
 					</div>
 				</div>
 				<div class="form-group">
