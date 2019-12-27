@@ -8,5 +8,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+		"laravelcollective/html": "^6.0"
+	}
 }
