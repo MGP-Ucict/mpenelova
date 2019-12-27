@@ -4,7 +4,7 @@ namespace Laravelroles\Rolespermissions\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleUpdateRequest extends FormRequest
+class RouteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,10 @@ class RoleUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [     
+        return [ 
 			'name' => 'required',
-			'routes' => 'required', 
+			'route' => 'required',
+			'method' => 'required',
         ];
     }
 
@@ -34,7 +35,8 @@ class RoleUpdateRequest extends FormRequest
 	{
 	    return [
 			'name.required' => trans('lang::translation.name.required'),
-			'routes.required' => trans('lang::translation.routes.required'),
+			'route.required' => trans('lang::translation.route.required'),
+			'method.required' => trans('lang::translation.method.required'),
 	    ];
 	}
 }

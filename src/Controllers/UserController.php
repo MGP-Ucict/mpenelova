@@ -52,7 +52,7 @@ class UserController extends Controller{
 		return View::make('laravelroles/rolespermissions/Users/user_update')->with($data);
 	}
 
-	public function update(UserUpdateRequest $request, $id)
+	public function update(UserRequest $request, $id)
 	{
 		$userObj = User::find($id);
 		$rolesOld = User::find($id)->roles()->get();

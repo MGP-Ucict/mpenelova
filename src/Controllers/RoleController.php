@@ -18,7 +18,7 @@ class RoleController extends Controller{
 		
 	}
 
-	public function store(RoleCreateRequest $request)
+	public function store(RoleRequest $request)
 	{
 		$permissions = Permission::all();
 		if($request->isMethod('post') && $request->input('submit')){
@@ -53,7 +53,7 @@ class RoleController extends Controller{
 		return View::make('laravelroles/rolespermissions/Roles/role_update')->with($data);
 	}
 
-	public function update(RoleUpdateRequest $request, $roleId)
+	public function update(RoleRequest $request, $roleId)
 	{
 		$roleObj = Role::find($roleId);
 		$routesOld = Role::find($roleId)->routes()->get();

@@ -26,6 +26,7 @@ class UserRequest extends FormRequest
         return [
             'email' => 'required|unique:users|max:255|email',
 			'name' => 'required',
+			'password' => 'confirmed',
 			'roles' => 'required',
         ];
     }
@@ -41,6 +42,7 @@ class UserRequest extends FormRequest
 			'name.required' => trans('lang::translation.name.required'),
 			'password.confirmed' => trans('lang::translation.password.confirmed'),
 			'roles.required' => trans('lang::translation.roles.required'),
-	    ];
+			'password.confirmed' => trans('lang::translation.password.confirmed'),
+		];
 	}
 }

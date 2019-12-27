@@ -2,15 +2,11 @@
 
 namespace Laravelroles\Rolespermissions\Models;
 
-
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Role extends Model
 {
-    use Notifiable;
     
     /**
      * The attributes that are mass assignable.
@@ -18,17 +14,19 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'is_active',
+      'id',  'name', 'is_active',
     ];
 
    
 	protected $table = 'roles';
-	public $timestamps=true;
+	public $timestamps = true;
 	
-	public function routes(){
+	public function routes()
+	{
 		return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Permission', 'permissions_roles', 'role_id', 'permission_id');
 	}
-	public function users(){
+	public function users()
+	{
 		return $this->belongsToMany('Laravelroles\rolespermissions\Models\User');
 	}
 	public function hasAccess($permission)
@@ -40,7 +38,7 @@ class Role extends Model
 
     private function hasPermission($permission)
     {
-		$ps= $this->routes()->get();
+		$ps = $this->routes()->get();
 		foreach($ps as $p){
 		if($p->name == $permission)
 			return true;

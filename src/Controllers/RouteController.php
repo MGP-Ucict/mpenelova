@@ -7,8 +7,7 @@ use View;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use Laravelroles\Rolespermissions\Requests\RouteCreateRequest;
-use Laravelroles\Rolespermissions\Requests\RouteUpdateRequest;
+use Laravelroles\Rolespermissions\Requests\RouteRequest;
 
 class RouteController extends Controller{
 
@@ -18,7 +17,7 @@ class RouteController extends Controller{
 
 		
 	}
-	public function store(RouteCreateRequest $request){
+	public function store(RouteRequest $request){
 
 		if($request->isMethod('post') && $request->input('submit') ){
 			$routeObj = new Permission;
@@ -38,7 +37,7 @@ class RouteController extends Controller{
 		 'routeObj'=>$routeObj));
 		
 	}
-	public function update(RouteUpdateRequest $request, $id)
+	public function update(RouteRequest $request, $id)
 	{
 		$routeObj = Permission::find($id);
 		if($request->isMethod('put') && $request->input('submit')){

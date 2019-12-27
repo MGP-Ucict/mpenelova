@@ -15,7 +15,7 @@ class User extends Authenticatable{
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password','is_active',
+       'id', 'username', 'name', 'email', 'password','is_active',
     ];
 
     /**
@@ -27,10 +27,11 @@ class User extends Authenticatable{
         'password', 'remember_token',
     ];
 	protected $table = 'users';
-	public $timestamps=true;
+	public $timestamps = true;
 	
-	public function roles(){
-	return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Role', 'roles_users', 'user_id', 'role_id');
+	public function roles()
+	{
+		return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Role', 'roles_users', 'user_id', 'role_id');
 	}
 	
 	public function hasAccess($permission)
