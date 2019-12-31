@@ -6,8 +6,7 @@ use  Laravelroles\Rolespermissions\Models\Permission;
 use Illuminate\Http\Request;
 use View;
 use App\Http\Controllers\Controller;
-use Laravelroles\Rolespermissions\Requests\RoleCreateRequest;
-use Laravelroles\Rolespermissions\Requests\RoleUpdateRequest;
+use Laravelroles\Rolespermissions\Requests\RoleRequest;
 
 class RoleController extends Controller{
 
