@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-	@include('laravelroles.rolespermissions.header')
+	@include('rolespermissions.header')
 	<div class="panel panel-default">
 		<div class="panel-heading"><h1>{{trans('lang::translation.CreateRoute')}}</h1></div>
 			<div class="panel-body">
@@ -20,7 +20,7 @@
 						</ul>
 					</div>
 				@endif	
-				{{ Form::open(['url'=>'admin/route_create' , 'method' => 'post']) }}
+				{{ Form::open(['url'=>'admin/route-create' , 'method' => 'post']) }}
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>

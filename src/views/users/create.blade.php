@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-@include('laravelroles.rolespermissions.header')
+@include('rolespermissions.header')
     <div class="row">
 
         <div class="col-md-8 col-md-offset-2">
@@ -26,7 +26,7 @@
 					</div>
 					@endif
           
-                    {{ Form::open(['url' => 'admin/user_create', 'method' => 'post']) }}
+                    {{ Form::open(['url' => 'admin/user-create', 'method' => 'post']) }}
                     <div class="form-group">
 						<label>{{trans('lang::translation.Username')}}:</label>
 						{{ Form::text("username",null, ['class' => 'form-control']) }}
@@ -55,10 +55,10 @@
 					</div>
 					<div class="form-group">
 					<label>{{trans('lang::translation.Roles')}}:</label>
-					@foreach($roles as $roleObj)
+					@foreach($roles as $role)
 					<div class="checkbox checkbox-info">
-						<label>{{ Form::checkbox("roles[]", $roleObj->id) }}	</label>				
-						{{$roleObj->name}}
+						<label>{{ Form::checkbox("roles[]", $role->id) }}	</label>				
+						{{$role->name}}
 					</div>
 					@endforeach	
 					<div class="form-group">

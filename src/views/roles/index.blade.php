@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-@include('laravelroles.rolespermissions.header')
+@include('rolespermissions.header')
 	<div class="panel panel-default">
         <div class="panel-heading">{{trans('lang::translation.Roles') }}</div>
 			<div class="panel-body">
@@ -22,22 +22,22 @@
                       </thead>
                       <tbody>
                     
-                    @foreach($roleObjs as $roleObj) 
+                    @foreach($roles as $role) 
                     <tr>
-                        <td>{{$roleObj->id}}</td>
-                        <td>{{$roleObj->name}}</td>
+                        <td>{{$role->id}}</td>
+                        <td>{{$role->name}}</td>
                         <td>
-						@path('role_update')
-							{{ Html::linkRoute('role_update',
-							 trans('lang::translation.Edit')  , ['id' => $roleObj['id']], ['class' => 'btn btn-warning']) }}
+						@path('role-update')
+							{{ Html::linkRoute('role-update',
+							 trans('lang::translation.Edit')  , ['id' => $role['id']], ['class' => 'btn btn-warning']) }}
 						@endpath
-						@path('role_delete')				
-							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$roleObj->id}}">
+						@path('role-delete')				
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$role->id}}">
 							{{trans('lang::translation.Delete')}}
 							</button>
 
 							<!-- Modal -->
-							<div class="modal fade" id="deleteModal-{{$roleObj->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+							<div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 							  <div class="modal-dialog" role="document">
 								<div class="modal-content">
 								  <div class="modal-header">
@@ -47,8 +47,8 @@
 									</button>
 								  </div>
 								  <div class="modal-body">
-									  {{ Form::open(['url' => 'admin/role_delete/'.$roleObj->id, 'method' => 'delete']) }}
-										{{trans('lang::translation.Do you really want to delete')}} <b>{{ $roleObj->name}}</b>?
+									  {{ Form::open(['url' => 'admin/role-delete/'.$role->id, 'method' => 'delete']) }}
+										{{trans('lang::translation.Do you really want to delete')}} <b>{{ $role->name}}</b>?
 										<br>
 										{!! Form::submit(trans('lang::translation.Delete'), ['name' => 'submit','class' => 'btn btn-danger']) !!}
 									   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -62,8 +62,8 @@
 					 @endforeach
                     </tbody>
                 </table>
-                @path('role_create')
-                        {{ Html::linkRoute('role_create', 
+                @path('role-create')
+                        {{ Html::linkRoute('role-create', 
                          trans('lang::translation.CreateRole'), [],['class' => 'btn btn-info']) }}
                 @endpath
             </div>

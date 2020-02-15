@@ -31,7 +31,7 @@ protected $commands = [
 		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
 		
 		//publish views
-		$this->publishes([__DIR__.'/views'=> base_path('resources/views/laravelroles/rolespermissions')]
+		$this->publishes([__DIR__.'/views'=> base_path('resources/views/rolespermissions')]
 		);
 		//publish error views
 		$this->publishes([__DIR__.'/views/errors'=> base_path('resources/views/errors')]);
@@ -54,7 +54,7 @@ protected $commands = [
 		include __DIR__."/routes.php";
 		
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\RoleController');
-		$this->app->make('Laravelroles\Rolespermissions\Controllers\RouteController');
+		$this->app->make('Laravelroles\Rolespermissions\Controllers\PermissionController');
 		$this->app->make('Laravelroles\Rolespermissions\Controllers\UserController');
 		
 		

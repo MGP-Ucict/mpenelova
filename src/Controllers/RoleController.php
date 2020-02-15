@@ -13,84 +13,54 @@ class RoleController extends Controller{
 	public function create(Request $request)
 	{	
 		$permissions = Permission::all();
-		return View::make('laravelroles/rolespermissions/Roles/role_create')->with(array('permissions'=>$permissions));	
+		$data = compact(['permissions']);
 		
+		return View::make('rolespermissions/roles/create')->with($data);	
 	}
 
 	public function store(RoleRequest $request)
 	{
-		$permissions = Permission::all();
-		if($request->isMethod('post') && $request->input('submit')){
-			$roleObj = new Role;
-			$roleObj->name = $request->get('name');
-			$routes = $request->get('routes');
-			$roleObj->is_active = $request->get('is_active');
-			$roleObj->save();
-			foreach($routes as $key=>$value){
-				$rr = Permission::find($value);
-				$roleObj->routes()->attach($rr);
-			}
-		}
-		return View::make('laravelroles/rolespermissions/Roles/role_create')->with(array('permissions'=>$permissions));
+		$validated = $request->validated();
+		$routes = $validated['routes'];
+		unset($validated['routes']);
+		$role = Role::create($validated);
+		$role->routes()->attach($routes);
+		
+		return $this->index();
 	}    
 
 
-	public function edit(Request $request, $roleId)
+	public function edit(Request $request, $id)
 	{	
 		
-		$roleObj = Role::find($roleId);
-		$routesOld = Role::find($roleId)->routes()->get();
-		$routes = Permission::all();
-		$countPermissions = count($routesOld);
-		$data = array(
-			'roleId'=>$roleId,
-			'roleObj'=>$roleObj,
-			'routes'=>$routes,
-			'permissions'=>$routesOld,
-			'cnt'=>$countPermissions,
-		);
-		return View::make('laravelroles/rolespermissions/Roles/role_update')->with($data);
+		$role = Role::find($id);
+		$permissions = Permission::all();
+		$checkedPermissions = $role->getCheckedPermissions();
+		$data = compact(['role', 'permissions', 'checkedPermissions']);
+		return View::make('rolespermissions/roles/edit')->with($data);
 	}
 
-	public function update(RoleRequest $request, $roleId)
+	public function update(RoleRequest $request, $id)
 	{
-		$roleObj = Role::find($roleId);
-		$routesOld = Role::find($roleId)->routes()->get();
-		$routes = Permission::all();
-		if($request->isMethod('put') && $request->input('submit')){
-			$roleObj->name = $request->get('name');
-			$routesNew = $request->get('routes');
-			$roleObj->is_active = $request->get('is_active');
-			$roleObj->save();
-			foreach($routesOld as $key=>$value){
-				$rr = Permission::find($value);
-				$roleObj->routes()->detach($rr);
-			
-			}
-			foreach($routesNew as $key=>$value){
-				$rr = Permission::find($value);
-				$roleObj->routes()->attach($rr);	
-			}
-		}
-		$countPermissions = count($routesOld);
-			$data = array(
-				'roleId'=>$roleId,
-				'roleObj'=>$roleObj,
-				'routes'=>$routes,
-				'permissions'=>$routesOld,
-				'cnt'=>$countPermissions,
-			);
-		return View::make('laravelroles/rolespermissions/Roles/role_update')->with($data);
+		$role = Role::find($id);
+		$validated = $request->validated();
+		$permissions = $validated['routes'];
+		unset($validated['routes']);
+		$role->update($validated);
+		$role->routes()->sync($permissions);
+		
+		return $this->index();
 	}
-	public function roleDelete(Request $request, $roleId)
+	public function destroy($id)
 	{
-		$roleObj = Role::find($roleId);
-		$roleObj->delete();
-		$roleObjs = Role::all();
-		return redirect('admin/role_list')->with(array('roleObjs'=>$roleObjs));
+		$role= Role::find($id);
+		$role->routes()->detach();
+		$role->delete();
+		return $this->index();
 	}
-	public function roleList(Request $request){
-		$roleObjs = Role::all();
-		return View::make('laravelroles/rolespermissions/Roles/role_list')->with(array('roleObjs'=>$roleObjs));
+	public function index(){
+		$roles = Role::all();
+		$data = compact(['roles']);
+		return View::make('rolespermissions/roles/index')->with($data);
 	}
 }

@@ -61,8 +61,7 @@
 
 9. In console:
 
-	php artisan vendor:publish --provider=RolespermissionsServiceProvider
-
+	php artisan vendor:publish --provider="Laravelroles\Rolespermissions\RolespermissionsServiceProvider"
 10. In console: 
 
 	php artisan make:auth

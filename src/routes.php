@@ -1,94 +1,94 @@
 <?php
 Route::prefix('admin')->group(function () {
-	Route::get('/route_create', [
-		'as'        => 'route_create',
+	Route::get('/permission-create', [
+		'as'        => 'permission-create',
 		'middleware' => ['web', 'permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@create',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\PermissionController@create',
 	 ]);
-	Route::post('/route_create', [
-		'as'        => 'route_create',
+	Route::post('/permission-create', [
+		'as'        => 'permission-create',
 		'middleware' => ['web', 'permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@store',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\PermissionController@store',
 	 ]);
-	 Route::put('/route_update/{id}', [
-		'as'        => 'route_update',
+	 Route::put('/permission-update/{id}', [
+		'as'        => 'permission-update',
 		'middleware' => ['web', 'permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@update',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\PermissionController@update',
 	 ]);
-	Route::get('/route_update/{id}', [
-		'as'        => 'route_update',
+	Route::get('/permission-update/{id}', [
+		'as'        => 'permission-update',
 		'middleware' => ['web', 'permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@edit',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\PermissionController@edit',
 	 ]);
-	Route::delete('/route_delete/{id}', [
-		'as'        => 'route_delete',
+	Route::delete('/permission-delete/{id}', [
+		'as'        => 'permission-delete',
 		'middleware' => ['web','permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeDelete',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\PermissionController@destroy',
 	 ]);
-	Route::get('/route_list', [
-		'as'        => 'route_list',
+	Route::get('/permissions-list', [
+		'as'        => 'permissions-list',
 		'middleware' => ['web','permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RouteController@routeList',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\PermissionController@index',
 	 ]);
-	 Route::get('/role_list', [
-		'as'        => 'role_list',
+	 Route::get('/roles-list', [
+		'as'        => 'roles-list',
 		'middleware' => ['web', 'permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleList',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@index',
 	 ]);
 	 
-	 Route::get('/role_create', [
-		'as'        => 'role_create',
+	 Route::get('/role-create', [
+		'as'        => 'role-create',
 		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@create',
 	 ]);
-	Route::post('/role_create', [
-		'as'        => 'role_create',
+	Route::post('/role-create', [
+		'as'        => 'role-create',
 		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@store',
 	 ]);
-	 Route::put('/role_update/{id}', [
-		'as'        => 'role_update',
+	 Route::put('/role-update/{id}', [
+		'as'        => 'role-update',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@update',
 	 ]);
-	Route::get('/role_update/{id}', [
-		'as'        => 'role_update',
+	Route::get('/role-update/{id}', [
+		'as'        => 'role-update',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@edit',
 	 ]);
-	 Route::delete('/role_delete/{id}', [
-		'as'        => 'role_delete',
+	 Route::delete('/role-delete/{id}', [
+		'as'        => 'role-delete',
 		'middleware' => ['web','permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@roleDelete',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\RoleController@destroy',
 	 ]);
-	Route::get('/user_create', [
-		'as'        => 'user_create',
+	Route::get('/user-create', [
+		'as'        => 'user-create',
 		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@create',
 	 ]);
-	Route::post('/user_create', [
-		'as'        => 'user_create',
+	Route::post('/user-create', [
+		'as'        => 'user-create',
 		'middleware' => ['web', 'permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@store',
 	 ]);
-	 Route::put('/user_update/{id}', [
-		'as'        => 'user_update',
+	 Route::put('/user-update/{id}', [
+		'as'        => 'user-update',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@update',
 	 ]);
-	Route::get('/user_update/{id}', [
-		'as'        => 'user_update',
+	Route::get('/user-update/{id}', [
+		'as'        => 'user-update',
 		'middleware' => ['web','permissions.required'],
 		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@edit',
 	 ]);
-	 Route::delete('/user_delete/{id}', [
-		'as'        => 'user_delete',
+	 Route::delete('/user-delete/{id}', [
+		'as'        => 'user-delete',
 		'middleware' => ['web','permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@userDelete',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@destroy',
 	 ]);
-	 Route::any('/user_list', [
-		'as'        => 'user_list',
+	 Route::get('/users-list', [
+		'as'        => 'users-list',
 		'middleware' => ['web', 'permissions.required'],
-		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@userList',
+		'uses'      => 'Laravelroles\Rolespermissions\Controllers\UserController@index',
 	 ]);
 });

@@ -22,7 +22,7 @@
 				@endif
 				
                     
-               {{ Form::open(['url' => 'admin/role_create', 'method' => 'post']) }}
+               {{ Form::open(['url' => 'admin/role-create', 'method' => 'post']) }}
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>
 					{{ Form::text("name", null, ['class' => 'form-control']) }}

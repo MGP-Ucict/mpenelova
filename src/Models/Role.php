@@ -25,24 +25,35 @@ class Role extends Model
 	{
 		return $this->belongsToMany('Laravelroles\Rolespermissions\Models\Permission', 'permissions_roles', 'role_id', 'permission_id');
 	}
+	
 	public function users()
 	{
-		return $this->belongsToMany('Laravelroles\rolespermissions\Models\User');
+		return $this->belongsToMany('Laravelroles\Rolespermissions\Models\User');
 	}
+	
 	public function hasAccess($permission)
     {
-        if ($this->hasPermission($permission))
+        if ($this->hasPermission($permission)){
             return true;
+		}
         return false;
     }
 
+	public function getCheckedPermissions()
+	{
+		return $this->routes()->allRelatedIds()->toArray();
+	}
+	
     private function hasPermission($permission)
     {
 		$ps = $this->routes()->get();
 		foreach($ps as $p){
-		if($p->name == $permission)
-			return true;
+			if ($p->name == $permission){
+				return true;
+			}
 		}
         return  false;
     }
+	
+	
 }

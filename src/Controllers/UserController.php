@@ -6,97 +6,74 @@ use App\User;
 use Illuminate\Http\Request;
 use View;
 use Laravelroles\Rolespermissions\Requests\UserRequest;
-use Laravelroles\Rolespermissions\Requests\UserUpdateRequest;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller{
 	
 	public function create(Request $request)
 	{	
-		$role = Role::all();
-		return View::make('laravelroles/rolespermissions/Users/user_create')->with(array('roles'=>$role));	
+		$roles = Role::all();
+		$data = compact(['roles']);
+		return View::make('rolespermissions/users/create')->with($data);	
 	}
 
-	public function store(UserRequest $request){
-		$role = Role::all();
-		if($request->isMethod('post') && $request->get('submit')){
-			$userObj = new User;
-			$userObj->username = $request->get('username');
-			$userObj->name = $request->get('name');
-			$userObj->email = $request->get('email');
-			if ($request->get('password')){
-				$userObj->password = bcrypt($request->get('password'));
-			}
-			$roles = $request->get('roles');
-			$userObj->is_active = $request->get('is_active');
-			$userObj->save();
-			foreach($roles as $key=>$value){
-				$rr = Role::find($value);
-				$userObj->roles()->attach($rr);
-			}
+	public function store(UserRequest $request)
+	{
+		$validated = $request->validated();
+		$roles = $validated['roles'];
+		unset($validated['roles']);
+		if (isset($validated['password'])){
+			$password = $validated['password'];
+			unset($validated['password']);
+			unset($validated['password_confirmation']);
+			$encryptedPassword = bcrypt($password);
+			$validated = array_merge(['password' => $encryptedPassword], $validated);
 		}
-		return View::make('laravelroles/rolespermissions/Users/user_create')->with(array('roles'=>$role));
-	}
-	public function edit(Request $request, $userId)
-	{	
-		$userObj = User::find($userId);
-		$rolesOld = User::find($userId)->roles()->get();
-		$roles = Role::all();
+		$user = User::create($validated);
+		$user->roles()->attach($roles);
 		
-		$data = array(
-			'userId'=>$userId,
-			'userObj'=>$userObj,
-			'roles'=>$roles,
-			'rolesOld'=>$rolesOld,		
-		);
-		return View::make('laravelroles/rolespermissions/Users/user_update')->with($data);
+		return $this->index();
+	}
+	
+	public function edit(Request $request, $id)
+	{	
+		$user = User::find($id);
+		$checkedRoles = $user->roles()->allRelatedIds()->toArray();
+		$roles = Role::all();
+		$data = compact(['user', 'roles', 'checkedRoles']);
+		return View::make('rolespermissions/users/edit')->with($data);
 	}
 
 	public function update(UserRequest $request, $id)
 	{
-		$userObj = User::find($id);
-		$rolesOld = User::find($id)->roles()->get();
-		
-		$roles = Role::all();
-		if($request->isMethod('put') && $request->get('submit')){
-			$userObj->username = $request->get('username');
-			$userObj->name = $request->get('name');
-			$userObj->email = $request->get('email');
-			if ($request->get('password')){
-				$userObj->password = bcrypt($request->get('password'));
-			}
-			$rolesNew = $request->get('roles');
-			$userObj->is_active = $request->get('is_active');
-			foreach($rolesOld as $key=>$value){
-				$rr = Role::find($value);
-				$userObj->roles()->detach($rr);
-			}
-			foreach($rolesNew as $key=>$value){
-				$rr = Role::find($value);	
-				$userObj->roles()->attach($rr);
-			}
-			
-			$userObj->save();
+		$user = User::find($id);
+		$validated = $request->validated();
+		$roles = $validated['roles'];
+		unset($validated['roles']);
+		if (isset($validated['password'])){
+			$password = $validated['password'];
+			unset($validated['password']);
+			unset($validated['password_confirmation']);
+			$encryptedPassword = bcrypt($password);
+			$validated = array_merge(['password' => $encryptedPassword], $validated);
 		}
+		$user = $user->update($validated);
+		$user->roles()->sync($roles);
 		
-		$data = array(
-			'userId'=>$id,
-			'userObj'=>$userObj,
-			'roles'=>$roles,
-			'rolesOld'=>$rolesOld,
-		);
-		return View::make('laravelroles/rolespermissions/Users/user_update')->with($data);
+		return $this->index();
 	}
 	
-	public function userDelete(Request $request, $id)
+	public function destroy($id)
 	{
-		$userObj = User::find($id);
-		$userObj->delete();
-		$userObjs = User::all();
-		return redirect('admin/user_list')->with(array('userObjs'=>$userObjs));
+		$user = User::find($id);
+		$user->roles()->detach();
+		$user->delete();
+		return $this->index();
 	}
-	public function userList(Request $request){
-		$userObjs = User::all();
-		return View::make('laravelroles/rolespermissions/Users/user_list')->with(array('userObjs'=>$userObjs));
+	public function index()
+	{
+		$users = User::all();
+		$data = compact(['users']);
+		return View::make('rolespermissions/users/index')->with($data);
 	}
 }
