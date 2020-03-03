@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-@include('laravelroles.rolespermissions.header')
+@include('rolespermissions.header')
     <div class="panel panel-default">
         <div class="panel-heading"><h1>{{trans('lang::translation.CreateRole')}}</h1></div>
 			<div class="panel-body">
