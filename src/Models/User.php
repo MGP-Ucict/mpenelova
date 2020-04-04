@@ -45,5 +45,14 @@ class User extends Authenticatable{
         return false;
     }
 	
-    
+    public function owns($class, $id)
+	{
+		$model = $class:find($id);
+		if (property_exists($model, 'user_id'){
+			if ($model->user_id = $this->id){
+				return true;
+			}
+		}
+		return false;
+	}
 }

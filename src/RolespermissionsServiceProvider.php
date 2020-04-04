@@ -26,6 +26,9 @@ protected $commands = [
 		\Blade::if('path', function($expression){
 				return auth()->user()->hasAccess($expression);
 		});
+		\Blade::if('owns', function($model, $id){
+				return auth()->user()->owns($model::class, $id);
+		});
 		//load and publish translations
 		$this->loadTranslationsFrom(__DIR__.'/lang', 'lang');
 		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
