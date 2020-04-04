@@ -44,7 +44,7 @@
 					<div class="form-group">
 						<div class="checkbox checkbox-info">
 							<label>{{trans('lang::translation.isActive')}}:</label>					
-							{{ Form::checkbox("is_active", $user->is_active, $user->is_active) }}
+							{{ Form::checkbox("is_active", true, $user->is_active) }}
 						</div>
 					</div>
 					<div class="form-group">
