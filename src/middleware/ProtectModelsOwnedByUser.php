@@ -4,7 +4,7 @@ namespace Laravelroles\Rolespermissions\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 
-class PermissionsRequiredMiddleware
+class ProtectModelsOwnedByUser
 {
 	protected $class;
 	
