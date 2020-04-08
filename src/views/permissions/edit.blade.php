@@ -10,7 +10,7 @@
 					{{ session('status') }}
 				</div>
 			@endif 
-			{{ Form::open(['url' => 'admin/route-update/'. $permission->id, 'method' => 'put']) }}
+			{{ Form::open(['url' => 'admin/permission-update/'. $permission->id, 'method' => 'put']) }}
 			<div class="form-group">
 				<label for="name">{{trans('lang::translation.Name')}}:</label>
 				{{ Form::text("name",$permission->name, ['class' => 'form-control']) }}

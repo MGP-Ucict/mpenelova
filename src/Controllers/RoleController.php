@@ -26,7 +26,7 @@ class RoleController extends Controller{
 		$role = Role::create($validated);
 		$role->routes()->attach($routes);
 		
-		return $this->index();
+		return redirect()->route('roles-list');
 	}    
 
 
@@ -49,14 +49,14 @@ class RoleController extends Controller{
 		$role->update($validated);
 		$role->routes()->sync($permissions);
 		
-		return $this->index();
+		return  redirect()->route('roles-list');
 	}
 	public function destroy($id)
 	{
 		$role= Role::find($id);
 		$role->routes()->detach();
 		$role->delete();
-		return $this->index();
+		return redirect()->route('roles-list');
 	}
 	public function index(){
 		$roles = Role::all();

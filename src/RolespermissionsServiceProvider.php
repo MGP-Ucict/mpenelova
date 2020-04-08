@@ -23,11 +23,14 @@ protected $commands = [
     {
        	$this->commands($this->commands);
 		//custom blade directive
-		\Blade::if('path', function($expression){
-				return auth()->user()->hasAccess($expression);
+		\Blade::if('path', function($routeName){
+			return auth()->user()->hasAccess($routeName);
 		});
-		\Blade::if('owns', function($model, $id){
-				return auth()->user()->owns($model::class, $id);
+		\Blade::if('owns', function($model){
+			return auth()->user()->ownsModel($model);
+		});
+		\Blade::if('has', function($model, $routeName){
+			return auth()->user()->hasAccess($routeName) || auth()->user()->ownsModel($model);
 		});
 		//load and publish translations
 		$this->loadTranslationsFrom(__DIR__.'/lang', 'lang');

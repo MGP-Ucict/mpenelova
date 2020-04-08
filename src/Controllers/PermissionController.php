@@ -19,7 +19,7 @@ class PermissionController extends Controller{
 		$validated = $request->validated();
 		Permission::create($validated);
 		
-		return $this->index();
+		return redirect()->route('permissions-list');
 	}
 
 	public function edit(Request $request, $id)
@@ -36,7 +36,7 @@ class PermissionController extends Controller{
 		$validated = $request->validated();
 		$permission->update($validated);
 		
-		return $this->index();
+		return redirect()->route('permissions-list');
 	}
 	
 	public function destroy($id)
@@ -44,7 +44,7 @@ class PermissionController extends Controller{
 		$permissiion = Permission::find($id);
 		$permission->delete();
 		
-		return $this->index();
+		return redirect()->route('permissions-list');
 	}
 	
 	public function index()

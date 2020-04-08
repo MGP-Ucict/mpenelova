@@ -20,7 +20,7 @@
 						</ul>
 					</div>
 				@endif	
-				{{ Form::open(['url'=>'admin/route-create' , 'method' => 'post']) }}
+				{{ Form::open(['url'=>'admin/permission-create' , 'method' => 'post']) }}
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>

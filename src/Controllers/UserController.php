@@ -32,7 +32,7 @@ class UserController extends Controller{
 		$user = User::create($validated);
 		$user->roles()->attach($roles);
 		
-		return $this->index();
+		return redirect()->route('users-list');
 	}
 	
 	public function edit(Request $request, $id)
@@ -60,7 +60,7 @@ class UserController extends Controller{
 		$user->update($validated);
 		$user->roles()->sync($roles);
 		
-		return $this->index();
+		return redirect()->route('users-list');
 	}
 	
 	public function destroy($id)
@@ -68,8 +68,9 @@ class UserController extends Controller{
 		$user = User::find($id);
 		$user->roles()->detach();
 		$user->delete();
-		return $this->index();
+		return redirect()->route('users-list');
 	}
+	
 	public function index()
 	{
 		$users = User::all();
