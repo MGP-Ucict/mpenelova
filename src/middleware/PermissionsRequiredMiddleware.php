@@ -1,7 +1,6 @@
 <?php
 
 namespace Laravelroles\Rolespermissions\Middleware;
-use Illuminate\Support\Facades\Auth;
 use Closure;
 
 class PermissionsRequiredMiddleware
@@ -16,24 +15,24 @@ class PermissionsRequiredMiddleware
     public function handle($request, Closure $next)
     {
         
-			// Get the current route.
-			$user = $request->user();
-			if (!$user)
-				return redirect('/');
-			$route =  $request->path();
-			$method = $request->method();
-			if ($user->is_active){
-				$roles = $user->roles()->get();
-				foreach($roles as $role){
-					if($role->is_active){
-						$perms = $role->routes()->get();
-						foreach($perms as $perm){
-							if($this->compareRoutes($route, $perm) && $method == $perm->method)
-								return $next($request);
-						}
+		// Get the current route.
+		$user = $request->user();
+		if (!$user)
+			return redirect('/');
+		$route =  $request->path();
+		$method = $request->method();
+		if ($user->is_active){
+			$roles = $user->roles()->get();
+			foreach($roles as $role){
+				if($role->is_active){
+					$perms = $role->routes()->get();
+					foreach($perms as $perm){
+						if($this->compareRoutes($route, $perm) && $method == $perm->method)
+							return $next($request);
 					}
 				}
 			}
+		}
 		return abort(403);
     }
 	
