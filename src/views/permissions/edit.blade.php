@@ -10,28 +10,30 @@
 					{{ session('status') }}
 				</div>
 			@endif 
-			{{ Form::open(['url' => 'admin/permission-update/'. $permission->id, 'method' => 'put']) }}
-			<div class="form-group">
-				<label for="name">{{trans('lang::translation.Name')}}:</label>
-				{{ Form::text("name",$permission->name, ['class' => 'form-control']) }}
-			</div>
-			<div class="form-group">
-				<label for="route">{{trans('lang::translation.Route')}}:</label>
-				{{ Form::text("route",$permission->route, ['class' => 'form-control']) }}
-			</div>
-			<div class="form-group">
-				<label for="route">{{trans('lang::translation.Method')}}:</label>
-					{!! Form::select('method', array(
-						'GET'=>'GET',
-						'POST'=>'POST',
-						'PUT' => 'PUT',
-						'DELETE'=> 'DELETE'
-					), $permission->method, ['class' => 'form-control'] )!!}
-			</div>
-			<div class="form-group">
-				{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit','class' => 'btn btn-primary']) !!}
-				{{ Form::close() }}
-			</div>
+			<form action="{{ route('permissions.update', $permission->id)}}" method="post">
+				@method('PUT')
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<div class="form-group">
+					<label for="name">{{trans('lang::translation.Name')}}:</label>
+					<input type="text" name="name" class="form-control" value="{{$permission->name}}" />
+				</div>
+				<div class="form-group">
+					<label for="route">{{trans('lang::translation.Route')}}:</label>
+					<input type="text" name="route" class="form-control" value="{{$permission->route}}" />
+				</div>
+				<div class="form-group">
+					<label for="method">{{trans('lang::translation.Method')}}:</label>
+					<select name="method" class="form-control">
+						<option value="GET" {{ ( $permission->method == "GET") ? 'selected' : '' }} >GET</option>
+						<option value="POST" {{ ( $permission->method == "POST") ? 'selected' : '' }} >POST</option>
+						<option value="PUT" {{ ( $permission->method == "PUT") ? 'selected' : '' }} >PUT</option>
+						<option value="DELETE" {{ ( $permission->method == "DELETE") ? 'selected' : '' }} >DELETE</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="{{trans('lang::translation.Save')}}" class="btn btn-primary" />
+				</div>
+			</form>
 		</div>
 	</div>
  </div>

@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller{
 	
-	public function create(Request $request)
+	public function create()
 	{	
 		$roles = Role::all();
 		$data = compact(['roles']);
@@ -32,10 +32,10 @@ class UserController extends Controller{
 		$user = User::create($validated);
 		$user->roles()->attach($roles);
 		
-		return redirect()->route('users-list');
+		return redirect()->route('users.index');
 	}
 	
-	public function edit(Request $request, $id)
+	public function edit($id)
 	{	
 		$user = User::find($id);
 		$checkedRoles = $user->roles()->allRelatedIds()->toArray();
@@ -60,7 +60,7 @@ class UserController extends Controller{
 		$user->update($validated);
 		$user->roles()->sync($roles);
 		
-		return redirect()->route('users-list');
+		return redirect()->route('users.index');
 	}
 	
 	public function destroy($id)
@@ -68,7 +68,7 @@ class UserController extends Controller{
 		$user = User::find($id);
 		$user->roles()->detach();
 		$user->delete();
-		return redirect()->route('users-list');
+		return redirect()->route('users.index');
 	}
 	
 	public function index()

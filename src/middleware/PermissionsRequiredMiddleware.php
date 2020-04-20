@@ -14,9 +14,8 @@ class PermissionsRequiredMiddleware
      */
     public function handle($request, Closure $next)
     {
-        
 		// Get the current route.
-		$user = $request->user();
+		$user = auth()->user();
 		if (!$user)
 			return redirect('/');
 		$route =  $request->path();
@@ -27,8 +26,9 @@ class PermissionsRequiredMiddleware
 				if($role->is_active){
 					$perms = $role->routes()->get();
 					foreach($perms as $perm){
-						if($this->compareRoutes($route, $perm) && $method == $perm->method)
+						if($this->compareRoutes($route, $perm) && $method == $perm->method) {
 							return $next($request);
+						  }
 					}
 				}
 			}
@@ -43,17 +43,15 @@ class PermissionsRequiredMiddleware
 			
 		$iterRouteArray = [];	
 		$iterRouteArray = explode("/", $iterRoute->route);
-		
 		$cntr = 0;
 		$length = count($routeArray) - 1;
 		$iterLength = count($iterRouteArray) - 1;
 		if($length == $iterLength){
+			$flag = true;
 			while($cntr <= $length){
-				if($cntr == $length && !is_numeric($routeArray[$cntr]) && $iterRouteArray[$cntr] == $routeArray[$cntr]){
-					$flag = true;
-				}
-				if($cntr == $length && is_numeric($routeArray[$cntr])){
-					$flag = true;
+				if(!is_numeric($routeArray[$cntr]) && $iterRouteArray[$cntr] != $routeArray[$cntr]){
+					$flag = false;
+					break;
 				}
 				$cntr++;
 			}

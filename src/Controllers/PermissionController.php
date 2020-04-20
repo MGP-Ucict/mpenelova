@@ -9,7 +9,7 @@ use Laravelroles\Rolespermissions\Requests\RouteRequest;
 
 class PermissionController extends Controller{
 
-	public function create(Request $request)
+	public function create()
 	{	
 		return View::make('rolespermissions/permissions/create');
 	}
@@ -19,10 +19,10 @@ class PermissionController extends Controller{
 		$validated = $request->validated();
 		Permission::create($validated);
 		
-		return redirect()->route('permissions-list');
+		return redirect()->route('permissions.index');
 	}
 
-	public function edit(Request $request, $id)
+	public function edit($id)
 	{	
 		$permission = Permission::find($id);
 		$data = compact(['permission']);
@@ -36,15 +36,15 @@ class PermissionController extends Controller{
 		$validated = $request->validated();
 		$permission->update($validated);
 		
-		return redirect()->route('permissions-list');
+		return redirect()->route('permissions.index');
 	}
 	
 	public function destroy($id)
 	{
-		$permissiion = Permission::find($id);
+		$permission = Permission::find($id);
 		$permission->delete();
 		
-		return redirect()->route('permissions-list');
+		return redirect()->route('permissions.index');
 	}
 	
 	public function index()

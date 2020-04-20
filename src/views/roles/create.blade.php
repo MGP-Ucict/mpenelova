@@ -22,31 +22,54 @@
 				@endif
 				
                     
-               {{ Form::open(['url' => 'admin/role-create', 'method' => 'post']) }}
-				<div class="form-group">
-					<label for="name">{{trans('lang::translation.Name')}}:</label>
-					{{ Form::text("name", null, ['class' => 'form-control']) }}
-				</div>
-				<div class="form-group">
-					<div class="checkbox checkbox-info">
-						<label>{{ Form::checkbox("is_active", true) }}	</label>	
-						{{trans('lang::translation.isActive')}}
+				<form action="{{ route('roles.store')}}" method="post">
+					<input name="_token" type="hidden" value="{{ csrf_token() }}">
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">
+							<span class="h4">
+								{{trans('lang::translation.Name')}}:
+							</span>
+						</label>
+						<div class="col-sm-5">
+							<input type="text" name="name" class="form-control" />
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-				   <label for="routes"> {{trans('lang::translation.Routes')}}:</label>
-					@foreach($permissions as $routeObj)
-					<div class="checkbox checkbox-info">
-						<label>{{ Form::checkbox("routes[]", $routeObj->id) }}	</label>	
-						{{$routeObj->method}} {{$routeObj->route}}
+					<div class="form-check row">
+						<div class="col-sm-3"> 
+							<input type="checkbox" name="is_active" class="form-check-input" value="1" />
+							<label class="col-form-label">
+								<span class="h4">
+									{{trans('lang::translation.isActive')}}
+								</span>
+							</label>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">
+							<span class="h4">
+								{{trans('lang::translation.Routes')}}:
+							</span>
+						</label>
+					</div>	
+					@foreach($permissions as $permission)
+					<div class="form-check row offset-sm-1">
+						<div class="col-sm-3"> 
+							<input type="checkbox" name="routes[]" class="form-check-input" value="{{$permission->id}}"/>
+							<label class="form-check-label">
+								<span class="h4">
+									{{$permission->name}}
+								</span>
+							</label>
+						</div>							
 					</div>
 					@endforeach	
-				</div>
-				<div class="form-group">
-				{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit', 'class' => 'btn btn-primary']) !!}
-                    {{ Form::close() }}
-                </div>
-	       </div>
+					<div class="form-group">
+						<div class="offset-sm-4 col-sm-5">
+							<input type="submit" value="{{trans('lang::translation.Save')}}" class="btn btn-primary" />
+						</div>
+					</div>
+                   </form>
+			</div>
         </div>
     </div>
 </div>

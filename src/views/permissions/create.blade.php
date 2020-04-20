@@ -20,29 +20,29 @@
 						</ul>
 					</div>
 				@endif	
-				{{ Form::open(['url'=>'admin/permission-create' , 'method' => 'post']) }}
+				<form action="{{ route('permissions.store')}}" method="post">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				<div class="form-group">
 					<label for="name">{{trans('lang::translation.Name')}}:</label>
-					{{ Form::text("name", null, ['class' => 'form-control']) }}
+					<input type="text" name="name" class="form-control" />
 				</div>
 				<div class="form-group">
 					<label for="route">{{trans('lang::translation.Route')}}:</label>
-					{{ Form::text("route", null, ['class' => 'form-control']) }}
+					<input type="text" name="route" class="form-control" />
 				</div>
 				<div class="form-group">
-					<label for="route">{{trans('lang::translation.Method')}}:</label>
-						{!! Form::select('method', array(
-							'GET'=>'GET',
-							'POST'=>'POST',
-							'PUT' => 'PUT',
-							'DELETE'=> 'DELETE'
-						), null, ['class' => 'form-control'] )!!}
+					<label for="method">{{trans('lang::translation.Method')}}:</label>
+					<select name="method" class="form-control">
+						<option value="GET">GET</option>
+						<option value="POST">POST</option>
+						<option value="PUT">PUT</option>
+						<option value="DELETE">DELETE</option>
+					</select>
 				</div>
 				<div class="form-group">
-					{!! Form::submit(trans('lang::translation.Save'), ['name' => 'submit','class' => 'btn btn-primary']) !!}
-					{{ Form::close() }}
+					<input type="submit" value="{{trans('lang::translation.Save')}}" class="btn btn-primary" />
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

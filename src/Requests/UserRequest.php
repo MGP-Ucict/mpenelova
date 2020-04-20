@@ -24,10 +24,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules =  [
+			'username' => 'sometimes',
 			'name' => 'required',
 			'password' => 'confirmed',
 			'roles' => 'required',
-			'is_active' => 'boolean|nullable',
+			'is_active' => 'nullable',
         ];
 		
 		if ($this->method() == 'POST') {

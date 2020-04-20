@@ -28,15 +28,13 @@
 						<td>{{$permission->name}}</td>
 						<td>{{$permission->route}}</td>
 						<td>
-						@path('permission-update')
-							{{ Html::linkRoute('permission-update', trans('lang::translation.Edit') , ['id' => $permission['id']], ['class' => 'btn btn-warning']) }}
+						@path('permissions.edit')
+							<a href="/admin/permissions/{{$permission->id}}/edit" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 						@endpath
-						@path('permission-delete')
-						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$permission->id}}">
-						{{trans('lang::translation.Delete')}}
-						</button>
-
+						@path('permissions.destroy')
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$permission->id}}">
+								{{trans('lang::translation.Delete')}}
+							</button>
 						<!-- Modal -->
 						<div class="modal fade" id="deleteModal-{{$permission->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 						  <div class="modal-dialog" role="document">
@@ -48,12 +46,14 @@
 								</button>
 							  </div>
 							  <div class="modal-body">
-								  {{ Form::open(['url' => 'admin/route-delete/'.$permission->id, 'method' => 'delete']) }}
-									{{trans('lang::translation.Do you really want to delete')}}<b>{{$permission->method}} {{$permission->route}}</b>?
+								<form action="{{ route('permissions.destroy', $permission->id)}}" method="post">
+									@method('DELETE')
+									<input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+									{{trans('lang::translation.Do you really want to delete')}} <b>{{$permission->name}}</b>?
 									<br>
-									{!! Form::submit(trans('lang::translation.Delete'), ['name' => 'submit','class' => 'btn btn-danger']) !!}
-								   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-								  {{ Form::close() }}
+									<input type="submit" class="btn btn-danger" value="{{trans('lang::translation.Delete')}}"/>
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang::translation.No')}}</button>
+								</form>
 							</div>
 						  </div>
 						</div>
@@ -63,8 +63,8 @@
 					@endforeach
 				</tbody>
 			</table>
-			 @path('permission-create')
-				{{ Html::linkRoute('permission-create', trans('lang::translation.CreateRoute'), [],['class' => 'btn btn-info']) }}
+			@path('permissions.create')
+				<a href="permissions/create" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
 			@endpath
             </div>
         </div>

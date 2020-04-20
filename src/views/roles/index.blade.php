@@ -23,17 +23,16 @@
                       <tbody>
                     
                     @foreach($roles as $role) 
-                    <tr>
+					<tr>
                         <td>{{$role->id}}</td>
                         <td>{{$role->name}}</td>
                         <td>
-						@path('role-update')
-							{{ Html::linkRoute('role-update',
-							 trans('lang::translation.Edit')  , ['id' => $role['id']], ['class' => 'btn btn-warning']) }}
+						@path('roles.edit')
+							<a href="/admin/roles/{{$role->id}}/edit" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 						@endpath
-						@path('role-delete')				
+						@path('roles.destroy')
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$role->id}}">
-							{{trans('lang::translation.Delete')}}
+								{{trans('lang::translation.Delete')}}
 							</button>
 
 							<!-- Modal -->
@@ -47,12 +46,14 @@
 									</button>
 								  </div>
 								  <div class="modal-body">
-									  {{ Form::open(['url' => 'admin/role-delete/'.$role->id, 'method' => 'delete']) }}
-										{{trans('lang::translation.Do you really want to delete')}} <b>{{ $role->name}}</b>?
+									  <form action="{{ route('roles.destroy', $role->id)}}" method="post">
+										@method('DELETE')
+										<input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+										{{trans('lang::translation.Do you really want to delete')}} <b>{{$role->name}}</b>?
 										<br>
-										{!! Form::submit(trans('lang::translation.Delete'), ['name' => 'submit','class' => 'btn btn-danger']) !!}
-									   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-									  {{ Form::close() }}
+										<input type="submit" class="btn btn-danger" value="{{trans('lang::translation.Delete')}}"/>
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang::translation.No')}}</button>
+									</form>
 								</div>
 							  </div>
 							</div>
@@ -62,10 +63,9 @@
 					 @endforeach
                     </tbody>
                 </table>
-                @path('role-create')
-                        {{ Html::linkRoute('role-create', 
-                         trans('lang::translation.CreateRole'), [],['class' => 'btn btn-info']) }}
-                @endpath
+				@path('roles.create')
+				<a href="roles/create" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
+				@endpath    
             </div>
         </div>
     </div>

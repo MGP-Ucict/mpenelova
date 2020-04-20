@@ -8,6 +8,7 @@
 	protected $routeMiddleware = [
 
 		'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
+		'owns' => \Laravelroles\Rolespermissions\Middleware\ProtectModelsOwnedByUser::class,
 
 	];
 			    

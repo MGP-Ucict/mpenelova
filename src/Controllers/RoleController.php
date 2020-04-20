@@ -10,7 +10,7 @@ use Laravelroles\Rolespermissions\Requests\RoleRequest;
 
 class RoleController extends Controller{
 
-	public function create(Request $request)
+	public function create()
 	{	
 		$permissions = Permission::all();
 		$data = compact(['permissions']);
@@ -26,11 +26,11 @@ class RoleController extends Controller{
 		$role = Role::create($validated);
 		$role->routes()->attach($routes);
 		
-		return redirect()->route('roles-list');
+		return redirect()->route('roles.index');
 	}    
 
 
-	public function edit(Request $request, $id)
+	public function edit($id)
 	{	
 		
 		$role = Role::find($id);
@@ -49,14 +49,14 @@ class RoleController extends Controller{
 		$role->update($validated);
 		$role->routes()->sync($permissions);
 		
-		return  redirect()->route('roles-list');
+		return redirect()->route('roles.index');
 	}
 	public function destroy($id)
 	{
 		$role= Role::find($id);
 		$role->routes()->detach();
 		$role->delete();
-		return redirect()->route('roles-list');
+		return redirect()->route('roles.index');
 	}
 	public function index(){
 		$roles = Role::all();

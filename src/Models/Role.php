@@ -46,9 +46,9 @@ class Role extends Model
 	
     private function hasPermission($permission)
     {
-		$ps = $this->routes()->get();
-		foreach($ps as $p){
-			if ($p->name == $permission){
+		$routes = $this->routes()->get();
+		foreach($routes as $route){
+			if ($route->name == $permission){
 				return true;
 			}
 		}

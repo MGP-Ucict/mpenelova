@@ -31,6 +31,7 @@ return [
 	'Users'  => 'Потребители',
 	'PasswordConfirm'=>'Паролата отново',
 	'Method' => 'Метод',
+	'No' => 'Не',
 	'isActive' => 'Активен',
 	'ConfirmDelete' => 'Потвърждаване на изтриването',
 	'Do you really want to delete' => 'Наистина ли искате да изтриете ',

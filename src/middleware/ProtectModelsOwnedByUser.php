@@ -26,15 +26,12 @@ class ProtectModelsOwnedByUser
 			$roles = $user->roles()->get();
 			foreach($roles as $role){
 				if($role->is_active){
-					
 					$routeArray = explode( "/", $route);
 					$count = count($routeArray)-1;
 					$id = $routeArray[$count];
 					if ($user->ownsClass($className, $id)){
 						return $next($request);
-					}
-					
-					
+					}				
 					$perms = $role->routes()->get();
 					foreach($perms as $perm){
 						if($this->compareRoutes($route, $perm) && $method == $perm->method)
@@ -53,17 +50,18 @@ class ProtectModelsOwnedByUser
 			
 		$iterRouteArray = [];	
 		$iterRouteArray = explode("/", $iterRoute->route);
-		
 		$cntr = 0;
 		$length = count($routeArray) - 1;
 		$iterLength = count($iterRouteArray) - 1;
 		if($length == $iterLength){
+			$flag = true;
 			while($cntr <= $length){
-				if($cntr == $length && !is_numeric($routeArray[$cntr]) && $iterRouteArray[$cntr] == $routeArray[$cntr]){
-					$flag = true;
+				if(!is_numeric($routeArray[$cntr]) && $iterRouteArray[$cntr] != $routeArray[$cntr]){
+					$flag = false;
+					break;
 				}
-				if($cntr == $length && is_numeric($routeArray[$cntr])){
-					$flag = true;
+				if(is_numeric($routeArray[$cntr]) && $cntr == $length){
+					$flag = false;
 				}
 				$cntr++;
 			}

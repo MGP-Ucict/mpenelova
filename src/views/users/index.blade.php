@@ -29,11 +29,10 @@
 				<td>{{$user->name}}</td>
 				<td>{{$user->email}}</td>
 				<td>
-				@path('user-update')
-					{{ Html::linkRoute('user-update', 
-					 trans('lang::translation.Edit') , ['id' => $user['id']], ['class' => 'btn btn-warning']) }}
+				@path('users.edit')
+					<a href="/admin/users/{{$user->id}}/edit" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 				@endpath
-				@path('user-delete')
+				@path('users.destroy')
 					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$user->id}}">
 						{{trans('lang::translation.Delete')}}
 					</button>
@@ -48,14 +47,16 @@
 								  <span aria-hidden="true">&times;</span>
 								</button>
 							  </div>
-							  <div class="modal-body">
-								  {{ Form::open(['url' => 'admin/user-delete/'.$user->id, 'method' => 'delete']) }}
-									  {{trans('lang::translation.Do you really want to delete')}} <b>{{$user->name}}</b>?
-									<br>
-									{!! Form::submit(trans('lang::translation.Delete'), ['name' => 'submit','class' => 'btn btn-danger']) !!}
-								   <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-								  {{ Form::close() }}
-							</div>
+								<div class="modal-body">
+									<form action="{{ route('users.destroy', $user->id)}}" method="post">
+										@method('DELETE')
+										<input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+										{{trans('lang::translation.Do you really want to delete')}} <b>{{$user->name}}</b>?
+										<br>
+										<input type="submit" class="btn btn-danger" value="{{trans('lang::translation.Delete')}}"/>
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang::translation.No')}}</button>
+									</form>
+								</div>
 						  </div>
 						</div>
 				@endpath
@@ -64,9 +65,8 @@
 				@endforeach
 			</tbody>
 			</table>
-			@path('user-create')
-				{{ Html::linkRoute('user-create', 
-				trans('lang::translation.CreateUser'), [], ['class' => 'btn btn-info']) }}
+			@path('users.create')
+				<a href="users/create" class="btn btn-info">{{trans('lang::translation.CreateUser')}}</a>
 			@endpath       
             </div>
         </div>

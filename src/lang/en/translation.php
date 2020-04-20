@@ -32,6 +32,7 @@ return [
 	'Path' => 'Адрес',
 	'PasswordConfirm'=>'Password confirmed',
 	'Method' => 'Method',
+	'No' => 'No',
 	'isActive' => 'Active',
 	'ConfirmDelete' => 'Confirm Deletion',
 	'Do you really want to delete' => 'Do you really want to delete',

@@ -26,7 +26,7 @@ class RoleRequest extends FormRequest
         return [   
 			'name' => 'required',
 			'routes' => 'required',
-			'is_active' => 'boolean|nullable',
+			'is_active' => 'nullable',
         ];
     }
 
