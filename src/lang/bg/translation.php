@@ -18,7 +18,7 @@ return [
 	'ListUsers' => 'Списък от потребители',
 	'CreateRole' => 'Създаване на роля',
 	'UpdateRole' => 'Редактиране на роля',
-	'CreateRoute' => 'Създаване на маршрут',
+	'CreatePermission' => 'Създаване на маршрут',
 	'UpdateRoute' => 'Редактиране на маршрут',
 	'Route' => 'Mаршрут',
 	'Roles' => 'Роли',

@@ -23,14 +23,18 @@
 				  </thead>
 				  <tbody>
 				@foreach($users as $user)
+				@if($user->is_active)
 				<tr>
+				@else 
+					<tr style="color:red;">
+				@endif
 				<td scope="row">{{$user->id}}</td> 
 				<td>{{$user->username}}</td>
 				<td>{{$user->name}}</td>
 				<td>{{$user->email}}</td>
 				<td>
 				@path('users.edit')
-					<a href="/admin/users/{{$user->id}}/edit" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
+					<a href="{{route('users.edit', $user->id)}}" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 				@endpath
 				@path('users.destroy')
 					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$user->id}}">
@@ -57,7 +61,7 @@
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang::translation.No')}}</button>
 									</form>
 								</div>
-						  </div>
+							</div>
 						</div>
 				@endpath
 				</td>
@@ -66,7 +70,7 @@
 			</tbody>
 			</table>
 			@path('users.create')
-				<a href="users/create" class="btn btn-info">{{trans('lang::translation.CreateUser')}}</a>
+				<a href="{{route('users.create')}}" class="btn btn-info">{{trans('lang::translation.CreateUser')}}</a>
 			@endpath       
             </div>
         </div>

@@ -46,6 +46,9 @@ class RoleController extends Controller{
 		$validated = $request->validated();
 		$permissions = $validated['routes'];
 		unset($validated['routes']);
+		if (!isset($validated['is_active'])){
+			$validated = array_merge(['is_active' => false], $validated);
+		}
 		$role->update($validated);
 		$role->routes()->sync($permissions);
 		

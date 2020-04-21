@@ -57,6 +57,9 @@ class UserController extends Controller{
 			$encryptedPassword = bcrypt($password);
 			$validated = array_merge(['password' => $encryptedPassword], $validated);
 		}
+		if (!isset($validated['is_active'])){
+			$validated = array_merge(['is_active' => false], $validated);
+		}
 		$user->update($validated);
 		$user->roles()->sync($roles);
 		

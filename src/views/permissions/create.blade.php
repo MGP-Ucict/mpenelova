@@ -3,7 +3,7 @@
 <div class="container">
 	@include('rolespermissions.header')
 	<div class="panel panel-default">
-		<div class="panel-heading"><h1>{{trans('lang::translation.CreateRoute')}}</h1></div>
+		<div class="panel-heading"><h1>{{trans('lang::translation.CreatePermission')}}</h1></div>
 			<div class="panel-body">
 				@if (session('status'))
 					<div class="alert alert-success">

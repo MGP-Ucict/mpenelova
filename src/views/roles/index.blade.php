@@ -23,12 +23,16 @@
                       <tbody>
                     
                     @foreach($roles as $role) 
+					@if($role->is_active)
 					<tr>
+					@else 
+						<tr style="color:red;">
+					@endif
                         <td>{{$role->id}}</td>
                         <td>{{$role->name}}</td>
                         <td>
 						@path('roles.edit')
-							<a href="/admin/roles/{{$role->id}}/edit" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
+							<a href="{{route('roles.edit', $role->id)}}" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 						@endpath
 						@path('roles.destroy')
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$role->id}}">
@@ -64,7 +68,7 @@
                     </tbody>
                 </table>
 				@path('roles.create')
-				<a href="roles/create" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
+				<a href="{{route('roles.create')}}" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
 				@endpath    
             </div>
         </div>

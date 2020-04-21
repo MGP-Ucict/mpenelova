@@ -29,7 +29,7 @@
 						<td>{{$permission->route}}</td>
 						<td>
 						@path('permissions.edit')
-							<a href="/admin/permissions/{{$permission->id}}/edit" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
+							<a href="{{route('permissions.edit', $permission->id)}}" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 						@endpath
 						@path('permissions.destroy')
 							<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$permission->id}}">
@@ -64,7 +64,7 @@
 				</tbody>
 			</table>
 			@path('permissions.create')
-				<a href="permissions/create" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
+				<a href="{{route('permissions.create')}}" class="btn btn-info">{{trans('lang::translation.CreatePermission')}}</a>
 			@endpath
             </div>
         </div>
