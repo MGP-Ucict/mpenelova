@@ -75,7 +75,7 @@
 						</div>
 						<div class="form-check row">
 							<div class="col-sm-5"> 
-								<input type="checkbox" name="is_active" class="form-check-input" value="{{$user->is_active}}" {{($user->is_active) ? 'checked="checked" ' : '' }} />
+								<input type="checkbox" name="is_active" class="form-check-input" value="1" {{($user->is_active) ? 'checked="checked" ' : '' }} />
 								<label class="col-form-label">
 									<span class="h4">
 										{{trans('lang::translation.isActive')}}
