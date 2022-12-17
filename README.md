@@ -7,8 +7,7 @@
     
 	protected $routeMiddleware = [
 
-		'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class,
-		'owns' => \Laravelroles\Rolespermissions\Middleware\ProtectModelsOwnedByUser::class,
+		'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class
 
 	];
 			    
@@ -47,3 +46,8 @@ User.php:
 8. Set localization in config/app.php - bg or en
     
 9. Log in main program with example user test@test.bg and password test
+
+10. Configure fine-grained access control of HRABAC for the operations show, edit and delete (for example):
+
+Route::resource('salaries', 'SalaryController')->middleware('permissions.required:salary,show|edit|delete');
+
