@@ -24,6 +24,7 @@ class Permission extends Model
      */
 	protected $primaryKey = 'id';
 	protected $table = 'permissions';
+   protected $dates = ['deleted_at'];
 	public $timestamps=false;
 	
 	public function roles()

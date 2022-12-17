@@ -19,6 +19,7 @@ class Role extends Model
 
    
 	protected $table = 'roles';
+	protected $dates = ['deleted_at'];
 	public $timestamps = true;
 	
 	public function routes()
@@ -33,27 +34,11 @@ class Role extends Model
 	
 	public function hasAccess($permission)
     {
-        if ($this->hasPermission($permission)){
-            return true;
-		}
-        return false;
+       return !is_null($this->routes->where('name', $permission)->first());
     }
 
 	public function getCheckedPermissions()
 	{
 		return $this->routes()->allRelatedIds()->toArray();
 	}
-	
-    private function hasPermission($permission)
-    {
-		$routes = $this->routes;
-		foreach($routes as $route){
-			if ($route->name == $permission){
-				return true;
-			}
-		}
-        return  false;
-    }
-	
-	
 }

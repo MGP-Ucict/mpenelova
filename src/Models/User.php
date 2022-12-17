@@ -5,9 +5,11 @@ namespace Laravelroles\Rolespermissions\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable{
     use Notifiable;
+    use SoftDeletes;
    
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,7 @@ class User extends Authenticatable{
         'password', 'remember_token',
     ];
 	protected $table = 'users';
+	protected $dates = ['deleted_at'];
 	public $timestamps = true;
 	
 	public function roles()
@@ -45,24 +48,8 @@ class User extends Authenticatable{
         return false;
     }
 	
-    public function ownsClass($className, $id)
-	{
-		$model = $className::find($id);
-		if (isset($model->user_id)){
-			if ($model->user_id == $this->id){
-				return true;
-			}
-		}
-		return false;
-	}
-	
 	public function ownsModel($model)
 	{
-		if (isset($model->user_id)){
-			if ($model->user_id == $this->id){
-				return true;
-			}
-		}
-		return false;
+		return isset($model->user_id) && $model->user_id === $this->id;
 	}
 }
