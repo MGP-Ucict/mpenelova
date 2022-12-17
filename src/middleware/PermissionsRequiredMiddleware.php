@@ -12,7 +12,7 @@ class PermissionsRequiredMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $object = null)
+    public function handle($request, Closure $next, $object = null, $fineGrainedOperations = [])
     {
 		// Get the current route.
 		$user = $request->user();
@@ -20,7 +20,7 @@ class PermissionsRequiredMiddleware
 		if (!$user){
 			return redirect('/');
 		}
-		$modelArray = array_values(request()->route()->parameter($object));
+		$model = request()->route()->parameter($object);
 
 		$roles = $user->roles->where('is_active', 1);
 		foreach($roles as $role) {
@@ -29,7 +29,8 @@ class PermissionsRequiredMiddleware
 			}
 		}
 
-		if ($roles->count() && isset($modelArray[0]) && $user->ownsModel($modelArray[0])) {
+		if ($roles->count() && $user->ownsModel($model)
+			&& $user->isAllowedOperation($fineGrainedOperations, $route)) {
 			return $next($request);
 		}
 

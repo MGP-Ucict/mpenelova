@@ -29,6 +29,6 @@ class CreatePermissionsRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drown('permissions_roles');
+        Schema::drop('permissions_roles');
     }
 }

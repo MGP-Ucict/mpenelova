@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravelroles\Rolespermissions\Models\Permission;
 
 class User extends Authenticatable{
     use Notifiable;
@@ -51,5 +52,35 @@ class User extends Authenticatable{
 	public function ownsModel($model)
 	{
 		return isset($model->user_id) && $model->user_id === $this->id;
+	}
+
+	public function isAllowedOperation($operations, $routeName)
+	{
+		$route = Permission::where('name', $routeName)->first();
+		$fineGrainedOperations = explode('|', $operations);
+		$method = \optional($route)->method;
+		$result = false;
+		switch ($method) {
+			case 'GET':
+				if (strpos($routeName, 'edit') && in_array('edit', $fineGrainedOperations)) {
+					$result = true;
+				}
+				if (in_array('show', $fineGrainedOperations)) {
+					$result = true;	
+				}
+				break;
+			case 'PUT':
+				if (in_array('edit', $fineGrainedOperations)) {
+					$result = true;	
+				}
+				break;
+			case 'DELETE':
+				if (in_array('delete', $fineGrainedOperations)) {
+					$result = true;	
+				}
+				break;		
+					
+		}
+		return $result;
 	}
 }
