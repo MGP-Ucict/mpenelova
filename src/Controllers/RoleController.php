@@ -12,10 +12,9 @@ class RoleController extends Controller{
 
 	public function create()
 	{	
-		$permissions = Permission::all();
-		$data = compact(['permissions']);
-		
-		return View::make('rolespermissions/roles/create')->with($data);	
+		return View::make('rolespermissions/roles/create')->with([
+			'permissions' => Permission::all()
+		]);	
 	}
 
 	public function store(RoleRequest $request)
@@ -30,19 +29,17 @@ class RoleController extends Controller{
 	}    
 
 
-	public function edit($id)
-	{	
-		
-		$role = Role::find($id);
-		$permissions = Permission::all();
-		$checkedPermissions = $role->getCheckedPermissions();
-		$data = compact(['role', 'permissions', 'checkedPermissions']);
-		return View::make('rolespermissions/roles/edit')->with($data);
+	public function edit(Role $role)
+	{
+		return View::make('rolespermissions/roles/edit')->with([
+			'role' => $role,
+			'permissions' => Permission::all(),
+			'checkedPermissions' => $role->getCheckedPermissions()
+		]);
 	}
 
-	public function update(RoleRequest $request, $id)
+	public function update(RoleRequest $request, Role $role)
 	{
-		$role = Role::find($id);
 		$validated = $request->validated();
 		$permissions = $validated['routes'];
 		unset($validated['routes']);
@@ -54,16 +51,16 @@ class RoleController extends Controller{
 		
 		return redirect()->route('roles.index');
 	}
-	public function destroy($id)
+	public function destroy(Role $role)
 	{
-		$role= Role::find($id);
 		$role->routes()->detach();
 		$role->delete();
 		return redirect()->route('roles.index');
 	}
-	public function index(){
-		$roles = Role::all();
-		$data = compact(['roles']);
-		return View::make('rolespermissions/roles/index')->with($data);
+	public function index()
+	{
+		return View::make('rolespermissions/roles/index')->with([
+			'roles' => Role::all()
+		]);
 	}
 }

@@ -1,16 +1,34 @@
-<div class="navbar">
-    <div class="navbar-inner">
-		<ul class="nav nav-tabs">
-		@path('users.index')
-			<li><a href="{{route('users.index')}}">{{ trans('lang::translation.Users')}}</a>&nbsp;</li>
-		@endpath
-		@path('permissions.index')
-            <li><a href="{{route('permissions.index')}}">{{ trans('lang::translation.Routes')}}</a>&nbsp;</li>
-		@endpath
-		@path('roles.index')
-            <li><a href="{{route('roles.index')}}">{{ trans('lang::translation.Roles')}}</a>&nbsp;</li>
-		@endpath
-		</ul>
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container">
+	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPermissions" aria-controls="navbarPermissions" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarPermissions">
+	        <!-- Right Side Of Navbar -->
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item">
+					@path('users.index')
+					<a class="nav-link" href="{{route('users.index')}}">
+						{{ trans('lang::translation.Users')}}
+					</a>
+					@endpath
+				</li>
+				<li class="nav-item">
+					@path('permissions.index')
+			            <a class="nav-link" href="{{route('permissions.index')}}">
+			            	{{ trans('lang::translation.Routes')}}
+			        	</a>
+					@endpath
+				</li>
+				<li class="nav-item">
+					@path('roles.index')
+			            <a class="nav-link" href="{{route('roles.index')}}">
+				            {{ trans('lang::translation.Roles')}}
+				        </a>
+					@endpath
+				</li>
+			</ul>
+		</div>
 	</div>
-</div>
+</nav>
 

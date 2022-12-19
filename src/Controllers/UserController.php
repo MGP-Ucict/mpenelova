@@ -13,8 +13,8 @@ class UserController extends Controller{
 	public function create()
 	{	
 		$roles = Role::all();
-		$data = compact(['roles']);
-		return View::make('rolespermissions/users/create')->with($data);	
+
+		return View::make('rolespermissions/users/create')->with(['roles' => $roles]);	
 	}
 
 	public function store(UserRequest $request)
@@ -37,16 +37,15 @@ class UserController extends Controller{
 	
 	public function edit($id)
 	{	
-		$user = User::find($id);
-		$checkedRoles = $user->roles()->allRelatedIds()->toArray();
-		$roles = Role::all();
-		$data = compact(['user', 'roles', 'checkedRoles']);
-		return View::make('rolespermissions/users/edit')->with($data);
+		return View::make('rolespermissions/users/edit')->with([
+			'user' 			=> User::find($id), 
+			'roles' 		=> Role::all(), 
+			'checkedRoles' 	=> $user->roles()->allRelatedIds()->toArray()
+		]);
 	}
 
-	public function update(UserRequest $request, $id)
+	public function update(UserRequest $request, User $user)
 	{
-		$user = User::find($id);
 		$validated = $request->validated();
 		$roles = $validated['roles'];
 		unset($validated['roles']);
@@ -66,9 +65,8 @@ class UserController extends Controller{
 		return redirect()->route('users.index');
 	}
 	
-	public function destroy($id)
+	public function destroy(User $user)
 	{
-		$user = User::find($id);
 		$user->roles()->detach();
 		$user->delete();
 		return redirect()->route('users.index');
@@ -76,8 +74,8 @@ class UserController extends Controller{
 	
 	public function index()
 	{
-		$users = User::all();
-		$data = compact(['users']);
-		return View::make('rolespermissions/users/index')->with($data);
+		return View::make('rolespermissions/users/index')->with([
+			'users' => User::all()
+		]);
 	}
 }

@@ -2,35 +2,39 @@
 
 @section('content')
 <div class="container">
-@include('rolespermissions.header')
-	<div class="panel panel-default">
-        <div class="panel-heading">{{trans('lang::translation.Roles') }}</div>
-			<div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    
-                    <table class="table table-striped">
-                      <thead class="thead">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">{{trans('lang::translation.Name') }}</th>
-                          <th scope="col">{{trans('lang::translation.Actions') }}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                    
-                    @foreach($roles as $role) 
-					@if($role->is_active)
-					<tr>
-					@else 
-						<tr style="color:red;">
-					@endif
-                        <td>{{$role->id}}</td>
-                        <td>{{$role->name}}</td>
-                        <td>
+	<div class="row justify-content-center">
+		<div class="col-md-12">
+			@include('rolespermissions.header')
+			<div class="card">
+				<div class="card-header">
+					<div class="col-md-4 col-form-label text-md-right">
+						{{trans('lang::translation.Roles') }}
+					</div>
+				</div>
+				<div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                
+                <div class="row">
+					<div class="col-md-12">
+					<div class="row border-bottom border-dark">
+						<div class="col-md-1">#</div>
+	                 	<div class="col-md-3">{{trans('lang::translation.Name') }}</div>
+		                <div class="col-md-3">{{trans('lang::translation.Actions') }}</div>
+		             </div>
+            
+        			@foreach($roles as $role) 
+						@if($role->is_active)
+							<div class="row border-bottom border-dark pb-1 pt-1">
+						@else 
+							<div class="row border-bottom border-dark pb-1 pt-1">
+						@endif
+		               <div class="col-md-1">{{$role->id}}</div>
+		               <div class="col-md-3">{{$role->name}}</div>
+		               <div class="col-md-3">
 						@path('roles.edit')
 							<a href="{{route('roles.edit', $role->id)}}" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 						@endpath
@@ -58,21 +62,22 @@
 										<input type="submit" class="btn btn-danger" value="{{trans('lang::translation.Delete')}}"/>
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang::translation.No')}}</button>
 									</form>
+								  </div>
 								</div>
-							  </div>
 							</div>
+						</div>
 						@endpath
-						</td>
-						</tr>
-					 @endforeach
-                    </tbody>
-                </table>
+						</div>
+					</div>
+					@endforeach
 				@path('roles.create')
-				<a href="{{route('roles.create')}}" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
-				@endpath    
+				<div class="row mt-1">
+					<a href="{{route('roles.create')}}" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
+				</div>
+				@endpath
             </div>
         </div>
-    </div>
+	</div>
 </div>
 @endsection
 					

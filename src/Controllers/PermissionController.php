@@ -22,26 +22,23 @@ class PermissionController extends Controller{
 		return redirect()->route('permissions.index');
 	}
 
-	public function edit($id)
+	public function edit(Permission $permission)
 	{	
-		$permission = Permission::find($id);
-		$data = compact(['permission']);
-		
-		return View::make('rolespermissions/permissions/edit')->with($data);
+		return View::make('rolespermissions/permissions/edit')->with([
+			'permission' => $permission
+		]);
 	}
 	
-	public function update(RouteRequest $request, $id)
+	public function update(RouteRequest $request, Permission $permission)
 	{
-		$permission = Permission::find($id);
 		$validated = $request->validated();
 		$permission->update($validated);
 		
 		return redirect()->route('permissions.index');
 	}
 	
-	public function destroy($id)
+	public function destroy(Permission $permission)
 	{
-		$permission = Permission::find($id);
 		$permission->delete();
 		
 		return redirect()->route('permissions.index');
@@ -49,9 +46,8 @@ class PermissionController extends Controller{
 	
 	public function index()
 	{
-		$permissions = Permission::all();
-		$data = compact(['permissions']);
-		
-		return View::make('rolespermissions/permissions/index')->with($data);
+		return View::make('rolespermissions/permissions/index')->with([
+			'permissions' => Permission::all()
+		]);
 	}
 }
