@@ -2,7 +2,7 @@
 namespace Laravelroles\Rolespermissions\Controllers;
 
 use Laravelroles\Rolespermissions\Models\Role;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use View;
 use Laravelroles\Rolespermissions\Requests\UserRequest;
@@ -35,10 +35,10 @@ class UserController extends Controller{
 		return redirect()->route('users.index');
 	}
 	
-	public function edit($id)
+	public function edit(User $user)
 	{	
 		return View::make('rolespermissions/users/edit')->with([
-			'user' 			=> User::find($id), 
+			'user' 			=> $user, 
 			'roles' 		=> Role::all(), 
 			'checkedRoles' 	=> $user->roles()->allRelatedIds()->toArray()
 		]);
@@ -49,13 +49,16 @@ class UserController extends Controller{
 		$validated = $request->validated();
 		$roles = $validated['roles'];
 		unset($validated['roles']);
-		if (isset($validated['password'])){
+		if (!is_null($validated['password'])){
 			$password = $validated['password'];
 			unset($validated['password']);
 			unset($validated['password_confirmation']);
 			$encryptedPassword = bcrypt($password);
 			$validated = array_merge(['password' => $encryptedPassword], $validated);
+		} else {
+			unset($validated['password']);
 		}
+
 		if (!isset($validated['is_active'])){
 			$validated = array_merge(['is_active' => false], $validated);
 		}

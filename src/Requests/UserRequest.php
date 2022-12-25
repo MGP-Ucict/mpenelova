@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
 			'name' => 'required',
 			'password' => 'confirmed',
 			'roles' => 'required',
-			'is_active' => 'nullable',
+			'is_active' => 'boolean|nullable',
         ];
 		
 		if ($this->method() == 'POST') {

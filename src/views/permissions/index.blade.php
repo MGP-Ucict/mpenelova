@@ -71,7 +71,9 @@
 			</div>
 			@path('permissions.create')
 				<div class="row mt-1">
-					<a href="{{route('permissions.create')}}" class="btn btn-info">{{trans('lang::translation.CreatePermission')}}</a>
+					<div class="col-md-2">
+						<a href="{{route('permissions.create')}}" class="btn btn-info">{{trans('lang::translation.CreatePermission')}}</a>
+					</div>
 				</div>
 			@endpath
             </div>

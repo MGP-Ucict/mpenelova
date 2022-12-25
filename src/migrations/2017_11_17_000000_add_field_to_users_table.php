@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesUsersTable extends Migration
+class AddFieldToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateRolesUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles_users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('role_id')->unsigned();
-			$table->foreign('role_id')->references('id')->on('roles');
-			$table->foreignId('user_id')->nullable();	
+        Schema::table('users', function (Blueprint $table) {
+			$table->boolean('is_active')->nullable();
         });
     }
 
@@ -28,6 +25,9 @@ class CreateRolesUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('roles_users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_active');
+        });
+        
     }
 }

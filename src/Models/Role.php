@@ -20,6 +20,10 @@ class Role extends Model
    
 	protected $table = 'roles';
 	protected $dates = ['deleted_at'];
+	protected $casts = [
+        'is_active' => 'boolean',
+    ];
+    
 	public $timestamps = true;
 	
 	public function routes()

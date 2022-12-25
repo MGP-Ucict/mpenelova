@@ -30,7 +30,7 @@
 						@if($role->is_active)
 							<div class="row border-bottom border-dark pb-1 pt-1">
 						@else 
-							<div class="row border-bottom border-dark pb-1 pt-1">
+							<div class="row border-bottom border-dark alert alert-danger pb-1 pt-1">
 						@endif
 		               <div class="col-md-1">{{$role->id}}</div>
 		               <div class="col-md-3">{{$role->name}}</div>
@@ -72,7 +72,10 @@
 					@endforeach
 				@path('roles.create')
 				<div class="row mt-1">
-					<a href="{{route('roles.create')}}" class="btn btn-info">{{trans('lang::translation.CreateRole')}}</a>
+					<div class="col-md-2">
+						<a href="{{route('roles.create')}}" class="btn btn-info">{{trans('lang::translation.CreateRole')}}
+						</a>
+					</div>
 				</div>
 				@endpath
             </div>

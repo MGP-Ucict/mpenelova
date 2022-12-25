@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravelroles\Rolespermissions\Middleware;
+namespace Laravelroles\Rolespermissions\middleware;
 use Closure;
 
 class PermissionsRequiredMiddleware

@@ -72,9 +72,11 @@
 						@endforeach
 					@path('users.create')
 					<div class="row mt-1">
-						<a href="{{route('users.create')}}" class="btn btn-info">	
-							{{trans('lang::translation.CreateUser')}}
-						</a>
+						<div class="col-md-2">
+							<a href="{{route('users.create')}}" class="btn btn-info">	
+								{{trans('lang::translation.CreateUser')}}
+							</a>
+						</div>
 					</div>
 					@endpath 
 				</div>   

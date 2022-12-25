@@ -46,7 +46,7 @@ protected $commands = [
 		__DIR__. '/migrations'=>$this->app->databasePath().'/migrations'], 'migrations');
 		//publish seeds
 		$this->publishes([
-		__DIR__. '/seeds'=>$this->app->databasePath().'/seeds'], 'seeds');
+		__DIR__. '/seeds'=>$this->app->databasePath().'/seeders'], 'seeders');
     }
 
     /**

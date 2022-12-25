@@ -17,9 +17,7 @@ class User extends Authenticatable{
      *
      * @var array
      */
-    protected $fillable = [
-       'id', 'username', 'name', 'email', 'password','is_active',
-    ];
+    protected $guarded = [];
 	
     /**
      * The attributes that should be hidden for arrays.
@@ -31,6 +29,10 @@ class User extends Authenticatable{
     ];
 	protected $table = 'users';
 	protected $dates = ['deleted_at'];
+
+	protected $casts = [
+        'is_active' => 'boolean',
+    ];
 	public $timestamps = true;
 	
 	public function roles()

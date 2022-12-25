@@ -1,11 +1,13 @@
 <?php
+namespace Database\Seeders;
+
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
 class PermissionsSeeder extends Seeder{
 	
 	public function run(){
-		$routeCollection = Route::getRoutes();
+		$routeCollection = \Route::getRoutes();
 		$i = 1;
 		foreach ($routeCollection as $value) {
 			$arrayRoute = explode('/', $value->uri());
