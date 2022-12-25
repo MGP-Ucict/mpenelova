@@ -37,7 +37,7 @@
 										<a href="{{route('permissions.edit', $permission->id)}}" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
 									@endpath
 									@path('permissions.destroy')
-										<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$permission->id}}">
+										<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$permission->id}}">
 											{{trans('lang::translation.Delete')}}
 										</button>
 									<!-- Modal -->
@@ -46,9 +46,7 @@
 										<div class="modal-content">
 										  <div class="modal-header">
 											<h5 class="modal-title" id="exampleModalLabel">{{trans('lang::translation.ConfirmDelete')}}</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											  <span aria-hidden="true">&times;</span>
-											</button>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										  </div>
 										  <div class="modal-body">
 											<form action="{{ route('permissions.destroy', $permission->id)}}" method="post">
@@ -57,7 +55,7 @@
 												{{trans('lang::translation.Do you really want to delete')}} <b>{{$permission->name}}</b>?
 												<br>
 												<input type="submit" class="btn btn-danger" value="{{trans('lang::translation.Delete')}}"/>
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('lang::translation.No')}}</button>
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{trans('lang::translation.No')}}</button>
 											</form>
 										</div>
 									  </div>
