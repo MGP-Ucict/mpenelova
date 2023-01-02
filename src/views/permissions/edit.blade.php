@@ -47,7 +47,7 @@
 						</div>
 					</div>
 					<div class="form-group row mb-0">
-                		<div class="col-md-8 offset-md-4">
+                		<div class="col-md-8 offset-md-4 mt-1">
 						<input type="submit" value="{{trans('lang::translation.Save')}}" class="btn btn-primary" />
 						</div>
 					</div>

@@ -36,12 +36,16 @@
 		               <div class="col-md-3">{{$role->name}}</div>
 		               <div class="col-md-3">
 						@path('roles.edit')
+						<div class="col-md-2 mt-1">
 							<a href="{{route('roles.edit', $role->id)}}" class="btn btn-warning"> {{trans('lang::translation.Edit')}}</a>
+						</div>
 						@endpath
 						@path('roles.destroy')
+						<div class="col-md-2 mt-1">
 							<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$role->id}}">
 								{{trans('lang::translation.Delete')}}
 							</button>
+						</div>
 
 							<!-- Modal -->
 							<div class="modal fade" id="deleteModal-{{$role->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -68,6 +72,8 @@
 						</div>
 					</div>
 					@endforeach
+					</div>
+				</div>
 				@path('roles.create')
 				<div class="row mt-1">
 					<div class="col-md-2">
