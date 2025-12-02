@@ -1,12 +1,12 @@
 <?php
-namespace Database\Seeders;
+namespace Laravelroles\Rolespermissions\Seeders;
 
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
-class PermissionsSeeder extends Seeder{
+class PermissionSeeder extends Seeder{
 	
-	public function run(){
+	public function run(): void {
 		$routeCollection = \Route::getRoutes();
 		$i = 1;
 		foreach ($routeCollection as $value) {
@@ -36,4 +36,4 @@ class PermissionsSeeder extends Seeder{
 			$i++;
 		}
 	}
-}
+};

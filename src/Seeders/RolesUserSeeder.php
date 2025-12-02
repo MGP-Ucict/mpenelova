@@ -1,12 +1,12 @@
 <?php
-namespace Database\Seeders;
+namespace Laravelroles\Rolespermissions\Seeders;
 
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
-class RolesUsersSeeder extends Seeder{
+class RolesUserSeeder extends Seeder{
 	
-	public function run(){
+	public function run(): void {
 
 		DB::table('roles_users')->insert(
 			[

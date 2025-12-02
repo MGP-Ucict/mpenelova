@@ -1,18 +1,16 @@
 <?php
-namespace Database\Seeders;
+namespace Laravelroles\Rolespermissions\Seeders;
 
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
-class UsersSeeder extends Seeder{
+class RoleSeeder extends Seeder{
 	
-	public function run(){
+	public function run(): void {
 
-		DB::table('users')->insert(
+		DB::table('roles')->insert(
 			[
-				'name' => 'test',
-				'email'=> 'test@test.bg',
-				'password' => bcrypt('test'),
+				'name' => 'admin',
 				'is_active' => true,
 				'created_at' => \Carbon\Carbon::now(),
 				'updated_at' => \Carbon\Carbon::now()
