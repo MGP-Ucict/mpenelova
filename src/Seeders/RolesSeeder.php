@@ -4,7 +4,7 @@ namespace Laravelroles\Rolespermissions\Seeders;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
-class RoleSeeder extends Seeder{
+class RolesSeeder extends Seeder{
 	
 	public function run(): void {
 

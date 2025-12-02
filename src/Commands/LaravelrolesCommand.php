@@ -2,6 +2,9 @@
 
 namespace Laravelroles\Rolespermissions\Commands;
 
+use Laravelroles\Rolespermissions\Seeders\RolesSeeder;
+use Laravelroles\Rolespermissions\Seeders\RolesUserSeeder;
+use Laravelroles\Rolespermissions\Seeders\PermissionsSeeder;
 use Illuminate\Console\Command;
 
 class LaravelrolesCommand extends Command
@@ -37,9 +40,9 @@ class LaravelrolesCommand extends Command
      */
     public function handle()
     {
-		$this->call('db:seed', ['--class'=>'UsersSeeder']);
-		$this->call('db:seed', ['--class'=>'RoleSeeder']);
-		$this->call('db:seed', ['--class'=>'RolesUsersSeeder']);
-		$this->call('db:seed', ['--class'=>'PermissionsSeeder']);
+		//$this->call('db:seed', ['--class'=>'Laravelroles\Rolespermissions\Seeders\UsersSeeder']);
+		$this->call('db:seed', ['--class'=>'Laravelroles\Rolespermissions\Seeders\RolesSeeder']);
+		$this->call('db:seed', ['--class'=>'Laravelroles\Rolespermissions\Seeders\RolesUserSeeder']);
+		$this->call('db:seed', ['--class'=>'Laravelroles\Rolespermissions\Seeders\PermissionsSeeder']);
     }
 }

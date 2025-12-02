@@ -4,7 +4,7 @@ namespace Laravelroles\Rolespermissions\Seeders;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
-class PermissionSeeder extends Seeder{
+class PermissionsSeeder extends Seeder{
 	
 	public function run(): void {
 		$routeCollection = \Route::getRoutes();

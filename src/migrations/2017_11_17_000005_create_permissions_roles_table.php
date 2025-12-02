@@ -31,4 +31,4 @@ return new class extends Migration
     {
         Schema::drop('permissions_roles');
     }
-}
+};

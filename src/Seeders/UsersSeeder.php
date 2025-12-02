@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Carbon\Carbon;
 
-class UserSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
 	
 	public function run(): void {

@@ -15,10 +15,10 @@ class PermissionsRequiredMiddleware
     public function handle($request, Closure $next, $object = null, $fineGrainedOperations = [])
     {
 		// Get the current route.
-		$user = $request->user();
+		$user = auth()->user();
 		$route =  $request->route()->getName();
 		if (!$user){
-			return redirect('/');
+			abort(401);
 		}
 		$model = request()->route()->parameter($object);
 
