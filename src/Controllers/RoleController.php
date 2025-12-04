@@ -2,7 +2,7 @@
 namespace Laravelroles\Rolespermissions\Controllers;
 
 use Laravelroles\Rolespermissions\Models\Role;
-use  Laravelroles\Rolespermissions\Models\Permission;
+use Laravelroles\Rolespermissions\Models\Permission;
 use Illuminate\Http\Request;
 use View;
 use App\Http\Controllers\Controller;
