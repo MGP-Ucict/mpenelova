@@ -38,4 +38,10 @@ class RoleRequest extends FormRequest
 			'routes.required' => trans('lang::translation.routes.required'),
 	    ];
 	}
+
+    public $validator = null;
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        $this->validator = $validator;
+    }
 }

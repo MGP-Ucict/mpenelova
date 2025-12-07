@@ -3,43 +3,61 @@ namespace Laravelroles\Rolespermissions\Controllers;
 
 use Laravelroles\Rolespermissions\Models\Role;
 use Laravelroles\Rolespermissions\Models\Permission;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use View;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Laravelroles\Rolespermissions\Requests\RoleRequest;
 
 class RoleController extends Controller{
 
-	public function create()
+	public function create(): view
 	{	
-		return View::make('rolespermissions/roles/create')->with([
+		return view('rolespermissions.roles.create', [
 			'permissions' => Permission::all()
 		]);	
 	}
 
-	public function store(RoleRequest $request)
+	public function store(RoleRequest $request): view|RedirectResponse
 	{
+
+		if (isset($request->validator) && $request->validator->fails()) {
+	        $errors = $request->validator->errors()->messages();
+	        $request->session()->flash('errors', $errors);
+	        return view('rolespermissions.roles.create', [
+				'permissions' => Permission::all()
+			]);	
+	    }
 		$validated = $request->validated();
 		$routes = $validated['routes'];
 		unset($validated['routes']);
 		$role = Role::create($validated);
 		$role->routes()->attach($routes);
-		
+		$request->session()->flash('status', 'Данните бяха запазени успешно!');
 		return redirect()->route('roles.index');
 	}    
 
 
-	public function edit(Role $role)
+	public function edit(Role $role): view
 	{
-		return View::make('rolespermissions/roles/edit')->with([
+		return view('rolespermissions.roles.edit', [
 			'role' => $role,
 			'permissions' => Permission::all(),
 			'checkedPermissions' => $role->getCheckedPermissions()
 		]);
 	}
 
-	public function update(RoleRequest $request, Role $role)
+	public function update(RoleRequest $request, Role $role): view|RedirectResponse
 	{
+		if (isset($request->validator) && $request->validator->fails()) {
+	        $errors = $request->validator->errors()->messages();
+	        $request->session()->flash('errors', $errors);
+	        return view('rolespermissions.roles.edit', [
+				'role' => $role,
+				'permissions' => Permission::all(),
+				'checkedPermissions' => $role->getCheckedPermissions()
+			]);
+	    }
 		$validated = $request->validated();
 		$permissions = $validated['routes'];
 		unset($validated['routes']);
@@ -48,18 +66,19 @@ class RoleController extends Controller{
 		}
 		$role->update($validated);
 		$role->routes()->sync($permissions);
-		
+		$request->session()->flash('status', 'Данните бяха запазени успешно!');
 		return redirect()->route('roles.index');
 	}
-	public function destroy(Role $role)
+	public function destroy(Role $role): RedirectResponse
 	{
 		$role->routes()->detach();
 		$role->delete();
 		return redirect()->route('roles.index');
 	}
-	public function index()
+
+	public function index(): view
 	{
-		return View::make('rolespermissions/roles/index')->with([
+		return view('rolespermissions.roles.index', [
 			'roles' => Role::all()
 		]);
 	}

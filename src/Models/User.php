@@ -17,7 +17,10 @@ class User extends Authenticatable{
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $fillable = [
+      'id',  'name', 'email', 'password', 'is_active',
+    ];
+
 	
     /**
      * The attributes that should be hidden for arrays.
@@ -43,46 +46,11 @@ class User extends Authenticatable{
 	public function hasAccess($permission)
     {
         // check if the permission is available in any role
-        foreach ($this->roles as $role) {
+        foreach ($this->roles->where('is_active', 1) as $role) {
             if($role->hasAccess($permission)) {
                 return true;
             }
         }
         return false;
     }
-	
-	public function ownsModel($model)
-	{
-		return isset($model->user_id) && $model->user_id === $this->id;
-	}
-
-	public function isAllowedOperation($operations, $routeName)
-	{
-		$route = Permission::where('name', $routeName)->first();
-		$fineGrainedOperations = explode('|', $operations);
-		$method = \optional($route)->method;
-		$result = false;
-		switch ($method) {
-			case 'GET':
-				if (strpos($routeName, 'edit') && in_array('edit', $fineGrainedOperations)) {
-					$result = true;
-				}
-				if (in_array('show', $fineGrainedOperations)) {
-					$result = true;	
-				}
-				break;
-			case 'PUT':
-				if (in_array('edit', $fineGrainedOperations)) {
-					$result = true;	
-				}
-				break;
-			case 'DELETE':
-				if (in_array('delete', $fineGrainedOperations)) {
-					$result = true;	
-				}
-				break;		
-					
-		}
-		return $result;
-	}
 }

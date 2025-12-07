@@ -3,6 +3,7 @@
 namespace Laravelroles\Rolespermissions;
 
 use Laravelroles\Rolespermissions\Models\Permission;
+use Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravelroles\Rolespermissions\Commands\LaravelrolesCommand;
@@ -13,7 +14,6 @@ class RolespermissionsServiceProvider extends ServiceProvider
 protected $commands = [
     'Laravelroles\Rolespermissions\Commands\LaravelrolesCommand'
 ];
-    
     /**
      * Bootstrap the application services.
      *

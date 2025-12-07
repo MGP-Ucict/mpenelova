@@ -39,4 +39,10 @@ class RouteRequest extends FormRequest
 			'method.required' => trans('lang::translation.method.required'),
 	    ];
 	}
+
+    public $validator = null;
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        $this->validator = $validator;
+    }
 }

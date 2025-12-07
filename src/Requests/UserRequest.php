@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules =  [
 			'name' => 'required',
@@ -40,7 +40,7 @@ class UserRequest extends FormRequest
     }
 
 
-	public function messages()
+	public function messages(): array
 	{
 	    return [
 			'email.required' => trans('lang::translation.email.required'),
@@ -52,5 +52,11 @@ class UserRequest extends FormRequest
 			'roles.required' => trans('lang::translation.roles.required'),
 			'password.confirmed' => trans('lang::translation.password.confirmed'),
 		];
+	}
+
+	public $validator = null;
+	protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+	{
+	    $this->validator = $validator;
 	}
 }

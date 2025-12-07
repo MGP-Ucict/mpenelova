@@ -18,7 +18,7 @@
 	                    </div>
 	                @endif
 	               
-	               <form action="{{ route('roles.update', $role->id)}}" method="post">
+	               <form action="{{ route('roles.update', $role)}}" method="post">
 						@method('PUT')
 						<input name="_token" type="hidden" value="{{ csrf_token() }}">
 						<div class="form-group row">

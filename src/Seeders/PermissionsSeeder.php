@@ -4,7 +4,7 @@ namespace Laravelroles\Rolespermissions\Seeders;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Database\Seeder;
 
-class PermissionsSeeder extends Seeder{
+class PermissionSeeder extends Seeder{
 	
 	public function run(): void {
 		$routeCollection = \Route::getRoutes();
@@ -17,7 +17,7 @@ class PermissionsSeeder extends Seeder{
 			}
 			$permission = DB::table('permissions')->insert(
 				[
-					'id' => $i,
+					//'id' => $i,
 					'name' => $value->getName(),
 					'route' => $value->uri(),
 					'method' => $value->methods()[0],
