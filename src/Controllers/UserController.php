@@ -22,10 +22,7 @@ class UserController extends Controller{
 	{
 		if (isset($request->validator) && $request->validator->fails()) {
 	        $errors = $request->validator->errors()->messages();
-	        $request->session()->flash('errors', $errors);
-	        return view('rolespermissions.users.create', [
-	        	'roles'	 => Role::all()
-	        ]);	
+	        redirect()->back()->withInput()->withErrors($errors);
 	    }
 		$validated = $request->validated();
 		$roles = $validated['roles'];
@@ -56,12 +53,7 @@ class UserController extends Controller{
 	{
 		if (isset($request->validator) && $request->validator->fails()) {
 	        $errors = $request->validator->errors()->messages();
-	        $request->session()->flash('errors', $errors);
-	        view('rolespermissions.users.edit', [
-				'user' 			=> $user, 
-				'roles' 		=> Role::all(), 
-				'checkedRoles' 	=> $user->roles()->allRelatedIds()->toArray()
-			]);
+	        redirect()->back()->withInput()->withErrors($errors);
 	    }
 		$validated = $request->validated();
 		$roles = $validated['roles'];

@@ -23,10 +23,7 @@ class RoleController extends Controller{
 
 		if (isset($request->validator) && $request->validator->fails()) {
 	        $errors = $request->validator->errors()->messages();
-	        $request->session()->flash('errors', $errors);
-	        return view('rolespermissions.roles.create', [
-				'permissions' => Permission::all()
-			]);	
+	        redirect()->back()->withInput()->withErrors($errors);
 	    }
 		$validated = $request->validated();
 		$routes = $validated['routes'];
@@ -51,12 +48,7 @@ class RoleController extends Controller{
 	{
 		if (isset($request->validator) && $request->validator->fails()) {
 	        $errors = $request->validator->errors()->messages();
-	        $request->session()->flash('errors', $errors);
-	        return view('rolespermissions.roles.edit', [
-				'role' => $role,
-				'permissions' => Permission::all(),
-				'checkedPermissions' => $role->getCheckedPermissions()
-			]);
+	       	redirect()->back()->withInput()->withErrors($errors);
 	    }
 		$validated = $request->validated();
 		$permissions = $validated['routes'];

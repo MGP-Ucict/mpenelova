@@ -33,8 +33,8 @@ return [
 	'PasswordConfirm'=>'Password confirmed',
 	'Method' => 'Method',
 	'No' => 'No',
-	'isActive' => 'Active',
+	'isActive' => 'Is active',
 	'ConfirmDelete' => 'Confirm Deletion',
-	'Do you really want to delete' => 'Do you really want to delete',
+	'ReallyDelete' => 'Do you really want to delete',
 	'Actions' => 'Actions'
 ];

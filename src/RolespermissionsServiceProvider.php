@@ -27,10 +27,10 @@ protected $commands = [
 			return optional(auth()->user())->hasAccess($routeName);
 		});
 		\Blade::if('owns', function($model){
-			return optional(auth()->user())->ownsModel($model);
+			return auth()->id() == $model->user_id;
 		});
 		\Blade::if('has', function($model, $routeName){
-			return optional(auth()->user())->hasAccess($routeName) || auth()->user()->ownsModel($model);
+			return optional(auth()->user())->hasAccess($routeName) ||  (auth()->id() == $model->user_id);
 		});
 		//load and publish translations
 		$this->loadTranslationsFrom(__DIR__.'/lang', 'lang');

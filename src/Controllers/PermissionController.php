@@ -20,8 +20,7 @@ class PermissionController extends Controller{
 	{
 		if (isset($request->validator) && $request->validator->fails()) {
 	        $errors = $request->validator->errors()->messages();
-	        $request->session()->flash('errors', $errors);
-	        return view('rolespermissions.permissions.create');
+	        redirect()->back()->withInput()->withErrors($errors);
 	    }
 		$validated = $request->validated();
 		Permission::create($validated);
@@ -39,11 +38,8 @@ class PermissionController extends Controller{
 	public function update(RouteRequest $request, Permission $permission): view|RedirectResponse
 	{
 		if (isset($request->validator) && $request->validator->fails()) {
-	        $errors = $request->validator->errors()->messages();
-	        $request->session()->flash('errors', $errors);
-	        return view('rolespermissions.permissions.edit', [
-				'permission' => $permission
-			]);
+	       $errors = $request->validator->errors()->messages();
+	       redirect()->back()->withInput()->withErrors($errors);
 	    }
 		$validated = $request->validated();
 		$permission->update($validated);

@@ -1,80 +1,76 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        	@include('rolespermissions.header')
-            <div class="card">
-                <div class="card-header">
-                	<div class="col-md-4 col-form-label text-md-right">
-						{{trans('lang::translation.CreateRole')}}
-					</div>
+<x-app-layout>
+    <x-slot name="header">
+    	@include('rolespermissions.header')
+    </x-slot>
+	<div class="flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+    	<div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg justify-center">
+    		<div class="flex max-w-sm mb-4">
+                <svg fill="#000000" width="30px" height="px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						    <style>
+						      .cls-1 {
+						        fill: none;
+						      }
+						    </style>
+						  </defs>
+						  <title>roles</title>
+						  <path d="M20,25a6.9908,6.9908,0,0,1-5.833-3.1287l1.666-1.1074a5.0007,5.0007,0,0,0,8.334,0l1.666,1.1074A6.9908,6.9908,0,0,1,20,25Z"/>
+						  <path d="M24,14a2,2,0,1,0,2,2A1.9806,1.9806,0,0,0,24,14Z"/>
+						  <path d="M16,14a2,2,0,1,0,2,2A1.9806,1.9806,0,0,0,16,14Z"/>
+						  <path d="M28,8H22V4a2.0023,2.0023,0,0,0-2-2H4A2.0023,2.0023,0,0,0,2,4V14a10.01,10.01,0,0,0,8.8027,9.9214A9.9989,9.9989,0,0,0,30,20V10A2.0023,2.0023,0,0,0,28,8ZM4,14V4H20V8H12a2.0023,2.0023,0,0,0-2,2V20a9.9628,9.9628,0,0,0,.168,1.78A8.0081,8.0081,0,0,1,4,14Zm24,6a8,8,0,0,1-16,0V10H28Z"/>
+						  <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/>
+						</svg>
+						<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="size-6 mr-1">
+						  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+						</svg>  
+    				  <div class="font-bold ml-3"> 
+    				  	{{trans('lang::translation.CreateRole')}}
+    				</div>
 				</div>
-				<div class="card-body">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">	
+				<div class="text-red-600">
+					@if($errors->any())
+					    {!! implode('', $errors->all('<div>:message</div>')) !!}
 					@endif
-					@if ($errors->any())
-					<div class="alert alert-danger">
-						<ul>
-							@foreach ($errors->all() as $error)
-								<li>{{ $error }}</li>
-							@endforeach
-						</ul>
-					</div>
-					@endif
-				
-                    
-					<form action="{{ route('roles.store')}}" method="post">
-						<input name="_token" type="hidden" value="{{ csrf_token() }}">
-						<div class="form-group row">
-							<label class="col-md-4 col-form-label text-md-right">
-								{{trans('lang::translation.Name')}}
+				</div>
+			<form action="{{ route('roles.store')}}" method="post">
+				<input name="_token" type="hidden" value="{{ csrf_token() }}">
+				<div class="flex items-center justify-start mb-4">
+					<button type="submit" class="bg-gray-700 text-slate-50 rounded-full p-2 flex xs:w-full sm:w-full md:w-60 lg:w-48 text-sm justify-center">
+				    	{{trans('lang::translation.Save')}}
+					</button>
+				</div>
+				<label class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+					{{trans('lang::translation.Name')}}
+				</label>
+				<div class="mb-4">
+					<input type="text" name="name" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm block mt-1 w-full"/>
+				</div>
+				<div class="block mt-4">
+                   <input type="checkbox" name="is_active" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" value="1" />
+					<label class="items-center inline-flex">
+						<span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
+							{{trans('lang::translation.isActive')}}
+						</span>
+					</label>
+				</div>
+				<label class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+					{{trans('lang::translation.Routes')}}
+				</label>
+				<div class="mb-4">
+					@foreach($permissions as $permission)
+						<div class="word-break">	
+							<input type="checkbox" name="routes[]" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" value="{{$permission->id}}" />
+							<label class="items-center inline-flex">
+								<span class="ms-2 text-md text-gray-600 dark:text-gray-400">
+									{{$permission->name}}
+								</span>
 							</label>
-							<div class="col-md-6">
-								<input type="text" name="name" class="form-control" />
-							</div>
-						</div>
-						<div class="form-group row">
-	                        <div class="col-md-6 offset-md-4">
-	                            <div class="form-check">
-									<input type="checkbox" name="is_active" class="form-check-input" value="1" />
-									<label class="form-check-label">
-										{{trans('lang::translation.isActive')}}
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-md-4 col-form-label text-md-right">
-								{{trans('lang::translation.Routes')}}
-							</label>
-						</div>
-						<div style="height: 300px; overflow-y: scroll; overflow-x: hidden;">		
-							@foreach($permissions as $permission)
-							<div class="form-group row">
-		                        <div class="col-md-6 offset-md-4">
-		                            <div class="form-check">
-										<input type="checkbox" name="routes[]" class="form-check-input" value="{{$permission->id}}"/>
-										<label class="form-check-label">
-											{{$permission->name}}
-										</label>
-									</div>
-								</div>							
-							</div>
-							@endforeach	
-						</div>
-						<div class="form-group row mb-0">
-                        	<div class="col-md-8 offset-md-4">
-								<input type="submit" value="{{trans('lang::translation.Save')}}" class="btn btn-primary" />
-							</div>
-						</div>
-	             </form>
-			</div>
-        </div>
-    </div>
-</div>
-@endsection
+						</div>		
+					@endforeach					
+				</div>
+			</form>
+		</div>
+	</div>
+</x-app-layout>
+

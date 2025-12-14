@@ -4,10 +4,10 @@ use Laravelroles\Rolespermissions\Controllers\UserController;
 use Laravelroles\Rolespermissions\Controllers\PermissionController;
 use Laravelroles\Rolespermissions\Controllers\RoleController;
 
-	Route::prefix('/admin')->middleware(['web', 'bindings', 'permissions.required'])->group(function () {
-		Route::resource('permissions', PermissionController::class)->except('show');
-		Route::resource('roles', RoleController::class)->except('show');
-		Route::resource('users', UserController::class)->except('show')->middleware('fine.grained:id');
+	Route::prefix('/admin')->middleware(['web', 'bindings',])->group(function () {
+		Route::resource('permissions', PermissionController::class)->except('show')->middleware('permissions.required');
+		Route::resource('roles', RoleController::class)->except('show')->middleware('permissions.required');
+		Route::resource('users', UserController::class)->except('show')->middleware('permissions.required:id');
 	});
 
 	
