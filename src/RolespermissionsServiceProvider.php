@@ -33,8 +33,8 @@ protected $commands = [
 			return optional(auth()->user())->hasAccess($routeName) ||  (auth()->id() == $model->user_id);
 		});
 		//load and publish translations
-		$this->loadTranslationsFrom(__DIR__.'/lang', 'lang');
 		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
+		$this->loadTranslationsFrom(base_path('resources/lang'), 'lang');
 		
 		//publish views
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/rolespermissions')]

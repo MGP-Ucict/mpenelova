@@ -1,38 +1,48 @@
-1. Install package. In console:
-
+#Fine-grained Access Control Package
+#Technologies
+-Laravel
+-Tailwind
+#Installation
+1. In the terminal:
+```shell
 	composer require laravelroles/rolespermissions
-
-        
-2. Register package middleware in app/Http/Kernel.php
+```
     
-	protected $routeMiddleware = [
-
-		'permissions.required' => \Laravelroles\Rolespermissions\Middleware\PermissionsRequiredMiddleware::class
-
-	];
-			    
-	    
-		    
-3. In console:
-
+2. Register service provider in file /bootstrap/providers.php
+```shell
+return [
+    ...
+    Laravelroles\Rolespermissions\RolespermissionsServiceProvider::class,
+];
+```  
+2. Register package middleware in bootstrap/app.php
+```shell
+->withMiddleware(function (Middleware $middleware): void {
+        $middleware->alias([
+            'bindings' => SubstituteBindings::class,
+            'permissions.required' => PermissionsRequiredMiddleware::class
+        ]);
+    })
+```   	    
+3. In terminal:
+```shell
 	php artisan vendor:publish --provider="Laravelroles\Rolespermissions\RolespermissionsServiceProvider"
-
-4. In console:
-
+```
+4. In terminal:
+```shell
 	php artisan migrate
-	
-5. In console:
-
+```	
+5. In terminal:
+```shell
 	composer dump-autoload
-
-6. In console:
-
+```
+6. In terminal:
+```shell
 	php artisan laravelroles:seeder
+```
 
-
-7. Class User from main laravel project  extends Laravelroles\Rolespermissions\Models\User
-
-User.php:
+7. Class App\Models\User extends Laravelroles\Rolespermissions\Models\User
+```shell
 
 	use Laravelroles\Rolespermissions\Models\User as BaseUser;
 
@@ -43,11 +53,47 @@ User.php:
 
 
 	}
+```
 8. Set localization in config/app.php - bg or en
     
 9. Log in main program with example user test@test.bg and password test
 
-10. Configure fine-grained access control of HRABAC for the operations show, edit and delete (for example):
+#Middleware
 
-Route::resource('salaries', 'SalaryController')->middleware('permissions.required:salary,show|edit|delete');
+Add attribute to the middleware name
+```shell
+Route::resource('salaries', 'SalaryController')->middleware('permissions.required:user_id');
+```
+#Interfaces
+
+-Users
+![Image](en/users/list-users.png)
+
+![Image](en/users/list-users-wide.png)
+
+![Image](en/users/create-user.png)
+
+![Image](en/users/edit-user.png)
+
+-Roles
+
+![Image](en/roles/index.png)
+
+![Image](en/roles/create-user.png)
+
+![Image](en/roles/edit-user.png)
+
+![Image](en/roles/delete-user.png)
+
+-Permissions
+
+![Image](en/permissions/list-permissions.png)
+
+![Image](en/permissions/create-permission.png)
+
+![Image](en/permissions/edit-permission.png)
+
+![Image](en/permissions/delete-permission.png)
+
+
 

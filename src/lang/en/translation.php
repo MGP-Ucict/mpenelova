@@ -36,5 +36,7 @@ return [
 	'isActive' => 'Is active',
 	'ConfirmDelete' => 'Confirm Deletion',
 	'ReallyDelete' => 'Do you really want to delete',
-	'Actions' => 'Actions'
+	'Actions' => 'Actions',
+	'Здравейте' => 'Hello',
+	'Роля' => 'Role'
 ];
