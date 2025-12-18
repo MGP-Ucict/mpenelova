@@ -1,8 +1,8 @@
-#Fine-grained Access Control Package
-#Technologies
--Laravel
--Tailwind
-#Installation
+# Fine-grained Access Control Package
+# Technologies
+- Laravel
+- Tailwind
+# Installation
 1. In the terminal:
 ```shell
 	composer require laravelroles/rolespermissions
@@ -15,7 +15,7 @@ return [
     Laravelroles\Rolespermissions\RolespermissionsServiceProvider::class,
 ];
 ```  
-2. Register package middleware in bootstrap/app.php
+3. Register package middleware in bootstrap/app.php
 ```shell
 ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
@@ -24,24 +24,24 @@ return [
         ]);
     })
 ```   	    
-3. In terminal:
+4. In terminal:
 ```shell
 	php artisan vendor:publish --provider="Laravelroles\Rolespermissions\RolespermissionsServiceProvider"
 ```
-4. In terminal:
+5. In terminal:
 ```shell
 	php artisan migrate
 ```	
-5. In terminal:
+6. In terminal:
 ```shell
 	composer dump-autoload
 ```
-6. In terminal:
+7. In terminal:
 ```shell
 	php artisan laravelroles:seeder
 ```
 
-7. Class App\Models\User extends Laravelroles\Rolespermissions\Models\User
+8. Class App\Models\User extends Laravelroles\Rolespermissions\Models\User
 ```shell
 
 	use Laravelroles\Rolespermissions\Models\User as BaseUser;
@@ -54,19 +54,21 @@ return [
 
 	}
 ```
-8. Set localization in config/app.php - bg or en
+9. Set localization in config/app.php - bg or en
     
-9. Log in main program with example user test@test.bg and password test
+10. Log in main program with example user test@test.bg and password test
 
-#Middleware
+# Middleware
 
 Add attribute to the middleware name
+
 ```shell
 Route::resource('salaries', 'SalaryController')->middleware('permissions.required:user_id');
 ```
-#Interfaces
+# Interfaces
 
--Users
+- Users
+
 ![Image](en/users/list-users.png)
 
 ![Image](en/users/list-users-wide.png)
@@ -75,7 +77,7 @@ Route::resource('salaries', 'SalaryController')->middleware('permissions.require
 
 ![Image](en/users/edit-user.png)
 
--Roles
+- Roles
 
 ![Image](en/roles/index.png)
 
@@ -85,7 +87,7 @@ Route::resource('salaries', 'SalaryController')->middleware('permissions.require
 
 ![Image](en/roles/delete-user.png)
 
--Permissions
+- Permissions
 
 ![Image](en/permissions/list-permissions.png)
 
