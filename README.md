@@ -67,12 +67,12 @@ Route::resource('salaries', 'SalaryController')->middleware('permissions.require
 ```
 # Interfaces
 
-- Users
+- Permissions
 
-![Image](en/users/list-users-wide.png)
-![Image](en/users/list-users.png)
-![Image](en/users/create-user.png)
-![Image](en/users/edit-user.png)
+![Image](en/permissions/list-permissions.png)
+![Image](en/permissions/create-permission.png)
+![Image](en/permissions/edit-permission.png)
+![Image](en/permissions/delete-permission.png)
 
 - Roles
 
@@ -81,12 +81,14 @@ Route::resource('salaries', 'SalaryController')->middleware('permissions.require
 ![Image](en/roles/edit-user.png)
 ![Image](en/roles/delete-user.png)
 
-- Permissions
+- Users
 
-![Image](en/permissions/list-permissions.png)
-![Image](en/permissions/create-permission.png)
-![Image](en/permissions/edit-permission.png)
-![Image](en/permissions/delete-permission.png)
+![Image](en/users/list-users.png)
+![Image](en/users/create-user.png)
+![Image](en/users/edit-user.png)
+
+
+
 
 
 
