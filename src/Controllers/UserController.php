@@ -27,13 +27,8 @@ class UserController extends Controller{
 		$validated = $request->validated();
 		$roles = $validated['roles'];
 		unset($validated['roles']);
-		//if (isset($validated['password'])){
-			$password = 123;//$validated['password'];
-			unset($validated['password']);
-			unset($validated['password_confirmation']);
-			$encryptedPassword = bcrypt($password);
-			$validated = array_merge(['password' => $encryptedPassword], $validated);
-		//}
+		$encryptedPassword = bcrypt($str()->random());
+		$validated = array_merge(['password' => $encryptedPassword], $validated);
 		$user = User::create($validated);
 		$user->roles()->attach($roles);
 		$request->session()->flash('status', 'Данните бяха запазени успешно!');

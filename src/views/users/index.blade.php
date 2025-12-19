@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg h-auto">
             	<div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-            		<div class="flex mb-4 xs:w-1/2 sm:w-1/2 md:w-1/2">
+            		<div class="flex mb-4 xs:w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4">
                 		<svg data-slot="icon" aria-hidden="true" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="size-6">
   						<path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" stroke-linecap="round" stroke-linejoin="round"></path>
 						</svg>
@@ -15,7 +15,7 @@
         				</div>
 					</div>
             		<a href="{{ route('users.create')}}"
-					        	class="bg-gray-700 text-slate-50 rounded-full p-2 flex xs:w-full sm:w-full md:w-full lg:w-60 text-sm justify-center">
+					        	class="bg-gray-700 text-slate-50 rounded-full p-2 flex xs:w-full sm:w-full md:w-40 lg:w-60 text-sm justify-center">
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-3">
 						 	<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 						</svg>		
@@ -26,7 +26,7 @@
 							{{ session('status') }}
 						</div>
 					@endif
-	   				<div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 border-b-2 flex">
+	   				<div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 border-b-2 flex">
 						<div class="column-xs mb-2">#</div>
 					  	<div class="column-xs mb-2">{{trans('lang::translation.Name') }}</div>
 					  	<div class="column-xs mb-2">{{trans('lang::translation.Email') }}</div>
@@ -34,7 +34,7 @@
 					</div>
 					  @foreach($users as $user)
 				  		@if($user->is_active)
-							<div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 border-b-2 mb-4 flex">
+							<div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 border-b-2 mb-4 flex">
 						@else 
 							<div class="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 text-red-600 border-b-2 mb-4 flex">
 						@endif
@@ -96,10 +96,8 @@
 								    </div>
 								  </dialog>
 								</el-dialog>
-								</div>
 							</div>
 						</div>
-					</div>
 					@endforeach
 				</div>
 			</div>

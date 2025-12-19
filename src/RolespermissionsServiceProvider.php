@@ -26,11 +26,11 @@ protected $commands = [
 		\Blade::if('path', function($routeName){
 			return optional(auth()->user())->hasAccess($routeName);
 		});
-		\Blade::if('owns', function($model){
-			return auth()->id() == $model->user_id;
+		\Blade::if('owns', function($attributeValue){
+			return auth()->id() == $attributeValue;
 		});
-		\Blade::if('has', function($model, $routeName){
-			return optional(auth()->user())->hasAccess($routeName) ||  (auth()->id() == $model->user_id);
+		\Blade::if('has', function($attributeValue, $routeName){
+			return optional(auth()->user())->hasAccess($routeName) ||  (auth()->id() == $attributeValue);
 		});
 		//load and publish translations
 		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);

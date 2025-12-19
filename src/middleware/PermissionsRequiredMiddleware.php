@@ -14,7 +14,7 @@ class PermissionsRequiredMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $property = null)
+    public function handle($request, Closure $next, $attribute = null)
     {
 		// Get the current route.
 		$user = auth()->user();
@@ -31,13 +31,14 @@ class PermissionsRequiredMiddleware
 				        return $next($request);
 				 });
           	}
-        	if(!is_null($property)) {
-	        	$routeArray = explode('.', $route);
-				$model = rtrim($routeArray[0], 's');
-				$id = $request->route($model);
-				if (!is_null($id)) {
-					$instance = \DB::table($routeArray[0])->where('id', $id)->first();
-					if (!is_null($instance) && $user->roles->count() && $instance->{$property} == $user->id && rtrim($routeArray[0], 's') == $model)
+        	if(!is_null($attribute)) {
+        		$requestArray = Route::getRoutes()->match($request)->parameters;
+        		$modelArray = array_keys($requestArray);
+        		$idArray = array_values($requestArray);
+				if (!empty($idArray) && !is_null($idArray[0])) {
+					$model = '\App\Models\\' . ucfirst($modelArray[0]);
+					$instance = (new $model())->where('id', $idArray[0])->first();
+					if (!is_null($instance) && $user->roles->count() && $instance->{$attribute} == $user->id)
 					{
 						return app(\Illuminate\Routing\Middleware\SubstituteBindings::class)
 						    ->handle($request, function($request) use ($next) {
