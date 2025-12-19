@@ -34,7 +34,7 @@ protected $commands = [
 		});
 		//load and publish translations
 		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
-		$this->loadTranslationsFrom(base_path('resources/lang'), 'lang');
+		$this->loadTranslationsFrom(base_path('resources/lang'));
 		
 		//publish views
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/rolespermissions')]
