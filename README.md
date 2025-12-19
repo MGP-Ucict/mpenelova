@@ -89,5 +89,29 @@ Route::resource('salaries', 'SalaryController')->middleware('permissions.require
 ![Image](en/permissions/edit-permission.png)
 ![Image](en/permissions/delete-permission.png)
 
+# Blade directives
 
+- path($permissionName) - Filters records by condition if the subject (the current user who interacts with the system) is authorized to access the permission $permissionName
+Example:
+```shell
+@path('posts.edit')
+	...
+@endpath
+```
 
+- owns($attributeValue) - Filters records by condition if the subject's id is equal to $attributeValue
+Example:
+```shell
+@owns($attributeValue)
+	...
+@endowns
+```
+
+- has($attributeValue, $permissionName) - Filters records by condition if the subject's id is equal to $attributeValue OR the user is authorized to access the permission $permissionName
+
+Example:
+```shell
+@has($posts->author_id, 'posts.edit')
+	...
+@endhas
+```
