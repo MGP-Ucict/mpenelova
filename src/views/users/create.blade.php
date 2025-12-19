@@ -25,7 +25,7 @@
 				<input name="_token" type="hidden" value="{{ csrf_token() }}">
 				<div class="flex items-center justify-start mb-4">
 					<button type="submit" class="bg-gray-700 text-slate-50 rounded-full p-2 flex xs:w-full sm:w-full md:w-60 lg:w-48 text-sm justify-center">
-				    	{{ __("Save")) }}
+				    	{{ __("Save") }}
 					</button>
 				</div>
 				<label class="block text-sm text-gray-700 dark:text-gray-300">

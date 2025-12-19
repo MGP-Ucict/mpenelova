@@ -32,10 +32,8 @@ protected $commands = [
 		\Blade::if('has', function($attributeValue, $routeName){
 			return optional(auth()->user())->hasAccess($routeName) ||  (auth()->id() == $attributeValue);
 		});
-		//load and publish translations
-		$this->publishes([__DIR__.'/lang'=> base_path('resources/lang')]);
-		$this->loadTranslationsFrom(base_path('resources/lang'));
-		
+		//publish translations
+		$this->publishes([__DIR__.'/lang'=> base_path('lang')]);
 		//publish views
 		$this->publishes([__DIR__.'/views'=> base_path('resources/views/rolespermissions')]
 		);
